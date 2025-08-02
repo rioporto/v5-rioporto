@@ -38,7 +38,7 @@ export const CyberTrails: React.FC<CyberTrailsProps> = ({
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isMouseMoving, setIsMouseMoving] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   // Track mouse movement
   useEffect(() => {

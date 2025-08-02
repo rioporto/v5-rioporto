@@ -34,7 +34,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
           <span className="font-mono">{data.percentage.toFixed(2)}%</span>
         </div>
         {data.pointOfControl && (
-          <Badge variant="primary" size="sm">Point of Control</Badge>
+          <Badge variant="default" size="sm">Point of Control</Badge>
         )}
         {data.valueAreaHigh && (
           <Badge variant="success" size="sm">Value Area High</Badge>
@@ -76,9 +76,9 @@ const VolumeProfileList = ({ data, currentPrice }: { data: VolumeProfileData[], 
               {item.percentage.toFixed(1)}%
             </span>
             <div className="flex gap-1">
-              {item.pointOfControl && <Badge variant="primary" size="xs">POC</Badge>}
-              {item.valueAreaHigh && <Badge variant="success" size="xs">VAH</Badge>}
-              {item.valueAreaLow && <Badge variant="success" size="xs">VAL</Badge>}
+              {item.pointOfControl && <Badge variant="default" size="sm">POC</Badge>}
+              {item.valueAreaHigh && <Badge variant="success" size="sm">VAH</Badge>}
+              {item.valueAreaLow && <Badge variant="success" size="sm">VAL</Badge>}
             </div>
           </div>
         );

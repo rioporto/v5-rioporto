@@ -190,7 +190,7 @@ function NavigationItemComponent({
   const Icon = item.icon;
   const isActive = pathname === item.href || (item.children && item.children.some(child => pathname === child.href));
   const hasChildren = item.children && item.children.length > 0;
-  const isParentActive = hasChildren && item.children.some(child => pathname === child.href);
+  const isParentActive = hasChildren && item.children?.some(child => pathname === child.href);
 
   if (hasChildren && !collapsed) {
     return (
@@ -220,7 +220,7 @@ function NavigationItemComponent({
         </div>
         
         <div className="ml-4 space-y-1 border-l border-border pl-3">
-          {item.children.map((child) => (
+          {item.children?.map((child) => (
             <NavigationItemComponent
               key={child.href}
               item={child}

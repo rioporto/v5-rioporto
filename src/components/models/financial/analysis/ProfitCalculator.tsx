@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Card } from '@/components/ui/Card';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { Badge } from '@/components/ui/Badge';
 import { 
   Calculator, 
@@ -169,15 +169,17 @@ export function ProfitCalculator() {
       </div>
 
       <div className="p-4">
-        <Tabs
-          items={calculatorTabs}
-          value={activeTab}
-          onValueChange={setActiveTab}
-          variant="underline"
-          className="mb-6"
-        />
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-6">
+          <TabsList variant="underline">
+            {calculatorTabs.map((tab) => (
+              <TabsTrigger key={tab.id} value={tab.id}>
+                <tab.icon className="w-4 h-4 mr-2" />
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        {activeTab === 'basic' && (
+          <TabsContent value="basic">
           <div className="space-y-6">
             {/* Position Configuration */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -185,7 +187,7 @@ export function ProfitCalculator() {
                 <label className="text-sm font-medium">Position Type</label>
                 <Select
                   value={positionType}
-                  onValueChange={setPositionType}
+                  onChange={(e) => setPositionType(e.target.value)}
                   options={positionTypes}
                 />
               </div>
@@ -391,9 +393,9 @@ export function ProfitCalculator() {
               </div>
             </div>
           </div>
-        )}
+          </TabsContent>
 
-        {activeTab === 'advanced' && (
+          <TabsContent value="advanced">
           <div className="space-y-6">
             {/* Base Position (reuse from basic) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -626,16 +628,17 @@ export function ProfitCalculator() {
               </div>
             )}
           </div>
-        )}
+          </TabsContent>
 
-        {activeTab === 'scenario' && (
+          <TabsContent value="scenario">
           <div className="space-y-6">
             <div className="text-center text-muted-foreground">
               <BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-50" />
               <p>Scenario analysis coming soon...</p>
             </div>
           </div>
-        )}
+          </TabsContent>
+        </Tabs>
       </div>
     </Card>
   );

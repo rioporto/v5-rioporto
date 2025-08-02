@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
+import { Select } from '@/components/ui/Select';
 
 interface PerformanceChartProps {
   className?: string;
@@ -26,17 +26,17 @@ export function PerformanceChart({ className }: PerformanceChartProps) {
     <Card className={className}>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Performance vs Benchmark</CardTitle>
-        <Select value={timeframe} onValueChange={setTimeframe}>
-          <SelectTrigger className="w-[100px]">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="7d">7 dias</SelectItem>
-            <SelectItem value="30d">30 dias</SelectItem>
-            <SelectItem value="90d">90 dias</SelectItem>
-            <SelectItem value="1y">1 ano</SelectItem>
-          </SelectContent>
-        </Select>
+        <Select 
+          value={timeframe} 
+          onChange={(e) => setTimeframe(e.target.value)}
+          options={[
+            { value: '7d', label: '7 dias' },
+            { value: '30d', label: '30 dias' },
+            { value: '90d', label: '90 dias' },
+            { value: '1y', label: '1 ano' }
+          ]}
+          className="w-[100px]"
+        />
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>

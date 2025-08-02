@@ -134,22 +134,22 @@ const MinimalistTable = forwardRef<HTMLDivElement, MinimalistTableProps>(
 MinimalistTable.displayName = 'MinimalistTable';
 
 // Simple data list component for key-value pairs
-interface MinimalistDataListProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MinimalistDataListProps {
   data: Array<{
     label: string;
     value: React.ReactNode;
   }>;
   variant?: 'horizontal' | 'vertical';
+  className?: string;
 }
 
-const MinimalistDataList = forwardRef<HTMLDivElement, MinimalistDataListProps>(
-  ({ className, data, variant = 'horizontal', ...props }, ref) => {
+const MinimalistDataList = forwardRef<HTMLDListElement | HTMLDivElement, MinimalistDataListProps>(
+  ({ className, data, variant = 'horizontal' }, ref) => {
     if (variant === 'vertical') {
       return (
         <div
-          ref={ref}
+          ref={ref as React.Ref<HTMLDivElement>}
           className={cn('space-y-4', className)}
-          {...props}
         >
           {data.map((item, index) => (
             <div key={index} className="space-y-1">
@@ -163,9 +163,8 @@ const MinimalistDataList = forwardRef<HTMLDivElement, MinimalistDataListProps>(
 
     return (
       <dl
-        ref={ref}
+        ref={ref as React.Ref<HTMLDListElement>}
         className={cn('divide-y divide-border', className)}
-        {...props}
       >
         {data.map((item, index) => (
           <div

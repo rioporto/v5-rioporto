@@ -79,7 +79,7 @@ export default function AnalyticsPage() {
         <div className="flex items-center space-x-2">
           <Select
             value={timeFrame}
-            onValueChange={setTimeFrame}
+            onChange={(e) => setTimeFrame(e.target.value)}
             options={timeFrames}
             placeholder="Select time frame"
           />
@@ -105,12 +105,26 @@ export default function AnalyticsPage() {
       {/* Tabs */}
       <div className="border-b border-border bg-card">
         <div className="px-6 py-4">
-          <Tabs
-            items={analyticsTabs}
-            value={activeTab}
-            onValueChange={setActiveTab}
-            variant="underline"
-          />
+          <div className="flex space-x-6">
+            {analyticsTabs.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`
+                    flex items-center space-x-2 pb-3 px-1 border-b-2 transition-all
+                    ${activeTab === tab.id 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted-foreground hover:text-foreground'}
+                  `}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="text-sm font-medium">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -174,14 +188,14 @@ export default function AnalyticsPage() {
               <Card>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-4">Portfolio Performance</h3>
-                  <PerformanceChart timeFrame={timeFrame} />
+                  <PerformanceChart />
                 </div>
               </Card>
 
               <Card>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-4">Profit & Loss Distribution</h3>
-                  <ProfitLossAnalysis timeFrame={timeFrame} />
+                  <ProfitLossAnalysis />
                 </div>
               </Card>
             </div>
@@ -190,7 +204,7 @@ export default function AnalyticsPage() {
             <Card>
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Trading Statistics</h3>
-                <TradingStats timeFrame={timeFrame} />
+                <TradingStats />
               </div>
             </Card>
           </div>
@@ -202,17 +216,14 @@ export default function AnalyticsPage() {
               <Card>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-4">Cumulative Returns</h3>
-                  <PerformanceChart 
-                    timeFrame={timeFrame} 
-                    showBenchmark={true}
-                  />
+                  <PerformanceChart />
                 </div>
               </Card>
 
               <Card>
                 <div className="p-6">
                   <h3 className="text-lg font-semibold mb-4">Drawdown Analysis</h3>
-                  <DrawdownChart timeFrame={timeFrame} />
+                  <DrawdownChart />
                 </div>
               </Card>
             </div>
@@ -220,7 +231,7 @@ export default function AnalyticsPage() {
             <Card>
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Monthly Returns Heatmap</h3>
-                <HeatmapChart timeFrame={timeFrame} />
+                <HeatmapChart />
               </div>
             </Card>
           </div>
@@ -228,7 +239,7 @@ export default function AnalyticsPage() {
 
         {activeTab === 'risk' && (
           <div className="p-6 space-y-6">
-            <RiskMetrics timeFrame={timeFrame} />
+            <RiskMetrics />
           </div>
         )}
 

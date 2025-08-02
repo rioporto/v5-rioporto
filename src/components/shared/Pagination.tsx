@@ -97,7 +97,7 @@ export function Pagination({
             return (
               <Button
                 key={page}
-                variant={currentPage === page ? 'default' : 'outline'}
+                variant={currentPage === page ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => onPageChange(page)}
                 className="h-9 w-9 p-0"

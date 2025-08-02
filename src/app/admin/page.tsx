@@ -127,7 +127,7 @@ export default function AdminDashboard() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-foreground">Disputas de transação</span>
-              <Badge variant="destructive">3</Badge>
+              <Badge variant="error">3</Badge>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-foreground">Suporte ao cliente</span>

@@ -14,7 +14,7 @@ export default function AdminKYCQueuePage() {
 
       <Card className="p-8">
         <EmptyState
-          icon={Shield}
+          icon={<Shield className="w-16 h-16 text-muted-foreground" />}
           title="Fila KYC em Desenvolvimento"
           description="Sistema de verificação KYC será implementado em breve."
         />

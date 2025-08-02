@@ -114,7 +114,7 @@ export default function LineChart({
   }, [processedData]);
 
   const handleTimeframeChange = (timeframe: string) => {
-    setSelectedTimeframe(timeframe);
+    setSelectedTimeframe(timeframe as any);
     onTimeframeChange?.(timeframe);
   };
 
@@ -184,7 +184,7 @@ export default function LineChart({
           {/* Timeframe Selector */}
           <Select
             value={selectedTimeframe}
-            onValueChange={handleTimeframeChange}
+            onChange={(e) => handleTimeframeChange(e.target.value)}
             options={TIMEFRAMES}
           />
           

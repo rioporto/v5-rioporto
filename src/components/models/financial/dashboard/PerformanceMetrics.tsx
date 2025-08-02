@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Skeleton } from '@/components/ui/Skeleton';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { WidgetProps, PerformanceMetrics as PerformanceMetricsType } from '@/types/financial';
 
 interface PerformanceMetricsProps extends WidgetProps {
@@ -59,7 +59,7 @@ const MetricCard = ({
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h4>
         {trend && (
-          <Badge variant={trend === 'up' ? 'success' : trend === 'down' ? 'error' : 'default'} size="xs">
+          <Badge variant={trend === 'up' ? 'success' : trend === 'down' ? 'error' : 'default'} size="sm">
             {trend}
           </Badge>
         )}
@@ -75,7 +75,7 @@ const MetricCard = ({
               {formatValue(benchmark)}
             </span>
             {isOutperforming !== null && (
-              <Badge variant={isOutperforming ? 'success' : 'error'} size="xs">
+              <Badge variant={isOutperforming ? 'success' : 'error'} size="sm">
                 {isOutperforming ? 'Outperforming' : 'Underperforming'}
               </Badge>
             )}
@@ -246,14 +246,17 @@ export default function PerformanceMetrics({
         </div>
       </div>
 
-      <Tabs
-        tabs={tabs}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          {tabs.map((tab) => (
+            <TabsTrigger key={tab.id} value={tab.id}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      <div className="mt-6">
-        {activeTab === 'overview' && (
+        <div className="mt-6">
+          <TabsContent value="overview">
           <div className="space-y-6">
             {/* Key Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -308,9 +311,9 @@ export default function PerformanceMetrics({
               </div>
             </div>
           </div>
-        )}
+          </TabsContent>
 
-        {activeTab === 'risk' && (
+          <TabsContent value="risk">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <MetricCard
@@ -340,9 +343,9 @@ export default function PerformanceMetrics({
               <RiskReturnScatter metrics={data.metrics} benchmark={data.benchmark} />
             </div>
           </div>
-        )}
+          </TabsContent>
 
-        {activeTab === 'comparison' && (
+          <TabsContent value="comparison">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <MetricCard
               title="Alpha"
@@ -372,15 +375,16 @@ export default function PerformanceMetrics({
               description="Return vs max drawdown"
             />
           </div>
-        )}
+          </TabsContent>
 
-        {activeTab === 'radar' && (
+          <TabsContent value="radar">
           <div>
             <h4 className="font-medium mb-3">Performance Radar</h4>
             <RadarMetrics metrics={data.metrics} />
           </div>
-        )}
-      </div>
+          </TabsContent>
+        </div>
+      </Tabs>
     </Card>
   );
 }

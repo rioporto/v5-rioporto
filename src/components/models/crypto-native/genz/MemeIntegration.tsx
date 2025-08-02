@@ -164,7 +164,7 @@ export function MemeIntegration({
               {memeTemplates.map(template => (
                 <Button
                   key={template.id}
-                  variant={selectedTemplate === template.id ? 'default' : 'outline'}
+                  variant={selectedTemplate === template.id ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedTemplate(template.id)}
                   className={`p-3 h-auto ${

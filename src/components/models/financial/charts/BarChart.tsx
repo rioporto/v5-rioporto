@@ -95,6 +95,7 @@ export default function BarChart({
 }: BarChartProps) {
   const [selectedTimeframe, setSelectedTimeframe] = useState(config.timeframe || '1d');
   const [showGrid, setShowGrid] = useState(config.showGrid ?? true);
+  const [showValuesState, setShowValuesState] = useState(showValues);
 
   const processedData = useMemo(() => {
     if (!data || data.length === 0) return [];
@@ -109,7 +110,7 @@ export default function BarChart({
     if (!processedData.length || !bars.length) return null;
     
     const primaryDataKey = bars[0].dataKey;
-    const values = processedData.map(d => d[primaryDataKey] || 0);
+    const values = processedData.map(d => (d as any)[primaryDataKey] || 0);
     const total = values.reduce((sum, val) => sum + val, 0);
     const avg = total / values.length;
     const min = Math.min(...values);
@@ -129,7 +130,7 @@ export default function BarChart({
   };
 
   const handleTimeframeChange = (timeframe: string) => {
-    setSelectedTimeframe(timeframe);
+    setSelectedTimeframe(timeframe as any);
     onTimeframeChange?.(timeframe);
   };
 
@@ -187,7 +188,7 @@ export default function BarChart({
           {/* Timeframe Selector */}
           <Select
             value={selectedTimeframe}
-            onValueChange={handleTimeframeChange}
+            onChange={(e) => handleTimeframeChange(e.target.value)}
             options={TIMEFRAMES}
           />
           
@@ -201,9 +202,9 @@ export default function BarChart({
               Grid
             </Button>
             <Button
-              variant={showValues ? 'primary' : 'outline'}
+              variant={showValuesState ? 'primary' : 'outline'}
               size="sm"
-              onClick={() => setShowValues(!showValues)}
+              onClick={() => setShowValuesState(!showValuesState)}
             >
               Values
             </Button>
@@ -278,13 +279,13 @@ export default function BarChart({
                 dataKey={bar.dataKey}
                 stackId={bar.stackId}
                 name={bar.name}
-                label={showValues ? <CustomLabel /> : undefined}
+                label={showValuesState ? <CustomLabel /> : undefined}
               >
                 {colorByValue ? 
                   processedData.map((entry, index) => (
                     <Cell 
                       key={`cell-${index}`} 
-                      fill={getBarColor(entry[bar.dataKey] || 0, index)}
+                      fill={getBarColor((entry as any)[bar.dataKey] || 0, index)}
                     />
                   )) :
                   <Cell fill={bar.fill} />

@@ -227,31 +227,6 @@ export const cryptoNativeCSSVariables = {
   '--crypto-transition': '300ms ease'
 };
 
-// Default export for convenience
-export default {
-  // Components
-  CryptoButton,
-  CryptoCard,
-  CryptoHeader,
-  CryptoGlassPanel,
-  CryptoInput,
-  CryptoModal,
-  CryptoBadge,
-  
-  // Effects
-  GlowEffect,
-  GlassmorphismBox,
-  HolographicShimmer,
-  GradientBorder,
-  ParticlesBackground,
-  
-  // Web3
-  WalletCard,
-  NFTDisplay,
-  
-  // Utils
-  utils: cryptoNativeUtils,
-  presets: cryptoNativePresets,
-  animations: cryptoNativeAnimations,
-  cssVariables: cryptoNativeCSSVariables
-};
+// Note: Use named exports instead of default export for better tree-shaking
+// Example usage:
+// import { CryptoButton, CryptoCard } from '@/components/models/crypto-native';

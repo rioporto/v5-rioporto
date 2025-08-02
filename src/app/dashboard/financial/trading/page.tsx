@@ -75,12 +75,22 @@ export default function TradingPage() {
             </div>
           </div>
           
-          <Tabs
-            items={tradeTypeTabs}
-            value={tradeType}
-            onValueChange={setTradeType}
-            size="sm"
-          />
+          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+            {tradeTypeTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setTradeType(tab.id)}
+                className={`
+                  px-3 py-1 text-sm font-medium rounded transition-colors
+                  ${tradeType === tab.id 
+                    ? 'bg-background text-foreground shadow-sm' 
+                    : 'text-muted-foreground hover:text-foreground'}
+                `}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -91,7 +101,7 @@ export default function TradingPage() {
               return (
                 <Button
                   key={mode.id}
-                  variant={layoutMode === mode.id ? 'default' : 'ghost'}
+                  variant={layoutMode === mode.id ? 'primary' : 'ghost'}
                   size="sm"
                   onClick={() => setLayoutMode(mode.id)}
                   className="rounded-none border-0"
@@ -129,7 +139,28 @@ export default function TradingPage() {
 
             {/* Order Book */}
             <div className="col-span-4 row-span-8 bg-card rounded border border-border">
-              <OrderBook pair={selectedPair} />
+              <OrderBook 
+                data={{
+                  symbol: selectedPair,
+                  bids: [
+                    { price: 210000, quantity: 0.5, total: 105000 },
+                    { price: 209950, quantity: 0.75, total: 157462.5 },
+                    { price: 209900, quantity: 1.2, total: 251880 },
+                    { price: 209850, quantity: 0.3, total: 62955 },
+                    { price: 209800, quantity: 2.1, total: 440580 },
+                  ],
+                  asks: [
+                    { price: 210050, quantity: 0.45, total: 94522.5 },
+                    { price: 210100, quantity: 0.8, total: 168080 },
+                    { price: 210150, quantity: 1.5, total: 315225 },
+                    { price: 210200, quantity: 0.25, total: 52550 },
+                    { price: 210250, quantity: 1.8, total: 378450 },
+                  ],
+                  lastPrice: 210025,
+                  spread: 50,
+                  spreadPercent: 0.024
+                }}
+              />
             </div>
 
             {/* Trading Interface */}
@@ -159,7 +190,25 @@ export default function TradingPage() {
                 <QuickTrade pair={selectedPair} />
               </div>
               <div className="bg-card rounded border border-border">
-                <OrderBook pair={selectedPair} compact />
+                <OrderBook 
+                  data={{
+                    symbol: selectedPair,
+                    bids: [
+                      { price: 210000, quantity: 0.5, total: 105000 },
+                      { price: 209950, quantity: 0.75, total: 157462.5 },
+                      { price: 209900, quantity: 1.2, total: 251880 },
+                    ],
+                    asks: [
+                      { price: 210050, quantity: 0.45, total: 94522.5 },
+                      { price: 210100, quantity: 0.8, total: 168080 },
+                      { price: 210150, quantity: 1.5, total: 315225 },
+                    ],
+                    lastPrice: 210025,
+                    spread: 50,
+                    spreadPercent: 0.024
+                  }}
+                  maxLevels={3}
+                />
               </div>
             </div>
           </div>
@@ -171,7 +220,28 @@ export default function TradingPage() {
               <TradingChart pair={selectedPair} />
             </div>
             <div className="bg-card rounded border border-border">
-              <OrderBook pair={selectedPair} />
+              <OrderBook 
+                data={{
+                  symbol: selectedPair,
+                  bids: [
+                    { price: 210000, quantity: 0.5, total: 105000 },
+                    { price: 209950, quantity: 0.75, total: 157462.5 },
+                    { price: 209900, quantity: 1.2, total: 251880 },
+                    { price: 209850, quantity: 0.3, total: 62955 },
+                    { price: 209800, quantity: 2.1, total: 440580 },
+                  ],
+                  asks: [
+                    { price: 210050, quantity: 0.45, total: 94522.5 },
+                    { price: 210100, quantity: 0.8, total: 168080 },
+                    { price: 210150, quantity: 1.5, total: 315225 },
+                    { price: 210200, quantity: 0.25, total: 52550 },
+                    { price: 210250, quantity: 1.8, total: 378450 },
+                  ],
+                  lastPrice: 210025,
+                  spread: 50,
+                  spreadPercent: 0.024
+                }}
+              />
             </div>
             <div className="bg-card rounded border border-border">
               <QuickTrade pair={selectedPair} />

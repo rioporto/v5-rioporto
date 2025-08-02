@@ -27,7 +27,7 @@ const orderTabs = [
 
 export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState('open');
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState<{ id: string } | null>(null);
   const [showOrderForm, setShowOrderForm] = useState(false);
 
   // Mock data
@@ -94,12 +94,26 @@ export default function OrdersPage() {
       {/* Tabs */}
       <div className="border-b border-border bg-card">
         <div className="px-6 py-4">
-          <Tabs
-            items={orderTabs}
-            value={activeTab}
-            onValueChange={setActiveTab}
-            variant="underline"
-          />
+          <div className="flex space-x-6">
+            {orderTabs.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`
+                    flex items-center space-x-2 pb-3 px-1 border-b-2 transition-all
+                    ${activeTab === tab.id 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted-foreground hover:text-foreground'}
+                  `}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  <span className="text-sm font-medium">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -117,10 +131,7 @@ export default function OrdersPage() {
                       {orderStats.open} active orders
                     </div>
                   </div>
-                  <OrdersTable 
-                    filter="open"
-                    onSelectOrder={setSelectedOrder}
-                  />
+                  <OrdersTable />
                 </div>
               </Card>
             )}
@@ -134,10 +145,7 @@ export default function OrdersPage() {
                       {orderStats.filled} completed orders
                     </div>
                   </div>
-                  <OrdersTable 
-                    filter="filled"
-                    onSelectOrder={setSelectedOrder}
-                  />
+                  <OrdersTable />
                 </div>
               </Card>
             )}
@@ -151,10 +159,7 @@ export default function OrdersPage() {
                       {orderStats.cancelled} cancelled orders
                     </div>
                   </div>
-                  <OrdersTable 
-                    filter="cancelled"
-                    onSelectOrder={setSelectedOrder}
-                  />
+                  <OrdersTable />
                 </div>
               </Card>
             )}
@@ -168,10 +173,7 @@ export default function OrdersPage() {
                       {orderStats.total} total orders
                     </div>
                   </div>
-                  <OrdersTable 
-                    filter="all"
-                    onSelectOrder={setSelectedOrder}
-                  />
+                  <OrdersTable />
                 </div>
               </Card>
             )}
@@ -182,8 +184,7 @@ export default function OrdersPage() {
         {selectedOrder && (
           <div className="w-96 border-l border-border bg-card">
             <OrderDetails 
-              order={selectedOrder}
-              onClose={() => setSelectedOrder(null)}
+              orderId={selectedOrder?.id}
             />
           </div>
         )}
@@ -194,13 +195,7 @@ export default function OrdersPage() {
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
           <div className="w-full max-w-2xl max-h-[90vh] overflow-auto">
             <Card>
-              <OrderForm 
-                onClose={() => setShowOrderForm(false)}
-                onSubmit={(order) => {
-                  console.log('New order:', order);
-                  setShowOrderForm(false);
-                }}
-              />
+              <OrderForm />
             </Card>
           </div>
         </div>

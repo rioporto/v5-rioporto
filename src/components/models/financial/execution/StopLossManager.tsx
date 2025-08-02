@@ -233,7 +233,7 @@ export function StopLossManager({ positions = [] }: StopLossManagerProps) {
                   <label className="text-sm font-medium">Stop Loss Type</label>
                   <Select
                     value={stopLossType}
-                    onValueChange={setStopLossType}
+                    onChange={(e) => setStopLossType(e.target.value)}
                     options={stopLossTypes}
                   />
                 </div>
@@ -306,14 +306,14 @@ export function StopLossManager({ positions = [] }: StopLossManagerProps) {
                     <label className="text-sm font-medium">Trailing Distance</label>
                     <div className="grid grid-cols-2 gap-2 mb-2">
                       <Button
-                        variant={trailingType === 'percentage' ? 'default' : 'outline'}
+                        variant={trailingType === 'percentage' ? 'primary' : 'outline'}
                         size="sm"
                         onClick={() => setTrailingType('percentage')}
                       >
                         %
                       </Button>
                       <Button
-                        variant={trailingType === 'amount' ? 'default' : 'outline'}
+                        variant={trailingType === 'amount' ? 'primary' : 'outline'}
                         size="sm"
                         onClick={() => setTrailingType('amount')}
                       >

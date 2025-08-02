@@ -74,7 +74,7 @@ export function PositionsPanel() {
               className="flex items-center justify-between p-3 bg-background-secondary rounded-lg hover:bg-background-tertiary transition-colors"
             >
               <div className="flex items-center gap-3">
-                <Badge variant={position.type === 'long' ? 'success' : 'destructive'} className="text-xs">
+                <Badge variant={position.type === 'long' ? 'success' : 'error'} className="text-xs">
                   {position.type.toUpperCase()}
                 </Badge>
                 <div>

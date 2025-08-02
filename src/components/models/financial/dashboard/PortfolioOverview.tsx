@@ -6,7 +6,8 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Skeleton } from '@/components/ui/Skeleton';
-import { WidgetProps, PortfolioAsset, PortfolioHistory } from '@/types/rioporto';
+import { PortfolioAsset, PortfolioHistory } from '@/types/rioporto';
+import { WidgetProps } from '@/types/financial';
 
 interface PortfolioOverviewProps extends WidgetProps {
   data: {

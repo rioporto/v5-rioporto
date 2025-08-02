@@ -170,7 +170,7 @@ export const LaserBeam: React.FC<LaserBeamProps> = ({
         {/* Main beam */}
         <path
           d={getBeamPath()}
-          stroke={animation === 'pulse' ? `url(#laser-gradient-${color.replace('#', '')})` : color}
+          stroke={type === 'pulse' ? `url(#laser-gradient-${color.replace('#', '')})` : color}
           strokeWidth={thickness}
           fill="none"
           strokeLinecap="round"

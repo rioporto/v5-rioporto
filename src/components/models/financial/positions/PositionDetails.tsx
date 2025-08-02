@@ -56,7 +56,7 @@ export function PositionDetails() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl">{selectedPosition.symbol}</CardTitle>
-            <Badge variant={selectedPosition.type === 'long' ? 'success' : 'destructive'}>
+            <Badge variant={selectedPosition.type === 'long' ? 'success' : 'error'}>
               {selectedPosition.type.toUpperCase()}
             </Badge>
           </div>
@@ -131,7 +131,7 @@ export function PositionDetails() {
           {/* Ações */}
           <div className="flex gap-3">
             <Button 
-              variant="destructive" 
+              variant="danger" 
               className="flex-1"
               onClick={handleClosePosition}
               disabled={isClosing}

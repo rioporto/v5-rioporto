@@ -9,7 +9,7 @@ interface RainbowGradientProps {
   animated?: boolean;
   speed?: 'slow' | 'normal' | 'fast' | 'ultra';
   intensity?: 'subtle' | 'medium' | 'bold' | 'extreme';
-  as?: 'div' | 'span' | 'section' | 'article' | 'header' | 'footer';
+  as?: 'div' | 'span' | 'section' | 'article' | 'header' | 'footer' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   className?: string;
   style?: React.CSSProperties;
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Switch } from '@/components/ui/Switch';
@@ -136,19 +136,26 @@ export function AdvancedOrder({ pair }: AdvancedOrderProps) {
           <label className="text-sm font-medium">Order Type</label>
           <Select
             value={orderType}
-            onValueChange={setOrderType}
+            onChange={(e) => setOrderType(e.target.value)}
             options={orderTypes}
           />
         </div>
 
         {/* Buy/Sell Toggle */}
         <Tabs
-          items={sideOptions}
           value={side}
           onValueChange={(value) => setSide(value as 'buy' | 'sell')}
-          variant="pills"
+          variant="default"
           className="grid grid-cols-2"
-        />
+        >
+          <TabsList>
+            {sideOptions.map((option) => (
+              <TabsTrigger key={option.id} value={option.id}>
+                {option.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
 
         {/* Amount */}
         <div className="space-y-2">
@@ -196,7 +203,7 @@ export function AdvancedOrder({ pair }: AdvancedOrderProps) {
           <label className="text-sm font-medium">Trigger Type</label>
           <Select
             value={triggerType}
-            onValueChange={setTriggerType}
+            onChange={(e) => setTriggerType(e.target.value)}
             options={triggerTypes}
           />
         </div>
@@ -245,14 +252,14 @@ export function AdvancedOrder({ pair }: AdvancedOrderProps) {
             
             <div className="grid grid-cols-2 gap-2">
               <Button
-                variant={trailingType === 'percentage' ? 'default' : 'outline'}
+                variant={trailingType === 'percentage' ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setTrailingType('percentage')}
               >
                 Percentage
               </Button>
               <Button
-                variant={trailingType === 'amount' ? 'default' : 'outline'}
+                variant={trailingType === 'amount' ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setTrailingType('amount')}
               >

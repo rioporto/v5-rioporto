@@ -150,21 +150,21 @@ export default function NFTPage() {
             <h2 className="text-3xl font-bold text-foreground">My NFTs 💎</h2>
             <div className="flex gap-2">
               <Button 
-                variant={filter === 'all' ? 'default' : 'outline'} 
+                variant={filter === 'all' ? 'primary' : 'outline'} 
                 size="sm"
                 onClick={() => setFilter('all')}
               >
                 All
               </Button>
               <Button 
-                variant={filter === 'rare' ? 'default' : 'outline'} 
+                variant={filter === 'rare' ? 'primary' : 'outline'} 
                 size="sm"
                 onClick={() => setFilter('rare')}
               >
                 Rare+
               </Button>
               <Button 
-                variant={filter === 'favorites' ? 'default' : 'outline'} 
+                variant={filter === 'favorites' ? 'primary' : 'outline'} 
                 size="sm"
                 onClick={() => setFilter('favorites')}
               >

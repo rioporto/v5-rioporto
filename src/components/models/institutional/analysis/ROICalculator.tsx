@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { CalculatorIcon, TrendingUpIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import { Calculator as CalculatorIcon, TrendingUp as TrendingUpIcon, Calendar as CalendarIcon } from 'lucide-react';
 
 interface ROIScenario {
   name: string;

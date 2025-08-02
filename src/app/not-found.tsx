@@ -21,16 +21,19 @@ export default function NotFound() {
         </div>
 
         <div className="space-y-3">
-          <Button asChild className="w-full">
-            <Link href="/">
-              Voltar ao início
-            </Link>
+          <Button 
+            className="w-full"
+            onClick={() => window.location.href = '/'}
+          >
+            Voltar ao início
           </Button>
           
-          <Button variant="outline" asChild className="w-full">
-            <Link href="/dashboard">
-              Ir para o Dashboard
-            </Link>
+          <Button 
+            variant="outline" 
+            className="w-full"
+            onClick={() => window.location.href = '/dashboard'}
+          >
+            Ir para o Dashboard
           </Button>
         </div>
 

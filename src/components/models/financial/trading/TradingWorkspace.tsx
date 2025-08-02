@@ -10,6 +10,28 @@ import { TradeHistory } from './TradeHistory';
 
 export function TradingWorkspace() {
   const [selectedPair] = useState('BTC/BRL');
+  
+  // Mock order book data
+  const orderBookData = {
+    symbol: selectedPair,
+    bids: [
+      { price: 342100, quantity: 0.5, total: 171050 },
+      { price: 342050, quantity: 1.2, total: 410460 },
+      { price: 342000, quantity: 0.8, total: 273600 },
+      { price: 341950, quantity: 2.1, total: 718095 },
+      { price: 341900, quantity: 0.3, total: 102570 }
+    ],
+    asks: [
+      { price: 342200, quantity: 0.7, total: 239540 },
+      { price: 342250, quantity: 1.5, total: 513375 },
+      { price: 342300, quantity: 0.9, total: 308070 },
+      { price: 342350, quantity: 1.8, total: 616230 },
+      { price: 342400, quantity: 0.4, total: 136960 }
+    ],
+    lastPrice: 342156.78,
+    spread: 100,
+    spreadPercent: 0.029
+  };
 
   return (
     <div className="h-full bg-background">
@@ -21,7 +43,7 @@ export function TradingWorkspace() {
 
         {/* Order Book */}
         <div className="col-span-4 row-span-8 bg-card rounded border border-border">
-          <OrderBook pair={selectedPair} />
+          <OrderBook data={orderBookData} />
         </div>
 
         {/* Quick Trade */}

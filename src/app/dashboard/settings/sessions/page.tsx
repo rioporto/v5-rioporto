@@ -90,7 +90,7 @@ export default function SessionsPage() {
           </p>
         </div>
         
-        <Button variant="destructive" onClick={handleRevokeAllSessions}>
+        <Button variant="danger" onClick={handleRevokeAllSessions}>
           Encerrar Todas as Sessões
         </Button>
       </div>

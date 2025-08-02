@@ -321,7 +321,7 @@ export function ListSeparator({
     <Separator 
       thickness="thin"
       color="gray"
-      spacing={spacing}
+      spacing={spacing === 'xs' ? 'sm' : spacing}
       className={className}
     />
   );

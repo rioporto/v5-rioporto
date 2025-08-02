@@ -15,7 +15,7 @@ export default function AdminOrdersPage() {
 
       <Card className="p-8">
         <EmptyState
-          icon={FileText}
+          icon={<FileText className="w-16 h-16 text-muted-foreground" />}
           title="Em Desenvolvimento"
           description="O gerenciamento de ordens será implementado em breve."
         />

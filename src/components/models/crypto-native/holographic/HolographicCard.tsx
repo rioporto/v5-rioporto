@@ -200,7 +200,7 @@ export function NeonHolographicCard({ children, className = '', ...props }: Omit
 
 export function AuroraHolographicCard({ children, className = '', ...props }: Omit<HolographicCardProps, 'variant'>) {
   return (
-    <HolographicCard variant="aurora" className={className} {...props>
+    <HolographicCard variant="aurora" className={className} {...props}>
       {children}
     </HolographicCard>
   );

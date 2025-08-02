@@ -95,8 +95,6 @@ export const MagicSparkles: React.FC<MagicSparklesProps> = ({
       setSparkles(prevSparkles => 
         prevSparkles.map(sparkle => ({
           ...sparkle,
-          x: sparkle.x + sparkle.vx,
-          y: sparkle.y + sparkle.vy,
           rotation: sparkle.rotation + 1,
           twinklePhase: sparkle.twinklePhase + 0.1,
           // Wrap around screen edges

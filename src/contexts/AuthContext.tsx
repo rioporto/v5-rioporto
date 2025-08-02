@@ -219,7 +219,7 @@ export function useUser(): User | null {
 /**
  * Hook to check if user has specific role
  */
-export function useRole(requiredRole?: 'ADMIN' | 'USER'): { hasRole: boolean; user: User | null } {
+export function useRole(requiredRole?: 'ADMIN' | 'USER' | 'MODERATOR'): { hasRole: boolean; user: User | null } {
   const user = useUser();
   
   if (!requiredRole) {
@@ -230,7 +230,7 @@ export function useRole(requiredRole?: 'ADMIN' | 'USER'): { hasRole: boolean; us
     return { hasRole: false, user: null };
   }
   
-  const hasRole = requiredRole === 'ADMIN' ? user.role === 'ADMIN' : true;
+  const hasRole = user.role === requiredRole || (requiredRole === 'USER' && user.role !== 'ADMIN');
   
   return { hasRole, user };
 }

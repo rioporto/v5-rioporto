@@ -122,7 +122,7 @@ export const EquipmentSlots: React.FC<EquipmentSlotsProps> = ({
     .filter(item => item.setBonus)
     .reduce((bonuses, item) => {
       if (item.setBonus) {
-        const existing = bonuses.find(b => b.name === item.setBonus.name);
+        const existing = bonuses.find(b => b.name === item.setBonus?.name);
         if (existing) {
           existing.currentPieces++;
         } else {

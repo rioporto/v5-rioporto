@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Badge } from '@/components/ui/Badge';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { 
   Calculator, 
   TrendingUp, 
@@ -145,15 +145,15 @@ export default function ToolsPage() {
       </div>
 
       <Tabs defaultValue="dca" className="space-y-6">
-        <Tabs.List>
-          <Tabs.Trigger value="dca">Calculadora DCA</Tabs.Trigger>
-          <Tabs.Trigger value="profit">Calculadora de Lucro</Tabs.Trigger>
-          <Tabs.Trigger value="rebalance">Rebalanceamento</Tabs.Trigger>
-          <Tabs.Trigger value="analysis">Análise Técnica</Tabs.Trigger>
-        </Tabs.List>
+        <TabsList>
+          <TabsTrigger value="dca">Calculadora DCA</TabsTrigger>
+          <TabsTrigger value="profit">Calculadora de Lucro</TabsTrigger>
+          <TabsTrigger value="rebalance">Rebalanceamento</TabsTrigger>
+          <TabsTrigger value="analysis">Análise Técnica</TabsTrigger>
+        </TabsList>
 
         {/* DCA Calculator */}
-        <Tabs.Content value="dca" className="space-y-6">
+        <TabsContent value="dca" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
@@ -251,10 +251,10 @@ export default function ToolsPage() {
               )}
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Profit Calculator */}
-        <Tabs.Content value="profit" className="space-y-6">
+        <TabsContent value="profit" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
@@ -331,7 +331,7 @@ export default function ToolsPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-sm text-muted-foreground">Percentual:</span>
-                      <Badge variant={profitResult.profitPercentage >= 0 ? 'success' : 'destructive'}>
+                      <Badge variant={profitResult.profitPercentage >= 0 ? 'success' : 'error'}>
                         {profitResult.profitPercentage >= 0 ? '+' : ''}
                         {profitResult.profitPercentage.toFixed(2)}%
                       </Badge>
@@ -349,10 +349,10 @@ export default function ToolsPage() {
               )}
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Portfolio Rebalancer */}
-        <Tabs.Content value="rebalance" className="space-y-6">
+        <TabsContent value="rebalance" className="space-y-6">
           <Card className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
               <PieChart className="w-5 h-5 mr-2" />
@@ -408,10 +408,10 @@ export default function ToolsPage() {
               </div>
             </div>
           </Card>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Technical Analysis */}
-        <Tabs.Content value="analysis" className="space-y-6">
+        <TabsContent value="analysis" className="space-y-6">
           <Card className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
               <BarChart3 className="w-5 h-5 mr-2" />
@@ -434,7 +434,7 @@ export default function ToolsPage() {
               <div className="p-4 border border-border rounded-lg">
                 <h4 className="font-medium text-foreground mb-2">Bollinger</h4>
                 <div className="text-2xl font-bold text-foreground mb-1">Upper</div>
-                <Badge variant="destructive">Venda</Badge>
+                <Badge variant="error">Venda</Badge>
               </div>
             </div>
 
@@ -444,7 +444,7 @@ export default function ToolsPage() {
               </p>
             </div>
           </Card>
-        </Tabs.Content>
+        </TabsContent>
       </Tabs>
     </div>
   );

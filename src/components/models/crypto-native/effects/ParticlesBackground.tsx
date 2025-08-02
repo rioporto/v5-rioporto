@@ -38,7 +38,7 @@ export function ParticlesBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const speedMultiplier = useMemo(() => {
     switch (speed) {
@@ -304,8 +304,8 @@ export function FloatingElements({
           style={{
             left: `${Math.random() * 100}%`,
             color: element.color,
-            animation: `float-${index} ${element.speed * 10}s linear infinite`,
-            animationDelay: `${element.delay}s`
+            animation: `float-${index} ${(element.speed || 1) * 10}s linear infinite`,
+            animationDelay: `${element.delay || 0}s`
           }}
         >
           {element.content}

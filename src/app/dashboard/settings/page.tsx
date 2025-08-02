@@ -25,8 +25,8 @@ export default function SettingsPage() {
   const [formData, setFormData] = useState({
     name: user?.name || '',
     email: user?.email || '',
-    phone: user?.phone || '',
-    cpf: user?.cpf || '',
+    phone: '',
+    cpf: '',
   });
 
   const handleSave = () => {
@@ -39,8 +39,8 @@ export default function SettingsPage() {
     setFormData({
       name: user?.name || '',
       email: user?.email || '',
-      phone: user?.phone || '',
-      cpf: user?.cpf || '',
+      phone: '',
+      cpf: '',
     });
     setIsEditing(false);
   };
@@ -259,15 +259,15 @@ export default function SettingsPage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Email verificado</span>
-                <Badge variant={user.isVerified ? 'success' : 'destructive'}>
+                <Badge variant={user.isVerified ? 'success' : 'error'}>
                   {user.isVerified ? 'Sim' : 'Não'}
                 </Badge>
               </div>
               
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">2FA ativado</span>
-                <Badge variant={user.twoFactor?.enabled ? 'success' : 'destructive'}>
-                  {user.twoFactor?.enabled ? 'Sim' : 'Não'}
+                <Badge variant="error">
+                  Não
                 </Badge>
               </div>
               

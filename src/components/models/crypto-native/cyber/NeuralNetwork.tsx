@@ -142,7 +142,7 @@ export function NeuralNetwork({
           const toNode = networkNodes.find(n => n.id === conn.to);
           return {
             ...conn,
-            active: fromNode?.active && Math.random() < 0.3,
+            active: (fromNode?.active ?? false) && Math.random() < 0.3,
             strength: Math.max(0.1, Math.min(1, conn.strength + (Math.random() - 0.5) * 0.1))
           };
         })

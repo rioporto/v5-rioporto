@@ -97,7 +97,7 @@ export function OrdersTable({ className }: OrdersTableProps) {
                 <tr key={order.id} className="border-b hover:bg-secondary/30">
                   <td className="p-4 font-mono text-sm">{order.id}</td>
                   <td className="p-4">
-                    <Badge variant={order.type === 'BUY' ? 'default' : 'destructive'}>
+                    <Badge variant={order.type === 'BUY' ? 'default' : 'error'}>
                       {order.type}
                     </Badge>
                   </td>

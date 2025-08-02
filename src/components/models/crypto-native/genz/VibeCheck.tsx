@@ -298,7 +298,7 @@ export function VibeCheck({
               {quickVibes.map((vibe, index) => (
                 <Button
                   key={index}
-                  variant={userVibe === vibe.label ? 'default' : 'outline'}
+                  variant={userVibe === vibe.label ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => handleVibeSubmit(vibe.label, vibe.value)}
                   className={`

@@ -1,7 +1,14 @@
 'use client';
 
 import { Card } from '@/components/ui/Card';
-import { Table } from '@/components/ui/Table';
+import { 
+  Table, 
+  TableHeader, 
+  TableBody, 
+  TableRow, 
+  TableHead, 
+  TableCell 
+} from '@/components/ui/Table';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -21,7 +28,7 @@ export default function AdminUsersPage() {
   };
 
   const getRoleBadge = (role: string) => {
-    if (role === 'ADMIN') return <Badge variant="destructive">Admin</Badge>;
+    if (role === 'ADMIN') return <Badge variant="error">Admin</Badge>;
     if (role === 'MODERATOR') return <Badge variant="warning">Moderador</Badge>;
     return <Badge variant="outline">Usuário</Badge>;
   };
@@ -56,20 +63,20 @@ export default function AdminUsersPage() {
         
         <div className="overflow-x-auto">
           <Table>
-            <Table.Header>
-              <Table.Row>
-                <Table.Head>Usuário</Table.Head>
-                <Table.Head>Email</Table.Head>
-                <Table.Head>KYC</Table.Head>
-                <Table.Head>Role</Table.Head>
-                <Table.Head>Registro</Table.Head>
-                <Table.Head>Ações</Table.Head>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Usuário</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>KYC</TableHead>
+                <TableHead>Role</TableHead>
+                <TableHead>Registro</TableHead>
+                <TableHead>Ações</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {users.map((user) => (
-                <Table.Row key={user.id}>
-                  <Table.Cell>
+                <TableRow key={user.id}>
+                  <TableCell>
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                         <span className="text-sm font-bold text-primary">
@@ -78,17 +85,17 @@ export default function AdminUsersPage() {
                       </div>
                       <div>
                         <p className="font-medium text-foreground">{user.name}</p>
-                        <p className="text-sm text-muted-foreground">{user.cpf}</p>
+                        <p className="text-sm text-muted-foreground">ID: {user.id}</p>
                       </div>
                     </div>
-                  </Table.Cell>
-                  <Table.Cell>{user.email}</Table.Cell>
-                  <Table.Cell>{getKycBadge(user.kycLevel)}</Table.Cell>
-                  <Table.Cell>{getRoleBadge(user.role)}</Table.Cell>
-                  <Table.Cell>
+                  </TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{getKycBadge(user.kycLevel)}</TableCell>
+                  <TableCell>{getRoleBadge(user.role)}</TableCell>
+                  <TableCell>
                     {new Date(user.createdAt).toLocaleDateString('pt-BR')}
-                  </Table.Cell>
-                  <Table.Cell>
+                  </TableCell>
+                  <TableCell>
                     <div className="flex items-center space-x-2">
                       <Button variant="ghost" size="sm">
                         <Shield className="w-4 h-4" />
@@ -100,10 +107,10 @@ export default function AdminUsersPage() {
                         <MoreHorizontal className="w-4 h-4" />
                       </Button>
                     </div>
-                  </Table.Cell>
-                </Table.Row>
+                  </TableCell>
+                </TableRow>
               ))}
-            </Table.Body>
+            </TableBody>
           </Table>
         </div>
       </Card>

@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { 
-  ArrowUpIcon, 
-  ArrowDownIcon,
-  ExclamationTriangleIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline';
+  ArrowUp as ArrowUpIcon, 
+  ArrowDown as ArrowDownIcon,
+  AlertTriangle as ExclamationTriangleIcon,
+  CheckCircle as CheckCircleIcon
+} from 'lucide-react';
 
 interface KPIItem {
   id: string;

@@ -37,7 +37,7 @@ export const CryptoOrbs: React.FC<CryptoOrbsProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const orbsRef = useRef<CryptoOrb[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;

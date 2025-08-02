@@ -22,7 +22,7 @@ export const MatrixRain: React.FC<MatrixRainProps> = ({
   glowEffect = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const dropsRef = useRef<number[]>([]);
 
   useEffect(() => {

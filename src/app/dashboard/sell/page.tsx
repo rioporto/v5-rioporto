@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Badge } from '@/components/ui/Badge';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { EmptyState } from '@/components/shared/EmptyState';
 import { ShoppingBag, TrendingDown, DollarSign, Clock, Shield, Wallet } from 'lucide-react';
-import { portfolioData, marketData } from '@/lib/mock-data';
+import { portfolioData, MOCK_PORTFOLIO_ASSETS, marketData } from '@/lib/mock-data';
 
 export default function SellPage() {
   const [selectedAsset, setSelectedAsset] = useState('');
@@ -28,7 +28,7 @@ export default function SellPage() {
     { value: 'limit', label: 'Limite' },
   ];
 
-  const availableAssets = portfolioData.assets.filter(asset => asset.amount > 0);
+  const availableAssets = MOCK_PORTFOLIO_ASSETS.filter(asset => asset.amount > 0);
   const selectedAssetData = availableAssets.find(asset => asset.symbol === selectedAsset);
   const marketPrice = marketData.find(data => data.symbol === selectedAsset)?.price || 0;
   
@@ -83,7 +83,7 @@ export default function SellPage() {
                 </label>
                 <Select
                   value={orderType}
-                  onValueChange={setOrderType}
+                  onChange={(e) => setOrderType(e.target.value)}
                   options={orderTypes}
                 />
               </div>
@@ -95,7 +95,7 @@ export default function SellPage() {
                 </label>
                 <Select
                   value={selectedAsset}
-                  onValueChange={setSelectedAsset}
+                  onChange={(e) => setSelectedAsset(e.target.value)}
                   options={availableAssets.map(asset => ({
                     value: asset.symbol,
                     label: `${asset.symbol} - Disponível: ${asset.amount.toLocaleString('pt-BR', { maximumFractionDigits: 8 })}`,
@@ -196,7 +196,7 @@ export default function SellPage() {
                                 </span>
                                 <div>
                                   <Badge
-                                    variant={pnlPercentage >= 0 ? 'success' : 'destructive'}
+                                    variant={pnlPercentage >= 0 ? 'success' : 'error'}
                                     className="text-xs"
                                   >
                                     {pnlPercentage >= 0 ? '+' : ''}{pnlPercentage.toFixed(2)}%
@@ -217,7 +217,7 @@ export default function SellPage() {
                     </label>
                     <Select
                       value={sellMethod}
-                      onValueChange={setSellMethod}
+                      onChange={(e) => setSellMethod(e.target.value)}
                       options={sellMethods}
                     />
                   </div>
@@ -245,12 +245,12 @@ export default function SellPage() {
               </h3>
               
               <Tabs defaultValue="sell">
-                <Tabs.List className="w-full">
-                  <Tabs.Trigger value="buy" className="flex-1">Compra</Tabs.Trigger>
-                  <Tabs.Trigger value="sell" className="flex-1">Venda</Tabs.Trigger>
-                </Tabs.List>
+                <TabsList className="w-full">
+                  <TabsTrigger value="buy" className="flex-1">Compra</TabsTrigger>
+                  <TabsTrigger value="sell" className="flex-1">Venda</TabsTrigger>
+                </TabsList>
 
-                <Tabs.Content value="buy" className="mt-4">
+                <TabsContent value="buy" className="mt-4">
                   <div className="space-y-2">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <div key={i} className="flex justify-between items-center p-2 bg-success/5 rounded">
@@ -263,9 +263,9 @@ export default function SellPage() {
                       </div>
                     ))}
                   </div>
-                </Tabs.Content>
+                </TabsContent>
 
-                <Tabs.Content value="sell" className="mt-4">
+                <TabsContent value="sell" className="mt-4">
                   <div className="space-y-2">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <div key={i} className="flex justify-between items-center p-2 bg-destructive/5 rounded">
@@ -278,7 +278,7 @@ export default function SellPage() {
                       </div>
                     ))}
                   </div>
-                </Tabs.Content>
+                </TabsContent>
               </Tabs>
             </Card>
           )}
@@ -322,7 +322,7 @@ export default function SellPage() {
                         
                         {assetMarketData && (
                           <Badge
-                            variant={assetMarketData.change24h >= 0 ? 'success' : 'destructive'}
+                            variant={assetMarketData.change24h >= 0 ? 'success' : 'error'}
                             className="text-xs"
                           >
                             {assetMarketData.change24h >= 0 ? '+' : ''}
@@ -351,7 +351,7 @@ export default function SellPage() {
               </div>
             ) : (
               <EmptyState
-                icon={Wallet}
+                icon={<Wallet className="w-16 h-16 text-muted-foreground" />}
                 title="Nenhum ativo disponível"
                 description="Você não possui ativos para vender."
               />
@@ -392,17 +392,17 @@ export default function SellPage() {
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">Valor Total:</span>
                 <span className="text-sm font-medium text-foreground">
-                  R$ {portfolioData.summary.currentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  R$ {portfolioData.currentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
               
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">P&L Total:</span>
                 <span className={`text-sm font-medium ${
-                  portfolioData.summary.profitLoss >= 0 ? 'text-success' : 'text-destructive'
+                  portfolioData.profitLoss >= 0 ? 'text-success' : 'text-destructive'
                 }`}>
-                  {portfolioData.summary.profitLoss >= 0 ? '+' : ''}
-                  R$ {portfolioData.summary.profitLoss.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  {portfolioData.profitLoss >= 0 ? '+' : ''}
+                  R$ {portfolioData.profitLoss.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
               

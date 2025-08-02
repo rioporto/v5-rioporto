@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { useTheme } from '@/contexts/ThemeProvider';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { 
   Sidebar, 
@@ -13,7 +15,7 @@ import { DashboardNavigation } from '@/components/dashboard/DashboardNavigation'
 import { Logo } from '@/components/shared/Logo';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
-import { Dropdown } from '@/components/ui/Dropdown';
+import { Dropdown, DropdownContent, DropdownItem, DropdownSeparator } from '@/components/ui/Dropdown';
 import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import { LoadingScreen } from '@/components/shared/LoadingScreen';
 import { 
@@ -34,6 +36,8 @@ interface DashboardLayoutProps {
 
 function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   const { user, logout } = useAuth();
+  const router = useRouter();
+  const { currentTheme, setTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -71,7 +75,7 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
       label: 'Sair',
       onClick: logout,
       icon: LogOut,
-      variant: 'destructive' as const,
+      variant: 'error' as const,
     },
   ];
 
@@ -106,8 +110,25 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
                 />
               </Button>
             }
-            items={userMenuItems}
-          />
+          >
+            <DropdownContent>
+              {userMenuItems.map((item, index) => {
+                if (item.type === 'divider') {
+                  return <DropdownSeparator key={index} />;
+                }
+                const Icon = item.icon;
+                return (
+                  <DropdownItem 
+                    key={item.label}
+                    onClick={item.onClick || (() => item.href && router.push(item.href))}
+                  >
+                    <Icon className="w-4 h-4 mr-2" />
+                    {item.label}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownContent>
+          </Dropdown>
         </div>
       </div>
 
@@ -168,7 +189,7 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
 
                 {/* Footer Actions */}
                 <div className="flex items-center justify-between">
-                  <ThemeToggle />
+                  <ThemeToggle currentTheme={currentTheme} onThemeChange={setTheme} />
                   
                   <Dropdown
                     trigger={
@@ -176,8 +197,25 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
                         <Settings className="w-4 h-4" />
                       </Button>
                     }
-                    items={userMenuItems}
-                  />
+                  >
+                    <DropdownContent>
+                      {userMenuItems.map((item, index) => {
+                        if (item.type === 'divider') {
+                          return <DropdownSeparator key={index} />;
+                        }
+                        const Icon = item.icon;
+                        return (
+                          <DropdownItem 
+                            key={item.label}
+                            onClick={item.onClick || (() => item.href && router.push(item.href))}
+                          >
+                            <Icon className="w-4 h-4 mr-2" />
+                            {item.label}
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownContent>
+                  </Dropdown>
                 </div>
               </>
             ) : (
@@ -188,7 +226,7 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
                   size="sm"
                   fallback={user.name.charAt(0).toUpperCase()}
                 />
-                <ThemeToggle />
+                <ThemeToggle currentTheme={currentTheme} onThemeChange={setTheme} />
               </div>
             )}
           </SidebarFooter>
@@ -224,8 +262,25 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
                     />
                   </Button>
                 }
-                items={userMenuItems}
-              />
+              >
+                <DropdownContent>
+                  {userMenuItems.map((item, index) => {
+                    if (item.type === 'divider') {
+                      return <DropdownSeparator key={index} />;
+                    }
+                    const Icon = item.icon;
+                    return (
+                      <DropdownItem 
+                        key={item.label}
+                        onClick={item.onClick || (() => item.href && router.push(item.href))}
+                      >
+                        <Icon className="w-4 h-4 mr-2" />
+                        {item.label}
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownContent>
+              </Dropdown>
             </div>
           </div>
 

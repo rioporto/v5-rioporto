@@ -95,7 +95,7 @@ export default function AreaChart({
     if (!processedData.length || !areas.length) return null;
     
     const primaryDataKey = areas[0].dataKey;
-    const values = processedData.map(d => d[primaryDataKey] || 0);
+    const values = processedData.map(d => (d as any)[primaryDataKey] || 0);
     const min = Math.min(...values);
     const max = Math.max(...values);
     const first = values[0];
@@ -107,7 +107,7 @@ export default function AreaChart({
   }, [processedData, areas]);
 
   const handleTimeframeChange = (timeframe: string) => {
-    setSelectedTimeframe(timeframe);
+    setSelectedTimeframe(timeframe as any);
     onTimeframeChange?.(timeframe);
   };
 
@@ -176,7 +176,7 @@ export default function AreaChart({
           {/* Timeframe Selector */}
           <Select
             value={selectedTimeframe}
-            onValueChange={handleTimeframeChange}
+            onChange={(e) => handleTimeframeChange(e.target.value)}
             options={TIMEFRAMES}
           />
           

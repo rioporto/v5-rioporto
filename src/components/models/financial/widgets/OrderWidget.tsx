@@ -92,7 +92,9 @@ export function OrderWidget({
       case 'partial':
         return 'PARCIAL';
       default:
-        return status.toUpperCase();
+        // TypeScript exhaustive check
+        const _exhaustiveCheck: never = status;
+        return 'UNKNOWN';
     }
   };
 

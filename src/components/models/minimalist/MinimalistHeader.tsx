@@ -50,7 +50,7 @@ const MinimalistHeader = forwardRef<HTMLElement, MinimalistHeaderProps>(
 MinimalistHeader.displayName = 'MinimalistHeader';
 
 // Navigation component for header
-const MinimalistNavigation = forwardRef<HTMLNavElement, React.HTMLAttributes<HTMLElement>>(
+const MinimalistNavigation = forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   ({ className, children, ...props }, ref) => (
     <nav
       ref={ref}

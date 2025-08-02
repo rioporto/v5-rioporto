@@ -136,6 +136,7 @@ export const indicatorsData = MOCK_MARKET_INDICATORS;
 export const portfolioData = MOCK_PORTFOLIO_SUMMARY;
 export const kycLevelsData = KYC_LEVELS;
 export const influencers = MOCK_INFLUENCERS;
+export const transactionsData = MOCK_TRANSACTIONS;
 
 // Constantes úteis para toda a aplicação
 export const MOCK_DATA_VERSION = '1.0.0';

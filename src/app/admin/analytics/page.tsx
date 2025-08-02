@@ -14,7 +14,7 @@ export default function AdminAnalyticsPage() {
 
       <Card className="p-8">
         <EmptyState
-          icon={BarChart3}
+          icon={<BarChart3 className="w-16 h-16 text-muted-foreground" />}
           title="Analytics em Desenvolvimento"
           description="Gráficos e relatórios detalhados serão implementados em breve."
         />

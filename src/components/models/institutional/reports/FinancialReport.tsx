@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TrendingUpIcon, TrendingDownIcon } from '@heroicons/react/24/outline';
+import { TrendingUp as TrendingUpIcon, TrendingDown as TrendingDownIcon } from 'lucide-react';
 
 interface FinancialMetric {
   label: string;

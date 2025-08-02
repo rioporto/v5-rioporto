@@ -69,7 +69,7 @@ export default function RealtimePrice({
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <span className={`font-medium ${sizeClasses[size]}`}>{data.symbol}</span>
-          <Badge variant={data.trend === 'UP' ? 'success' : data.trend === 'DOWN' ? 'error' : 'default'} size="xs">
+          <Badge variant={data.trend === 'UP' ? 'success' : data.trend === 'DOWN' ? 'error' : 'default'} size="sm">
             {data.trend}
           </Badge>
         </div>

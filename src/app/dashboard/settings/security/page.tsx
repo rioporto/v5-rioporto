@@ -60,9 +60,9 @@ export default function SecurityPage() {
       title: 'Autenticação de Dois Fatores (2FA)',
       description: 'Adicione uma camada extra de segurança à sua conta',
       icon: Smartphone,
-      status: user?.twoFactor?.enabled ? 'active' : 'inactive',
-      action: user?.twoFactor?.enabled ? 'Desativar' : 'Ativar',
-      onClick: user?.twoFactor?.enabled ? handleDisable2FA : handleEnable2FA,
+      status: 'inactive',
+      action: 'Ativar',
+      onClick: handleEnable2FA,
     },
     {
       title: 'Senha da Conta',
@@ -118,12 +118,8 @@ export default function SecurityPage() {
           </div>
 
           <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-full ${
-              user?.twoFactor?.enabled 
-                ? 'bg-success/10' 
-                : 'bg-warning/10'
-            }`}>
-              {user?.twoFactor?.enabled ? (
+            <div className="p-2 rounded-full bg-warning/10">
+              {false ? (
                 <Check className="w-4 h-4 text-success" />
               ) : (
                 <AlertTriangle className="w-4 h-4 text-warning" />
@@ -132,7 +128,7 @@ export default function SecurityPage() {
             <div>
               <p className="font-medium text-foreground">2FA</p>
               <p className="text-sm text-muted-foreground">
-                {user?.twoFactor?.enabled ? 'Ativado' : 'Não configurado'}
+                Não configurado
               </p>
             </div>
           </div>

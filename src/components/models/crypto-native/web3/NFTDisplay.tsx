@@ -135,7 +135,9 @@ export function NFTDisplay({
                   variant="rainbow"
                   speed="medium"
                   className="absolute inset-0"
-                />
+                >
+                  <></>
+                </HolographicShimmer>
               )}
             </div>
 
@@ -390,7 +392,9 @@ export function NFTDisplay({
           variant="rainbow"
           speed="slow"
           className="absolute inset-0"
-        />
+        >
+          <></>
+        </HolographicShimmer>
       )}
     </CryptoCard>
   );

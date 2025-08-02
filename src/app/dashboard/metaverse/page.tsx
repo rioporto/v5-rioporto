@@ -281,7 +281,7 @@ export default function MetaversePage() {
                   <div className="flex gap-2">
                     <Button 
                       size="sm" 
-                      variant={asset.equipped ? 'outline' : 'default'}
+                      variant={asset.equipped ? 'outline' : 'primary'}
                       className={asset.equipped ? '' : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0'}
                     >
                       {asset.equipped ? 'Unequip' : 'Equip'}

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Badge } from '@/components/ui/Badge';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { EmptyState } from '@/components/shared/EmptyState';
 import { ShoppingCart, TrendingUp, DollarSign, Clock, Shield } from 'lucide-react';
 import { supportedTokens, marketData } from '@/lib/mock-data';
@@ -83,7 +83,7 @@ export default function BuyPage() {
                 </label>
                 <Select
                   value={orderType}
-                  onValueChange={setOrderType}
+                  onChange={(e) => setOrderType(e.target.value)}
                   options={orderTypes}
                 />
               </div>
@@ -95,7 +95,7 @@ export default function BuyPage() {
                 </label>
                 <Select
                   value={selectedToken}
-                  onValueChange={setSelectedToken}
+                  onChange={(e) => setSelectedToken(e.target.value)}
                   options={activeTokens.map(token => ({
                     value: token.symbol,
                     label: `${token.symbol} - ${token.name}`,
@@ -160,7 +160,7 @@ export default function BuyPage() {
                     </label>
                     <Select
                       value={paymentMethod}
-                      onValueChange={setPaymentMethod}
+                      onChange={(e) => setPaymentMethod(e.target.value)}
                       options={paymentMethods}
                     />
                   </div>
@@ -188,12 +188,12 @@ export default function BuyPage() {
               </h3>
               
               <Tabs defaultValue="buy">
-                <Tabs.List className="w-full">
-                  <Tabs.Trigger value="buy" className="flex-1">Compra</Tabs.Trigger>
-                  <Tabs.Trigger value="sell" className="flex-1">Venda</Tabs.Trigger>
-                </Tabs.List>
+                <TabsList className="w-full">
+                  <TabsTrigger value="buy" className="flex-1">Compra</TabsTrigger>
+                  <TabsTrigger value="sell" className="flex-1">Venda</TabsTrigger>
+                </TabsList>
 
-                <Tabs.Content value="buy" className="mt-4">
+                <TabsContent value="buy" className="mt-4">
                   <div className="space-y-2">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <div key={i} className="flex justify-between items-center p-2 bg-success/5 rounded">
@@ -206,9 +206,9 @@ export default function BuyPage() {
                       </div>
                     ))}
                   </div>
-                </Tabs.Content>
+                </TabsContent>
 
-                <Tabs.Content value="sell" className="mt-4">
+                <TabsContent value="sell" className="mt-4">
                   <div className="space-y-2">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <div key={i} className="flex justify-between items-center p-2 bg-destructive/5 rounded">
@@ -221,7 +221,7 @@ export default function BuyPage() {
                       </div>
                     ))}
                   </div>
-                </Tabs.Content>
+                </TabsContent>
               </Tabs>
             </Card>
           )}
@@ -268,7 +268,7 @@ export default function BuyPage() {
                               R$ {tokenMarketData.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                             </p>
                             <Badge
-                              variant={tokenMarketData.change24h >= 0 ? 'success' : 'destructive'}
+                              variant={tokenMarketData.change24h >= 0 ? 'success' : 'error'}
                               className="text-xs"
                             >
                               {tokenMarketData.change24h >= 0 ? '+' : ''}
@@ -283,7 +283,7 @@ export default function BuyPage() {
               </div>
             ) : (
               <EmptyState
-                icon={DollarSign}
+                icon={<DollarSign className="w-16 h-16 text-muted-foreground" />}
                 title="Nenhum ativo disponível"
                 description="Não há ativos disponíveis para compra no momento."
               />

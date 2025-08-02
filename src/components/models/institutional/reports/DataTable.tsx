@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronUp as ChevronUpIcon, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 interface Column {
   key: string;

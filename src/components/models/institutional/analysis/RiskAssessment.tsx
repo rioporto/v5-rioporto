@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { 
-  ShieldExclamationIcon, 
-  ExclamationTriangleIcon,
-  CheckCircleIcon,
-  XCircleIcon
-} from '@heroicons/react/24/outline';
+  ShieldCheck as ShieldExclamationIcon, 
+  AlertTriangle as ExclamationTriangleIcon,
+  CheckCircle as CheckCircleIcon,
+  XCircle as XCircleIcon
+} from 'lucide-react';
 
 interface RiskFactor {
   category: string;

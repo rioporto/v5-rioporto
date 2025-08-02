@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { 
@@ -107,20 +107,26 @@ export function QuickTrade({ pair }: QuickTradeProps) {
 
       <div className="p-4 space-y-4">
         {/* Buy/Sell Toggle */}
-        <Tabs
-          items={sideOptions}
-          value={side}
-          onValueChange={(value) => setSide(value as 'buy' | 'sell')}
-          variant="pills"
-          className="grid grid-cols-2"
-        />
+        <Tabs value={side} onValueChange={(value) => setSide(value as 'buy' | 'sell')}>
+          <TabsList className="grid grid-cols-2">
+            {sideOptions.map((option) => {
+              const Icon = option.icon;
+              return (
+                <TabsTrigger key={option.id} value={option.id}>
+                  <Icon className="w-4 h-4 mr-2" />
+                  {option.label}
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
+        </Tabs>
 
         {/* Order Type */}
         <div className="space-y-2">
           <label className="text-sm font-medium">Order Type</label>
           <Select
             value={orderType}
-            onValueChange={setOrderType}
+            onChange={(e) => setOrderType(e.target.value)}
             options={orderTypes}
           />
         </div>
@@ -204,7 +210,7 @@ export function QuickTrade({ pair }: QuickTradeProps) {
             <label className="text-sm font-medium">Time in Force</label>
             <Select
               value={timeInForceValue}
-              onValueChange={setTimeInForceValue}
+              onChange={(e) => setTimeInForceValue(e.target.value)}
               options={timeInForce}
             />
           </div>

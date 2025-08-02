@@ -119,7 +119,7 @@ export function OrderConfirmation({
         </div>
         {status && (
           <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm ${currentStatus?.bgColor} ${currentStatus?.color}`}>
-            <StatusIcon className="w-4 h-4" />
+            {StatusIcon && <StatusIcon className="w-4 h-4" />}
             <span>{currentStatus?.label}</span>
           </div>
         )}

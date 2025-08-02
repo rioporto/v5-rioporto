@@ -305,16 +305,17 @@ export function BadgeGroup({
       ))}
       
       {remainingCount > 0 && (
-        <MinimalistBadge
-          variant="ghost"
-          color="gray"
-          size={size}
-          interactive={!!onShowAll}
-          className={onShowAll ? 'cursor-pointer' : undefined}
-          onClick={onShowAll}
-        >
-          +{remainingCount}
-        </MinimalistBadge>
+        <div onClick={onShowAll} className={onShowAll ? 'inline-block' : undefined}>
+          <MinimalistBadge
+            variant="ghost"
+            color="gray"
+            size={size}
+            interactive={!!onShowAll}
+            className={onShowAll ? 'cursor-pointer' : undefined}
+          >
+            +{remainingCount}
+          </MinimalistBadge>
+        </div>
       )}
     </div>
   );

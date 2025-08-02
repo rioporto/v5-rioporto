@@ -1,3 +1,18 @@
+// Componentes básicos
+export * from './MinimalistButton';
+export * from './MinimalistCard';
+export * from './MinimalistHeader';
+export * from './MinimalistStats';
+export * from './MinimalistChart';
+export * from './MinimalistTable';
+export * from './MinimalistForm';
+
+// Componentes de landing
+export { MinimalistHero, MinimalistSplitHero } from './landing/Hero';
+export { MinimalistFeatures, FeatureIcons } from './landing/Features';
+export { MinimalistCTA } from './landing/CTA';
+export { MinimalistTestimonials } from './landing/Testimonials';
+
 // Micro-interações
 export * from './interactions/HoverEffects';
 export * from './interactions/FocusRings';

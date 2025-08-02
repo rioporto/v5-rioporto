@@ -139,6 +139,7 @@ export interface BlogPost {
   updatedAt: string;
   featuredImage: string;
   readTime: number;
+  featured?: boolean;
   metrics: {
     views: number;
     likes: number;
@@ -186,6 +187,8 @@ export interface Course {
   certificate: boolean;
   createdAt: string;
   updatedAt: string;
+  progress?: number;
+  reviews?: number;
 }
 
 export interface CourseModule {

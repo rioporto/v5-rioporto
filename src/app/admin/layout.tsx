@@ -121,7 +121,7 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
           <Logo />
-          <Badge variant="destructive" className="text-xs">ADMIN</Badge>
+          <Badge variant="error" className="text-xs">ADMIN</Badge>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -153,7 +153,7 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
               {!sidebarCollapsed && (
                 <>
                   <Logo />
-                  <Badge variant="destructive" className="text-xs">ADMIN</Badge>
+                  <Badge variant="error" className="text-xs">ADMIN</Badge>
                 </>
               )}
             </div>
@@ -267,7 +267,7 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
               <h1 className="text-2xl font-bold text-foreground">
                 Painel Administrativo
               </h1>
-              <Badge variant="destructive">ADMIN</Badge>
+              <Badge variant="error">ADMIN</Badge>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -296,7 +296,7 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
   return (
-    <ProtectedRoute requiredRole={['ADMIN', 'MODERATOR']}>
+    <ProtectedRoute requiredRole="ADMIN">
       <AdminLayoutContent>
         {children}
       </AdminLayoutContent>

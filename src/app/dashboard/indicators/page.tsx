@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Progress } from '@/components/ui/Progress';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -75,7 +75,7 @@ export default function IndicatorsPage() {
           {timeframes.map((tf) => (
             <Button
               key={tf.value}
-              variant={timeframe === tf.value ? 'default' : 'outline'}
+              variant={timeframe === tf.value ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setTimeframe(tf.value)}
             >
@@ -148,22 +148,22 @@ export default function IndicatorsPage() {
       </Card>
 
       <Tabs defaultValue="market" className="space-y-6">
-        <Tabs.List>
-          <Tabs.Trigger value="market">Mercado</Tabs.Trigger>
-          <Tabs.Trigger value="onchain">On-Chain</Tabs.Trigger>
-          <Tabs.Trigger value="derivatives">Derivativos</Tabs.Trigger>
-          <Tabs.Trigger value="social">Social</Tabs.Trigger>
-        </Tabs.List>
+        <TabsList>
+          <TabsTrigger value="market">Mercado</TabsTrigger>
+          <TabsTrigger value="onchain">On-Chain</TabsTrigger>
+          <TabsTrigger value="derivatives">Derivativos</TabsTrigger>
+          <TabsTrigger value="social">Social</TabsTrigger>
+        </TabsList>
 
         {/* Market Tab */}
-        <Tabs.Content value="market" className="space-y-6">
+        <TabsContent value="market" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="p-3 bg-primary/10 rounded-full">
                   <DollarSign className="w-6 h-6 text-primary" />
                 </div>
-                <Badge variant={indicators.marketCap.change24h >= 0 ? 'success' : 'destructive'}>
+                <Badge variant={indicators.marketCap.change24h >= 0 ? 'success' : 'error'}>
                   {indicators.marketCap.change24h >= 0 ? '+' : ''}
                   {indicators.marketCap.change24h.toFixed(2)}%
                 </Badge>
@@ -212,10 +212,10 @@ export default function IndicatorsPage() {
               </p>
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* On-Chain Tab */}
-        <Tabs.Content value="onchain" className="space-y-6">
+        <TabsContent value="onchain" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="p-6">
               <h3 className="font-semibold text-foreground mb-4 flex items-center">
@@ -312,10 +312,10 @@ export default function IndicatorsPage() {
               </div>
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Derivatives Tab */}
-        <Tabs.Content value="derivatives" className="space-y-6">
+        <TabsContent value="derivatives" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6">
               <h3 className="font-semibold text-foreground mb-4">Open Interest</h3>
@@ -325,7 +325,7 @@ export default function IndicatorsPage() {
                 </p>
                 <div className="flex items-center space-x-2">
                   <span className="text-sm text-muted-foreground">24h:</span>
-                  <Badge variant={indicators.derivatives.openInterest.change24h >= 0 ? 'success' : 'destructive'}>
+                  <Badge variant={indicators.derivatives.openInterest.change24h >= 0 ? 'success' : 'error'}>
                     {indicators.derivatives.openInterest.change24h >= 0 ? '+' : ''}
                     {indicators.derivatives.openInterest.change24h.toFixed(2)}%
                   </Badge>
@@ -376,10 +376,10 @@ export default function IndicatorsPage() {
               </div>
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Social Tab */}
-        <Tabs.Content value="social" className="space-y-6">
+        <TabsContent value="social" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6">
               <h3 className="font-semibold text-foreground mb-4 flex items-center">
@@ -392,7 +392,7 @@ export default function IndicatorsPage() {
                 </p>
                 <div className="flex items-center space-x-2">
                   <span className="text-sm text-muted-foreground">24h:</span>
-                  <Badge variant={indicators.social.redditPosts.change24h >= 0 ? 'success' : 'destructive'}>
+                  <Badge variant={indicators.social.redditPosts.change24h >= 0 ? 'success' : 'error'}>
                     {indicators.social.redditPosts.change24h >= 0 ? '+' : ''}
                     {indicators.social.redditPosts.change24h.toFixed(1)}%
                   </Badge>
@@ -408,7 +408,7 @@ export default function IndicatorsPage() {
                 </p>
                 <div className="flex items-center space-x-2">
                   <span className="text-sm text-muted-foreground">24h:</span>
-                  <Badge variant={indicators.social.twitterMentions.change24h >= 0 ? 'success' : 'destructive'}>
+                  <Badge variant={indicators.social.twitterMentions.change24h >= 0 ? 'success' : 'error'}>
                     {indicators.social.twitterMentions.change24h >= 0 ? '+' : ''}
                     {indicators.social.twitterMentions.change24h.toFixed(1)}%
                   </Badge>
@@ -428,7 +428,7 @@ export default function IndicatorsPage() {
               </div>
             </Card>
           </div>
-        </Tabs.Content>
+        </TabsContent>
       </Tabs>
 
       {/* Historical Chart would go here */}

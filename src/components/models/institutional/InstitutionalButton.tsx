@@ -4,7 +4,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface InstitutionalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'error';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   loading?: boolean;
   children: React.ReactNode;
@@ -25,7 +25,8 @@ const InstitutionalButton = React.forwardRef<HTMLButtonElement, InstitutionalBut
       secondary: 'bg-secondary text-white hover:bg-secondary/90 shadow-md hover:shadow-lg',
       outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
       ghost: 'text-primary hover:bg-primary/10',
-      destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md'
+      destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md',
+      error: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md'
     };
 
     const sizes = {

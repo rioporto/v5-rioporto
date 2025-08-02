@@ -49,8 +49,8 @@ export function WalletCard({
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
-  const getNetworkColor = (network: string) => {
-    const colors: Record<string, string> = {
+  const getNetworkColor = (network: string): "purple" | "green" | "blue" | "pink" | "yellow" | "red" | "gray" => {
+    const colors: Record<string, "purple" | "green" | "blue" | "pink" | "yellow" | "red" | "gray"> = {
       ethereum: 'blue',
       polygon: 'purple',
       bsc: 'yellow',

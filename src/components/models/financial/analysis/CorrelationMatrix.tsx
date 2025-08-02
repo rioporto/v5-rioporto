@@ -309,14 +309,14 @@ export default function CorrelationMatrix({
           {/* Period Selector */}
           <Select
             value={selectedPeriod}
-            onValueChange={setSelectedPeriod}
+            onChange={(e) => setSelectedPeriod(e.target.value as "7d" | "30d" | "1d" | "90d")}
             options={CORRELATION_PERIODS}
           />
           
           {/* Sort By */}
           <Select
             value={sortBy}
-            onValueChange={(value) => setSortBy(value as 'alphabetical' | 'correlation')}
+            onChange={(e) => setSortBy(e.target.value as 'alphabetical' | 'correlation')}
             options={[
               { value: 'alphabetical', label: 'A-Z' },
               { value: 'correlation', label: 'Correlation' }
@@ -408,7 +408,7 @@ export default function CorrelationMatrix({
           <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
             <div className="text-gray-600 dark:text-gray-400">Negligible</div>
             <div className="font-medium">{stats.negligible}</div>
-            <div className="text-xs text-gray-500">< 0.3</div>
+            <div className="text-xs text-gray-500">{'< 0.3'}</div>
           </div>
           <div className="text-center p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
             <div className="text-gray-600 dark:text-gray-400">Weak</div>

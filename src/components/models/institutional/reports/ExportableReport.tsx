@@ -2,11 +2,11 @@
 
 import React, { useRef } from 'react';
 import { 
-  DocumentArrowDownIcon, 
-  PrinterIcon, 
-  ShareIcon,
-  TableCellsIcon
-} from '@heroicons/react/24/outline';
+  Download as DocumentArrowDownIcon, 
+  Printer as PrinterIcon, 
+  Share as ShareIcon,
+  Table as TableCellsIcon
+} from 'lucide-react';
 
 interface ExportableReportProps {
   title: string;
@@ -35,6 +35,7 @@ export default function ExportableReport({
     if (typeof window !== 'undefined') {
       try {
         // Usar html2pdf se disponível
+        // @ts-ignore - Optional dependency
         const { default: html2pdf } = await import('html2pdf.js');
         
         const element = reportRef.current;

@@ -3,16 +3,20 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { Badge } from '@/components/ui/Badge';
 import { Progress } from '@/components/ui/Progress';
 import { EmptyState } from '@/components/shared/EmptyState';
 import { TrendingUp, TrendingDown, DollarSign, PieChart, BarChart3, Calendar } from 'lucide-react';
-import { portfolioData } from '@/lib/mock-data';
+import { portfolioData, MOCK_PORTFOLIO_ASSETS, MOCK_PORTFOLIO_HISTORY } from '@/lib/mock-data';
 
 export default function PortfolioPage() {
   const [timeframe, setTimeframe] = useState('24h');
-  const portfolio = portfolioData;
+  const portfolio = {
+    ...portfolioData,
+    assets: MOCK_PORTFOLIO_ASSETS,
+    history: MOCK_PORTFOLIO_HISTORY
+  };
 
   const timeframes = [
     { value: '1h', label: '1h' },
@@ -25,24 +29,24 @@ export default function PortfolioPage() {
   const stats = [
     {
       title: 'Valor Total',
-      value: `R$ ${portfolio.summary.currentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
-      change: portfolio.summary.profitLossPercentage,
+      value: `R$ ${portfolio.currentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      change: portfolio.profitLossPercentage,
       icon: DollarSign,
     },
     {
       title: 'P&L Total',
-      value: `R$ ${portfolio.summary.profitLoss.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
-      change: portfolio.summary.profitLossPercentage,
-      icon: portfolio.summary.profitLoss >= 0 ? TrendingUp : TrendingDown,
+      value: `R$ ${portfolio.profitLoss.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      change: portfolio.profitLossPercentage,
+      icon: portfolio.profitLoss >= 0 ? TrendingUp : TrendingDown,
     },
     {
       title: 'Investido',
-      value: `R$ ${portfolio.summary.totalInvested.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      value: `R$ ${portfolio.totalInvested.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
       icon: PieChart,
     },
     {
       title: 'Melhor Ativo',
-      value: portfolio.summary.bestAsset || 'N/A',
+      value: portfolio.bestAsset || 'N/A',
       icon: BarChart3,
     },
   ];
@@ -62,7 +66,7 @@ export default function PortfolioPage() {
           {timeframes.map((tf) => (
             <Button
               key={tf.value}
-              variant={timeframe === tf.value ? 'default' : 'outline'}
+              variant={timeframe === tf.value ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setTimeframe(tf.value)}
             >
@@ -89,7 +93,7 @@ export default function PortfolioPage() {
                     </p>
                     {stat.change !== undefined && (
                       <Badge
-                        variant={stat.change >= 0 ? 'success' : 'destructive'}
+                        variant={stat.change >= 0 ? 'success' : 'error'}
                         className="text-xs"
                       >
                         {stat.change >= 0 ? '+' : ''}{stat.change.toFixed(2)}%
@@ -109,15 +113,15 @@ export default function PortfolioPage() {
       {/* Portfolio Content */}
       <Tabs defaultValue="assets" className="space-y-6">
         <div className="flex items-center justify-between">
-          <Tabs.List>
-            <Tabs.Trigger value="assets">Ativos</Tabs.Trigger>
-            <Tabs.Trigger value="history">Histórico</Tabs.Trigger>
-            <Tabs.Trigger value="performance">Performance</Tabs.Trigger>
-          </Tabs.List>
+          <TabsList>
+            <TabsTrigger value="assets">Ativos</TabsTrigger>
+            <TabsTrigger value="history">Histórico</TabsTrigger>
+            <TabsTrigger value="performance">Performance</TabsTrigger>
+          </TabsList>
         </div>
 
         {/* Assets Tab */}
-        <Tabs.Content value="assets" className="space-y-6">
+        <TabsContent value="assets" className="space-y-6">
           {portfolio.assets.length > 0 ? (
             <Card>
               <div className="p-6 border-b border-border">
@@ -190,7 +194,7 @@ export default function PortfolioPage() {
                               R$ {asset.profitLoss.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                             </span>
                             <Badge
-                              variant={asset.profitLossPercentage >= 0 ? 'success' : 'destructive'}
+                              variant={asset.profitLossPercentage >= 0 ? 'success' : 'error'}
                               className="text-xs"
                             >
                               {asset.profitLossPercentage >= 0 ? '+' : ''}
@@ -214,20 +218,19 @@ export default function PortfolioPage() {
             </Card>
           ) : (
             <EmptyState
-              icon={PieChart}
+              icon={<PieChart className="w-16 h-16 text-muted-foreground" />}
               title="Nenhum ativo encontrado"
               description="Você ainda não possui ativos em seu portfolio. Comece investindo agora!"
-              action={
-                <Button>
-                  Comprar Ativos
-                </Button>
-              }
+              action={{
+                label: 'Comprar Ativos',
+                onClick: () => console.log('Navigate to buy assets')
+              }}
             />
           )}
-        </Tabs.Content>
+        </TabsContent>
 
         {/* History Tab */}
-        <Tabs.Content value="history" className="space-y-6">
+        <TabsContent value="history" className="space-y-6">
           <Card className="p-6">
             <div className="flex items-center space-x-2 mb-4">
               <Calendar className="w-5 h-5 text-muted-foreground" />
@@ -262,16 +265,16 @@ export default function PortfolioPage() {
               </div>
             ) : (
               <EmptyState
-                icon={Calendar}
+                icon={<Calendar className="w-16 h-16 text-muted-foreground" />}
                 title="Sem histórico disponível"
                 description="O histórico será gerado conforme suas transações."
               />
             )}
           </Card>
-        </Tabs.Content>
+        </TabsContent>
 
         {/* Performance Tab */}
-        <Tabs.Content value="performance" className="space-y-6">
+        <TabsContent value="performance" className="space-y-6">
           <Card className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-4">
               Análise de Performance
@@ -284,22 +287,22 @@ export default function PortfolioPage() {
                   <div className="flex justify-between">
                     <span className="text-sm text-muted-foreground">ROI Total:</span>
                     <span className={`text-sm font-medium ${
-                      portfolio.summary.profitLossPercentage >= 0 ? 'text-success' : 'text-destructive'
+                      portfolio.profitLossPercentage >= 0 ? 'text-success' : 'text-destructive'
                     }`}>
-                      {portfolio.summary.profitLossPercentage >= 0 ? '+' : ''}
-                      {portfolio.summary.profitLossPercentage.toFixed(2)}%
+                      {portfolio.profitLossPercentage >= 0 ? '+' : ''}
+                      {portfolio.profitLossPercentage.toFixed(2)}%
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-muted-foreground">Melhor Ativo:</span>
                     <span className="text-sm font-medium text-foreground">
-                      {portfolio.summary.bestAsset || 'N/A'}
+                      {portfolio.bestAsset || 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-muted-foreground">Pior Ativo:</span>
                     <span className="text-sm font-medium text-foreground">
-                      {portfolio.summary.worstAsset || 'N/A'}
+                      {portfolio.worstAsset || 'N/A'}
                     </span>
                   </div>
                 </div>
@@ -323,7 +326,7 @@ export default function PortfolioPage() {
               </div>
             </div>
           </Card>
-        </Tabs.Content>
+        </TabsContent>
       </Tabs>
     </div>
   );

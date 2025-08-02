@@ -127,7 +127,7 @@ export function PositionsTable({ className }: PositionsTableProps) {
                       </div>
                     </td>
                     <td className="p-4 text-center">
-                      <Badge variant={position.type === 'LONG' ? 'default' : 'destructive'}>
+                      <Badge variant={position.type === 'LONG' ? 'default' : 'error'}>
                         {position.type}
                       </Badge>
                     </td>

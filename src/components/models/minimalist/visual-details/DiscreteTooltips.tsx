@@ -47,7 +47,7 @@ export function DiscreteTooltip({
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const triggerRef = useRef<HTMLElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const showTooltip = () => {
     if (disabled) return;

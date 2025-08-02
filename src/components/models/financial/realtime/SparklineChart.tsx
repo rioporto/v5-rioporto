@@ -23,25 +23,42 @@ export default function SparklineChart({
 }: SparklineChartProps) {
   if (!data.length) return null;
 
-  const Chart = type === 'area' ? AreaChart : LineChart;
-  const Element = type === 'area' ? Area : Line;
+  if (type === 'area') {
+    return (
+      <div style={{ height }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={data}>
+            <Area
+              type="monotone"
+              dataKey="value"
+              stroke={color}
+              strokeWidth={strokeWidth}
+              dot={showDots}
+              fill={color}
+              fillOpacity={0.3}
+              isAnimationActive={animate}
+              animationDuration={animate ? 300 : 0}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+    );
+  }
 
   return (
     <div style={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
-        <Chart data={data}>
-          <Element
+        <LineChart data={data}>
+          <Line
             type="monotone"
             dataKey="value"
             stroke={color}
             strokeWidth={strokeWidth}
             dot={showDots}
-            fill={type === 'area' ? color : undefined}
-            fillOpacity={type === 'area' ? 0.3 : undefined}
             isAnimationActive={animate}
             animationDuration={animate ? 300 : 0}
           />
-        </Chart>
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );

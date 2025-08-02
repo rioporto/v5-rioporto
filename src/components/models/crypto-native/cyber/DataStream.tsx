@@ -13,6 +13,7 @@ interface DataStreamProps {
   className?: string;
   height?: string;
   width?: string;
+  style?: React.CSSProperties;
 }
 
 export function DataStream({
@@ -25,7 +26,8 @@ export function DataStream({
   reverse = false,
   className = '',
   height = '100%',
-  width = '100%'
+  width = '100%',
+  style
 }: DataStreamProps) {
   const [streamData, setStreamData] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,7 +116,7 @@ export function DataStream({
         relative overflow-hidden font-mono text-sm leading-tight
         ${className}
       `}
-      style={{ height, width }}
+      style={{ height, width, ...style }}
     >
       <div className={`
         flex ${getDirectionClass()} ${getAnimationClass()}
@@ -317,6 +319,13 @@ export function NetworkActivity({
   className = ''
 }: NetworkActivityProps) {
   const [activeConnections, setActiveConnections] = useState<number[]>([]);
+
+  const speedSettings = {
+    slow: 2000,
+    normal: 1000,
+    fast: 500,
+    ultra: 200
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {

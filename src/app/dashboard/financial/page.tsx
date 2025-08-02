@@ -45,12 +45,26 @@ export default function FinancialDashboard() {
       {/* Main Tabs */}
       <div className="border-b border-border bg-card">
         <div className="px-6 py-4">
-          <Tabs
-            items={tabItems}
-            value={activeTab}
-            onValueChange={setActiveTab}
-            variant="underline"
-          />
+          <div className="flex space-x-6">
+            {tabItems.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`
+                    flex items-center space-x-2 pb-3 px-1 border-b-2 transition-all
+                    ${activeTab === tab.id 
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent text-muted-foreground hover:text-foreground'}
+                  `}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="text-sm font-medium">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

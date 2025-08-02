@@ -204,7 +204,7 @@ export default function KYCPage() {
                     <span className="font-medium text-foreground">{doc.label}</span>
                   </div>
                   {doc.required && (
-                    <Badge variant="destructive" className="text-xs">Obrigatório</Badge>
+                    <Badge variant="error" className="text-xs">Obrigatório</Badge>
                   )}
                 </div>
                 

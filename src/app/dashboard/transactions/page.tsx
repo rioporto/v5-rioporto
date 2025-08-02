@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Badge } from '@/components/ui/Badge';
 import { Tabs } from '@/components/ui/Tabs';
-import { Table } from '@/components/ui/Table';
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/Table';
 import { EmptyState } from '@/components/shared/EmptyState';
 import { 
   History, 
@@ -81,14 +81,14 @@ export default function TransactionsPage() {
     }
   };
 
-  const getStatusVariant = (status: string): 'default' | 'success' | 'warning' | 'destructive' => {
+  const getStatusVariant = (status: string): 'default' | 'success' | 'warning' | 'error' => {
     switch (status) {
       case 'COMPLETED':
         return 'success';
       case 'PENDING':
         return 'warning';
       case 'FAILED':
-        return 'destructive';
+        return 'error';
       case 'CANCELLED':
         return 'default';
       default:
@@ -203,19 +203,19 @@ export default function TransactionsPage() {
           <div className="flex flex-col sm:flex-row gap-2">
             <Select
               value={statusFilter}
-              onValueChange={setStatusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
               options={statusOptions}
             />
             
             <Select
               value={typeFilter}
-              onValueChange={setTypeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
               options={typeOptions}
             />
             
             <Select
               value={timeFilter}
-              onValueChange={setTimeFilter}
+              onChange={(e) => setTimeFilter(e.target.value)}
               options={timeOptions}
             />
           </div>
@@ -238,28 +238,28 @@ export default function TransactionsPage() {
         {filteredTransactions.length > 0 ? (
           <div className="overflow-x-auto">
             <Table>
-              <Table.Header>
-                <Table.Row>
-                  <Table.Head>Transação</Table.Head>
-                  <Table.Head>Tipo</Table.Head>
-                  <Table.Head>Ativo</Table.Head>
-                  <Table.Head>Quantidade</Table.Head>
-                  <Table.Head>Preço</Table.Head>
-                  <Table.Head>Total</Table.Head>
-                  <Table.Head>Status</Table.Head>
-                  <Table.Head>Data</Table.Head>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Transação</TableHead>
+                  <TableHead>Tipo</TableHead>
+                  <TableHead>Ativo</TableHead>
+                  <TableHead>Quantidade</TableHead>
+                  <TableHead>Preço</TableHead>
+                  <TableHead>Total</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Data</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {filteredTransactions.map((transaction) => (
-                  <Table.Row key={transaction.id}>
-                    <Table.Cell>
+                  <TableRow key={transaction.id}>
+                    <TableCell>
                       <div className="font-mono text-sm">
                         {transaction.id.slice(0, 8)}...
                       </div>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <div className="flex items-center space-x-2">
                         {transaction.type === 'BUY' ? (
                           <ArrowDownLeft className="w-4 h-4 text-success" />
@@ -272,9 +272,9 @@ export default function TransactionsPage() {
                           {transaction.type === 'BUY' ? 'Compra' : 'Venda'}
                         </span>
                       </div>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <div className="flex items-center space-x-2">
                         <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center">
                           <span className="text-xs font-bold text-primary">
@@ -283,21 +283,21 @@ export default function TransactionsPage() {
                         </div>
                         <span className="font-medium">{transaction.asset}</span>
                       </div>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <span className="font-mono text-sm">
                         {transaction.amount.toLocaleString('pt-BR', { maximumFractionDigits: 8 })}
                       </span>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <span className="font-mono text-sm">
                         R$ {transaction.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                       </span>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <div>
                         <span className="font-medium">
                           R$ {transaction.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
@@ -308,16 +308,16 @@ export default function TransactionsPage() {
                           </div>
                         )}
                       </div>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <Badge variant={getStatusVariant(transaction.status)} className="flex items-center space-x-1 w-fit">
                         {getStatusIcon(transaction.status)}
                         <span>{getStatusLabel(transaction.status)}</span>
                       </Badge>
-                    </Table.Cell>
+                    </TableCell>
                     
-                    <Table.Cell>
+                    <TableCell>
                       <div className="text-sm">
                         <div>{new Date(transaction.date).toLocaleDateString('pt-BR')}</div>
                         <div className="text-xs text-muted-foreground">
@@ -327,31 +327,27 @@ export default function TransactionsPage() {
                           })}
                         </div>
                       </div>
-                    </Table.Cell>
-                  </Table.Row>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </Table.Body>
+              </TableBody>
             </Table>
           </div>
         ) : (
           <div className="p-6">
             <EmptyState
-              icon={History}
+              icon={<History className="w-16 h-16 text-muted-foreground" />}
               title="Nenhuma transação encontrada"
               description="Não foram encontradas transações com os filtros aplicados."
-              action={
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setSearchTerm('');
-                    setStatusFilter('all');
-                    setTypeFilter('all');
-                    setTimeFilter('all');
-                  }}
-                >
-                  Limpar filtros
-                </Button>
-              }
+              action={{
+                label: 'Limpar filtros',
+                onClick: () => {
+                  setSearchTerm('');
+                  setStatusFilter('all');
+                  setTypeFilter('all');
+                  setTimeFilter('all');
+                }
+              }}
             />
           </div>
         )}

@@ -82,7 +82,7 @@ export default function BlogPage() {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? 'default' : 'outline'}
+                  variant={selectedCategory === category ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => {
                     setSelectedCategory(category);
@@ -116,7 +116,7 @@ export default function BlogPage() {
                     <Badge variant="default">{featuredPost.category}</Badge>
                     <div className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4 mr-1" />
-                      {formatDate(featuredPost.date)}
+                      {formatDate(featuredPost.publishedAt)}
                     </div>
                   </div>
                   
@@ -133,7 +133,7 @@ export default function BlogPage() {
                       <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                         <User className="h-4 w-4 text-primary" />
                       </div>
-                      <span className="text-sm font-medium">{featuredPost.author}</span>
+                      <span className="text-sm font-medium">{featuredPost.author.name}</span>
                     </div>
                     
                     <div className="flex items-center text-sm text-muted-foreground">
@@ -182,12 +182,12 @@ export default function BlogPage() {
                         <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center">
                           <User className="h-3 w-3 text-primary" />
                         </div>
-                        <span className="text-xs font-medium">{post.author}</span>
+                        <span className="text-xs font-medium">{post.author.name}</span>
                       </div>
                       
                       <div className="flex items-center text-xs text-muted-foreground">
                         <Calendar className="h-3 w-3 mr-1" />
-                        {formatDate(post.date)}
+                        {formatDate(post.publishedAt)}
                       </div>
                     </div>
                   </div>
@@ -209,21 +209,17 @@ export default function BlogPage() {
           </div>
         ) : (
           <EmptyState
-            icon={Search}
+            icon={<Search className="w-16 h-16 text-muted-foreground" />}
             title="Nenhum artigo encontrado"
             description="Tente ajustar os filtros ou termos de busca para encontrar o conteúdo desejado."
-            action={
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
-                  setCurrentPage(1);
-                }}
-              >
-                Limpar filtros
-              </Button>
-            }
+            action={{
+              label: "Limpar filtros",
+              onClick: () => {
+                setSearchQuery('');
+                setSelectedCategory('all');
+                setCurrentPage(1);
+              }
+            }}
           />
         )}
 

@@ -76,7 +76,7 @@ export default function CoursesPage() {
               {levels.map((level) => (
                 <Button
                   key={level}
-                  variant={selectedLevel === level ? 'default' : 'outline'}
+                  variant={selectedLevel === level ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedLevel(level)}
                 >
@@ -92,7 +92,7 @@ export default function CoursesPage() {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? 'default' : 'outline'}
+                  variant={selectedCategory === category ? 'primary' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className="capitalize"
@@ -117,8 +117,8 @@ export default function CoursesPage() {
                   <Badge 
                     className="absolute top-3 left-3"
                     variant={
-                      course.level === 'beginner' ? 'success' :
-                      course.level === 'intermediate' ? 'warning' : 'destructive'
+                      course.level === 'Iniciante' ? 'success' :
+                      course.level === 'Intermediário' ? 'warning' : 'error'
                     }
                   >
                     {levelLabels[course.level]}
@@ -163,12 +163,12 @@ export default function CoursesPage() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1" />
-                        {course.students.toLocaleString()}
+                        {course.studentsCount.toLocaleString()}
                       </div>
                       
                       <div className="flex items-center">
                         <BookOpen className="h-4 w-4 mr-1" />
-                        {course.lessons} aulas
+                        {course.modules.reduce((acc, m) => acc + m.lessons.length, 0)} aulas
                       </div>
                     </div>
                   </div>
@@ -194,13 +194,13 @@ export default function CoursesPage() {
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center">
                         <GraduationCap className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm font-medium">{course.instructor}</span>
+                      <span className="text-sm font-medium">{course.instructor.name}</span>
                     </div>
                     
                     {course.price ? (
                       <div className="text-right">
                         <div className="font-bold text-lg text-primary">
-                          R$ {course.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                          R$ {course.price.current.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                         </div>
                       </div>
                     ) : (
@@ -211,7 +211,7 @@ export default function CoursesPage() {
                   {/* Action Button */}
                   <Button 
                     className="w-full" 
-                    variant={course.progress !== undefined ? 'outline' : 'default'}
+                    variant={course.progress !== undefined ? 'outline' : 'primary'}
                   >
                     {course.progress !== undefined ? (
                       <>
@@ -241,20 +241,16 @@ export default function CoursesPage() {
           </div>
         ) : (
           <EmptyState
-            icon={BookOpen}
+            icon={<BookOpen className="w-16 h-16 text-muted-foreground" />}
             title="Nenhum curso encontrado"
             description="Tente ajustar os filtros para encontrar cursos disponíveis."
-            action={
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setSelectedLevel('all');
-                  setSelectedCategory('all');
-                }}
-              >
-                Limpar filtros
-              </Button>
-            }
+            action={{
+              label: "Limpar filtros",
+              onClick: () => {
+                setSelectedLevel('all');
+                setSelectedCategory('all');
+              }
+            }}
           />
         )}
 

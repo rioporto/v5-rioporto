@@ -169,6 +169,7 @@ export default function HeatmapChart({
 }: HeatmapChartProps) {
   const [hoveredCell, setHoveredCell] = useState<{ x: string; y: string; value: number } | null>(null);
   const [currentColorScheme, setCurrentColorScheme] = useState<keyof typeof COLOR_SCHEMES>(colorScheme);
+  const [showLabelsState, setShowLabelsState] = useState(showLabels);
 
   const { matrix, xLabels, yLabels, stats } = useMemo(() => {
     if (!data || data.length === 0) {
@@ -285,9 +286,9 @@ export default function HeatmapChart({
           {/* Controls */}
           <div className="flex gap-2">
             <Button
-              variant={showLabels ? 'primary' : 'outline'}
+              variant={showLabelsState ? 'primary' : 'outline'}
               size="sm"
-              onClick={() => setShowLabels(!showLabels)}
+              onClick={() => setShowLabelsState(!showLabelsState)}
             >
               Labels
             </Button>
@@ -340,7 +341,7 @@ export default function HeatmapChart({
                   value={cell?.value || 0}
                   color={cell ? getColorForValue(cell.value, currentColorScheme) : '#f3f4f6'}
                   size={cellSize}
-                  showLabel={showLabels && cell !== null}
+                  showLabel={showLabelsState && cell !== null}
                   onHover={handleCellHover}
                   onLeave={handleCellLeave}
                 />

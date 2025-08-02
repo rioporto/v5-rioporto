@@ -256,7 +256,7 @@ export const QuantumField: React.FC<QuantumFieldProps> = ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      connections: [],
+      connections: [] as number[],
     }));
 
     // Create connections between nearby nodes

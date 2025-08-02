@@ -27,7 +27,7 @@ const positionTabs = [
 
 export default function PositionsPage() {
   const [activeTab, setActiveTab] = useState('active');
-  const [selectedPosition, setSelectedPosition] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState<any>(null);
 
   // Mock data
   const portfolioStats = {
@@ -99,12 +99,22 @@ export default function PositionsPage() {
       {/* Tabs */}
       <div className="border-b border-border bg-card">
         <div className="px-6 py-4">
-          <Tabs
-            items={positionTabs}
-            value={activeTab}
-            onValueChange={setActiveTab}
-            variant="underline"
-          />
+          <div className="flex space-x-6">
+            {positionTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`
+                  pb-3 px-1 border-b-2 transition-all
+                  ${activeTab === tab.id 
+                    ? 'border-primary text-primary' 
+                    : 'border-transparent text-muted-foreground hover:text-foreground'}
+                `}
+              >
+                <span className="text-sm font-medium">{tab.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -162,9 +172,7 @@ export default function PositionsPage() {
 
               {/* Positions Table */}
               <Card>
-                <PositionsTable 
-                  onSelectPosition={setSelectedPosition}
-                />
+                <PositionsTable />
               </Card>
             </div>
           )}
@@ -197,10 +205,7 @@ export default function PositionsPage() {
         {/* Right Panel - Position Details */}
         {selectedPosition && (
           <div className="w-96 border-l border-border bg-card">
-            <PositionDetails 
-              position={selectedPosition}
-              onClose={() => setSelectedPosition(null)}
-            />
+            <PositionDetails />
           </div>
         )}
       </div>

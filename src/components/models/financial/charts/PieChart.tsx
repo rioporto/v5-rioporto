@@ -108,6 +108,8 @@ export default function PieChart({
 }: PieChartProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [chartType, setChartType] = useState<'pie' | 'donut'>(innerRadius > 0 ? 'donut' : 'pie');
+  const [showLabelsState, setShowLabelsState] = useState(showLabels);
+  const [showLegendState, setShowLegendState] = useState(showLegend);
 
   const processedData = useMemo(() => {
     if (!data || data.length === 0) return [];
@@ -201,16 +203,16 @@ export default function PieChart({
           {/* Controls */}
           <div className="flex gap-2">
             <Button
-              variant={showLabels ? 'primary' : 'outline'}
+              variant={showLabelsState ? 'primary' : 'outline'}
               size="sm"
-              onClick={() => setShowLabels(!showLabels)}
+              onClick={() => setShowLabelsState(!showLabelsState)}
             >
               Labels
             </Button>
             <Button
-              variant={showLegend ? 'primary' : 'outline'}
+              variant={showLegendState ? 'primary' : 'outline'}
               size="sm"
-              onClick={() => setShowLegend(!showLegend)}
+              onClick={() => setShowLegendState(!showLegendState)}
             >
               Legend
             </Button>
@@ -226,7 +228,7 @@ export default function PieChart({
       </div>
 
       {/* Chart */}
-      <div className={showLegend ? "h-80" : "h-96"}>
+      <div className={showLegendState ? "h-80" : "h-96"}>
         <ResponsiveContainer width="100%" height="100%">
           <RechartsPieChart>
             <Pie
@@ -234,7 +236,7 @@ export default function PieChart({
               cx="50%"
               cy="50%"
               labelLine={false}
-              label={showLabels ? (props) => 
+              label={showLabelsState ? (props) => 
                 <CustomLabel {...props} showPercentages={showPercentages} />
               : false}
               outerRadius={outerRadius}
@@ -262,7 +264,7 @@ export default function PieChart({
               ))}
             </Pie>
             <Tooltip content={<CustomTooltip />} />
-            {showLegend && <Legend content={<CustomLegend />} />}
+            {showLegendState && <Legend content={<CustomLegend />} />}
           </RechartsPieChart>
         </ResponsiveContainer>
       </div>

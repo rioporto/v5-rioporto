@@ -26,7 +26,7 @@ export function GlitchText({
   const [isGlitching, setIsGlitching] = useState(continuous && !triggerOnHover);
   const [glitchedText, setGlitchedText] = useState('');
   const [shadowOffset, setShadowOffset] = useState({ x: 0, y: 0 });
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const text = typeof children === 'string' ? children : children?.toString() || '';
 

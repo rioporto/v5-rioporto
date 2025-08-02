@@ -169,7 +169,6 @@ const InstitutionalTable = <T extends Record<string, any>>({
                       rowSelection.onChange(e.target.checked ? allKeys : []);
                     }}
                     checked={rowSelection.selectedRowKeys.length === data.length && data.length > 0}
-                    indeterminate={rowSelection.selectedRowKeys.length > 0 && rowSelection.selectedRowKeys.length < data.length}
                   />
                 </th>
               )}

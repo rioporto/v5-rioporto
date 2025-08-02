@@ -119,14 +119,14 @@ export function NFTGallery({
         {/* View Mode Toggle */}
         <div className="flex gap-2">
           <Button
-            variant={viewMode === 'grid' ? 'default' : 'outline'}
+            variant={viewMode === 'grid' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setViewMode('grid')}
           >
             🔲 Grid
           </Button>
           <Button
-            variant={viewMode === 'list' ? 'default' : 'outline'}
+            variant={viewMode === 'list' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setViewMode('list')}
           >
@@ -201,7 +201,7 @@ export function NFTGallery({
       {showFilters && (
         <div className="flex flex-wrap gap-2">
           <Button
-            variant={selectedRarity === 'all' ? 'default' : 'outline'}
+            variant={selectedRarity === 'all' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setSelectedRarity('all')}
           >
@@ -210,7 +210,7 @@ export function NFTGallery({
           {rarities.map(rarity => (
             <Button
               key={rarity}
-              variant={selectedRarity === rarity ? 'default' : 'outline'}
+              variant={selectedRarity === rarity ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setSelectedRarity(rarity)}
               className={`${

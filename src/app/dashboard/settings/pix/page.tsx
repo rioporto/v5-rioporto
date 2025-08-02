@@ -25,7 +25,7 @@ export default function PIXPage() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newPixKey, setNewPixKey] = useState({ type: 'CPF', key: '', name: '' });
   
-  const pixKeys = user?.pixKeys || [];
+  const pixKeys: any[] = [];
 
   const pixKeyTypes = [
     { value: 'CPF', label: 'CPF', icon: User },

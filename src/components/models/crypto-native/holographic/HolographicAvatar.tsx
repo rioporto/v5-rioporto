@@ -255,6 +255,23 @@ export function HolographicAvatarGroup({
   const displayAvatars = avatars.slice(0, max);
   const remaining = Math.max(0, avatars.length - max);
 
+  const sizeClasses = {
+    xs: 'w-6 h-6',
+    sm: 'w-8 h-8',
+    md: 'w-12 h-12',
+    lg: 'w-16 h-16',
+    xl: 'w-20 h-20',
+    '2xl': 'w-24 h-24'
+  };
+
+  const variantGradients = {
+    rainbow: 'from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500',
+    cyberpunk: 'from-cyan-400 via-purple-500 to-pink-500',
+    neon: 'from-green-400 via-blue-500 to-purple-600',
+    aurora: 'from-pink-400 via-purple-500 via-indigo-500 to-cyan-400',
+    matrix: 'from-green-400 via-green-500 to-lime-400'
+  };
+
   return (
     <div className={`flex -space-x-2 ${className}`}>
       {displayAvatars.map((avatar, index) => (

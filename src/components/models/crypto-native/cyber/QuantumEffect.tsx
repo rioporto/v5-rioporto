@@ -39,7 +39,7 @@ export function QuantumEffect({
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [wavePhase, setWavePhase] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const colors = {
     quantum: { primary: '#8b5cf6', secondary: '#06b6d4', tertiary: '#10b981', glow: '#f59e0b' },

@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { Avatar } from '@/components/ui/Avatar';
-import { Dropdown } from '@/components/ui/Dropdown';
+import { Dropdown, DropdownContent, DropdownItem, DropdownSeparator } from '@/components/ui/Dropdown';
 import { Badge } from '@/components/ui/Badge';
 import { 
   Menu, 
@@ -59,7 +59,7 @@ export function FinancialHeader({
       label: 'Sign Out',
       onClick: () => console.log('logout'),
       icon: LogOut,
-      variant: 'destructive' as const,
+      variant: 'error' as const,
     },
   ];
 
@@ -173,8 +173,27 @@ export function FinancialHeader({
               />
             </Button>
           }
-          items={userMenuItems}
-        />
+        >
+          <DropdownContent>
+            {userMenuItems.map((item, index) => {
+              if (item.type === 'divider') {
+                return <DropdownSeparator key={index} />;
+              }
+              
+              const Icon = item.icon;
+              return (
+                <DropdownItem 
+                  key={index}
+                  onClick={item.onClick}
+                  className={item.variant === 'error' ? 'text-red-600' : ''}
+                >
+                  <Icon className="w-4 h-4 mr-2" />
+                  {item.label}
+                </DropdownItem>
+              );
+            })}
+          </DropdownContent>
+        </Dropdown>
       </div>
     </div>
   );

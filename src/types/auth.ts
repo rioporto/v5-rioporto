@@ -2,7 +2,7 @@
  * Authentication types for RioPorto P2P
  */
 
-export type Role = 'ADMIN' | 'USER';
+export type Role = 'ADMIN' | 'USER' | 'MODERATOR';
 export type KYCLevel = 0 | 1 | 2 | 3;
 
 export interface User {

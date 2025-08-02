@@ -246,7 +246,7 @@ interface MinimalistNewsletterCTAProps extends React.HTMLAttributes<HTMLElement>
   description?: string;
   placeholder?: string;
   buttonText?: string;
-  onSubmit: (email: string) => void;
+  onEmailSubmit: (email: string) => void;
 }
 
 const MinimalistNewsletterCTA = forwardRef<HTMLElement, MinimalistNewsletterCTAProps>(
@@ -256,7 +256,7 @@ const MinimalistNewsletterCTA = forwardRef<HTMLElement, MinimalistNewsletterCTAP
     description, 
     placeholder = 'Enter your email',
     buttonText = 'Subscribe',
-    onSubmit,
+    onEmailSubmit,
     ...props 
   }, ref) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -264,7 +264,7 @@ const MinimalistNewsletterCTA = forwardRef<HTMLElement, MinimalistNewsletterCTAP
       const formData = new FormData(e.currentTarget);
       const email = formData.get('email') as string;
       if (email) {
-        onSubmit(email);
+        onEmailSubmit(email);
       }
     };
 

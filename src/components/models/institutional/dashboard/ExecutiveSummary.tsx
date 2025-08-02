@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { 
-  TrendingUpIcon, 
-  TrendingDownIcon,
-  UsersIcon,
-  CurrencyDollarIcon,
-  ChartBarIcon,
-  ClockIcon
-} from '@heroicons/react/24/outline';
+  TrendingUp as TrendingUpIcon, 
+  TrendingDown as TrendingDownIcon,
+  Users as UsersIcon,
+  DollarSign as CurrencyDollarIcon,
+  BarChart3 as ChartBarIcon,
+  Clock as ClockIcon
+} from 'lucide-react';
 
 interface KPIMetric {
   label: string;

@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import { 
-  CurrencyDollarIcon, 
-  CalendarIcon, 
-  DocumentTextIcon,
-  ExclamationTriangleIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline';
+  DollarSign as CurrencyDollarIcon, 
+  Calendar as CalendarIcon, 
+  FileText as DocumentTextIcon,
+  AlertTriangle as ExclamationTriangleIcon,
+  CheckCircle as CheckCircleIcon
+} from 'lucide-react';
 
 interface InvestmentOption {
   id: string;

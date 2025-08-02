@@ -14,7 +14,7 @@ export default function AdminSecurityPage() {
 
       <Card className="p-8">
         <EmptyState
-          icon={Settings}
+          icon={<Settings className="w-16 h-16 text-muted-foreground" />}
           title="Configurações em Desenvolvimento"
           description="Painel de segurança administrativo será implementado em breve."
         />

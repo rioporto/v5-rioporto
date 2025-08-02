@@ -28,7 +28,7 @@ export const StarField: React.FC<StarFieldProps> = ({
   interactive = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const [stars, setStars] = useState<Star[]>([]);
 

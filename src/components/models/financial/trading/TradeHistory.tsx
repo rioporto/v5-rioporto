@@ -138,21 +138,21 @@ export function TradeHistory() {
         {/* Filter Tabs */}
         <div className="flex gap-2 mb-4">
           <Button
-            variant={filterType === 'all' ? 'default' : 'outline'}
+            variant={filterType === 'all' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setFilterType('all')}
           >
             All
           </Button>
           <Button
-            variant={filterType === 'buy' ? 'default' : 'outline'}
+            variant={filterType === 'buy' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setFilterType('buy')}
           >
             Buy
           </Button>
           <Button
-            variant={filterType === 'sell' ? 'default' : 'outline'}
+            variant={filterType === 'sell' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setFilterType('sell')}
           >
@@ -169,7 +169,7 @@ export function TradeHistory() {
             >
               <div className="flex items-center gap-3">
                 <Badge 
-                  variant={trade.type === 'buy' ? 'success' : 'destructive'}
+                  variant={trade.type === 'buy' ? 'success' : 'error'}
                   className="text-xs"
                 >
                   {trade.type.toUpperCase()}

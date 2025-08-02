@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowUpIcon, ArrowDownIcon, MinusIcon } from '@heroicons/react/24/outline';
+import { ArrowUp as ArrowUpIcon, ArrowDown as ArrowDownIcon, Minus as MinusIcon } from 'lucide-react';
 
 interface ComparisonItem {
   label: string;

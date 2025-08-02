@@ -263,7 +263,7 @@ export const CheatCodes: React.FC<CheatCodesProps> = ({
   const activateCheat = (cheat: CheatCode) => {
     try {
       cheat.onActivate();
-      setActiveCheats(prev => new Set([...prev, cheat.id]));
+      setActiveCheats(prev => new Set([...Array.from(prev), cheat.id]));
       setCheats(prev => prev.map(c => 
         c.id === cheat.id ? { ...c, active: true } : c
       ));

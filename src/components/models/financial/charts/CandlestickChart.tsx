@@ -127,7 +127,7 @@ export default function CandlestickChart({
   }, [data]);
 
   const handleTimeframeChange = (timeframe: string) => {
-    setSelectedTimeframe(timeframe);
+    setSelectedTimeframe(timeframe as any);
     onTimeframeChange?.(timeframe);
   };
 
@@ -187,7 +187,7 @@ export default function CandlestickChart({
           {/* Timeframe Selector */}
           <Select
             value={selectedTimeframe}
-            onValueChange={handleTimeframeChange}
+            onChange={(e) => handleTimeframeChange(e.target.value)}
             options={TIMEFRAMES}
           />
           

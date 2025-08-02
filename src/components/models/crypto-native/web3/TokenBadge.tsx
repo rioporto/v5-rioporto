@@ -75,7 +75,7 @@ export function TokenBadge({
   };
 
   if (variant === 'simple') {
-    return (
+    const badge = (
       <CryptoBadge
         variant="glass"
         color="purple"
@@ -87,7 +87,6 @@ export function TokenBadge({
           interactive && 'cursor-pointer hover:scale-105',
           className
         )}
-        onClick={onClick}
         {...props}
       >
         {showLogo && token.logo && (
@@ -105,6 +104,11 @@ export function TokenBadge({
         )}
       </CryptoBadge>
     );
+    
+    if (onClick) {
+      return <span onClick={onClick}>{badge}</span>;
+    }
+    return badge;
   }
 
   if (variant === 'price') {

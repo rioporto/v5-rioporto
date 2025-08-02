@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { Progress } from '@/components/ui/Progress';
-import { WidgetProps, PortfolioAsset } from '@/types/rioporto';
+import { PortfolioAsset } from '@/types/rioporto';
+import { WidgetProps } from '@/types/financial';
 
 interface AssetAllocationProps extends WidgetProps {
   data: {
@@ -144,10 +145,10 @@ const AllocationList = ({
                   />
                   <span className="text-sm font-medium">{name}</span>
                   {showRebalance && isOverallocated && (
-                    <Badge variant="warning" size="xs">Over</Badge>
+                    <Badge variant="warning" size="sm">Over</Badge>
                   )}
                   {showRebalance && isUnderallocated && (
-                    <Badge variant="error" size="xs">Under</Badge>
+                    <Badge variant="error" size="sm">Under</Badge>
                   )}
                 </div>
                 <div className="text-right text-sm">
@@ -410,7 +411,7 @@ export default function AssetAllocation({
                           style={{ backgroundColor: item.color }}
                         />
                         <span className="text-sm font-medium">
-                          {item.symbol || item.network || item.category}
+                          {(item as any).symbol || (item as any).network || (item as any).category}
                         </span>
                       </div>
                       <div className="text-right text-sm">
@@ -456,7 +457,7 @@ export default function AssetAllocation({
         <div className="text-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
           <div className="text-gray-600 dark:text-gray-400">Largest Position</div>
           <div className="font-medium text-blue-600">
-            {currentData[0]?.symbol || currentData[0]?.network || currentData[0]?.category || 'N/A'}
+            {(currentData[0] as any)?.symbol || (currentData[0] as any)?.network || (currentData[0] as any)?.category || 'N/A'}
           </div>
           <div className="text-xs text-gray-500">
             {currentData[0]?.percentage.toFixed(1)}%

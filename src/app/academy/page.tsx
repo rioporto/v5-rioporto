@@ -51,10 +51,10 @@ export default function AcademyPage() {
               Do básico ao avançado, tudo que você precisa saber sobre o mundo cripto
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/academy/courses">Explorar Cursos</Link>
+              <Button size="lg" onClick={() => window.location.href = "/academy/courses"}>
+                Explorar Cursos
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" onClick={() => window.location.href = "/academy/blog"}>
                 <Link href="/academy/blog">Ler Artigos</Link>
               </Button>
             </div>
@@ -84,8 +84,12 @@ export default function AcademyPage() {
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{feature.description}</p>
-                  <Button variant="outline" size="sm" asChild>
-                    <Link href={feature.link}>Explorar</Link>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => window.location.href = feature.link}
+                  >
+                    Explorar
                   </Button>
                 </Card>
               );
@@ -104,7 +108,7 @@ export default function AcademyPage() {
             <p className="text-muted-foreground mb-8">
               Junte-se a milhares de pessoas que já aprendem com a RioPorto Academy
             </p>
-            <Button size="lg" asChild>
+            <Button size="lg" onClick={() => window.location.href = "/academy/courses"}>
               <Link href="/register">Criar Conta Gratuita</Link>
             </Button>
           </div>

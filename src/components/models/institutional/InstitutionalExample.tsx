@@ -41,7 +41,7 @@ const InstitutionalExample: React.FC<InstitutionalExampleProps> = ({ className }
     items: [
       { label: 'Profile', href: '/profile' },
       { label: 'Settings', href: '/settings' },
-      { divider: true },
+      { label: '', divider: true },
       { label: 'Sign Out', onClick: () => console.log('Sign out') }
     ]
   };

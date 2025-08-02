@@ -184,7 +184,7 @@ export function Partnerships({
                 <h3 className="font-semibold text-slate-900 dark:text-white text-sm">
                   {partner.name}
                 </h3>
-                <Badge className={getCategoryColor(partner.category)} variant="outline" size="sm" className="mt-2">
+                <Badge className={`${getCategoryColor(partner.category)} mt-2`} variant="outline" size="sm">
                   {partner.category}
                 </Badge>
               </div>

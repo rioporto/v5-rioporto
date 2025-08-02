@@ -33,16 +33,13 @@ const FinancialCard = forwardRef<HTMLDivElement, FinancialCardProps>(
           // Variant styles
           {
             // Default - Standard card
-            'border': variant === 'default',
+            'border': variant === 'default' || variant === 'dense',
             
             // Bordered - Emphasized border
             'border-2 border-primary/20': variant === 'bordered',
             
             // Elevated - With shadow
             'border shadow-md': variant === 'elevated',
-            
-            // Dense - Minimal padding for data tables
-            'border': variant === 'dense',
           },
           
           className

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { Badge } from '@/components/ui/Badge';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { WidgetProps, RSIData, MACDData, BollingerBandsData, TechnicalIndicator } from '@/types/financial';
@@ -396,18 +396,21 @@ export default function TechnicalIndicators({
         </h3>
       </div>
 
-      <Tabs
-        tabs={tabs}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          {tabs.map((tab) => (
+            <TabsTrigger key={tab.id} value={tab.id}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      <div className="mt-6">
-        {activeTab === 'summary' && (
-          <IndicatorsSummary indicators={data.indicators} />
-        )}
-        
-        {activeTab === 'rsi' && (
+        <div className="mt-6">
+          <TabsContent value="summary">
+            <IndicatorsSummary indicators={data.indicators} />
+          </TabsContent>
+          
+          <TabsContent value="rsi">
           <div>
             <div className="mb-4">
               <h4 className="font-medium mb-2">Relative Strength Index (RSI)</h4>
@@ -417,9 +420,9 @@ export default function TechnicalIndicators({
             </div>
             <RSIChart data={data.rsi} />
           </div>
-        )}
-        
-        {activeTab === 'macd' && (
+          </TabsContent>
+          
+          <TabsContent value="macd">
           <div>
             <div className="mb-4">
               <h4 className="font-medium mb-2">MACD (Moving Average Convergence Divergence)</h4>
@@ -429,9 +432,9 @@ export default function TechnicalIndicators({
             </div>
             <MACDChart data={data.macd} />
           </div>
-        )}
-        
-        {activeTab === 'bollinger' && (
+          </TabsContent>
+          
+          <TabsContent value="bollinger">
           <div>
             <div className="mb-4">
               <h4 className="font-medium mb-2">Bollinger Bands</h4>
@@ -441,8 +444,9 @@ export default function TechnicalIndicators({
             </div>
             <BollingerChart data={data.bollinger} />
           </div>
-        )}
-      </div>
+          </TabsContent>
+        </div>
+      </Tabs>
     </Card>
   );
 }

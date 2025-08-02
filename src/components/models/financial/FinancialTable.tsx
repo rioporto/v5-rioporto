@@ -46,7 +46,7 @@ const FinancialTable = forwardRef<HTMLDivElement, FinancialTableProps>(
       return key.split('.').reduce((obj, k) => obj?.[k], record);
     };
 
-    const formatValue = (value: any, type?: string) => {
+    const formatValue = (value: any, key: string, type?: string) => {
       if (value === null || value === undefined) return '-';
       
       if (typeof value === 'number') {
@@ -187,7 +187,7 @@ const FinancialTable = forwardRef<HTMLDivElement, FinancialTableProps>(
                       const value = getValue(record, column.key);
                       const rendered = column.render 
                         ? column.render(value, record, index)
-                        : formatValue(value);
+                        : formatValue(value, column.key);
 
                       return (
                         <td

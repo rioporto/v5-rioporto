@@ -48,7 +48,7 @@ export function OrderDetails({ orderId = 'ORD-12345', className }: OrderDetailsP
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>Detalhes da Ordem</span>
-          <Badge variant={order.type === 'BUY' ? 'default' : 'destructive'}>
+          <Badge variant={order.type === 'BUY' ? 'default' : 'error'}>
             {order.type}
           </Badge>
         </CardTitle>

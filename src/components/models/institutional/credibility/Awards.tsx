@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Award, Trophy, Star, Medal } from 'lucide-react';
+import { Award, Trophy, Star, Medal, Shield } from 'lucide-react';
 
 export interface AwardItem {
   title: string;

@@ -111,7 +111,7 @@ export function RiskRewardRatio({ position }: RiskRewardRatioProps) {
       case 'excellent': return 'default';
       case 'good': return 'secondary';
       case 'fair': return 'outline';
-      case 'poor': return 'destructive';
+      case 'poor': return 'error';
       default: return 'outline';
     }
   };

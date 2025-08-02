@@ -49,7 +49,7 @@ export function LazyComponent<T = any>({
     [loader, fallback, className]
   );
 
-  return <DynamicComponent {...props} />;
+  return <DynamicComponent {...props as any} />;
 }
 
 // Hook para debounce otimizado
@@ -82,7 +82,7 @@ export function useOptimizedThrottle<T extends (...args: any[]) => any>(
   delay: number
 ): T {
   const lastRun = React.useRef<number>(Date.now());
-  const timeoutRef = React.useRef<NodeJS.Timeout>();
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   return useCallback(
     ((...args: Parameters<T>) => {
@@ -90,7 +90,9 @@ export function useOptimizedThrottle<T extends (...args: any[]) => any>(
         callback(...args);
         lastRun.current = Date.now();
       } else {
-        clearTimeout(timeoutRef.current);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
         timeoutRef.current = setTimeout(() => {
           callback(...args);
           lastRun.current = Date.now();
@@ -164,7 +166,7 @@ export function useOptimizedIntersectionObserver(
   options?: IntersectionObserverInit
 ) {
   const callbackRef = React.useRef(callback);
-  const observerRef = React.useRef<IntersectionObserver>();
+  const observerRef = React.useRef<IntersectionObserver | null>(null);
 
   React.useEffect(() => {
     callbackRef.current = callback;
@@ -188,7 +190,7 @@ export function useOptimizedIntersectionObserver(
 
   const disconnect = useCallback(() => {
     observerRef.current?.disconnect();
-    observerRef.current = undefined;
+    observerRef.current = null;
   }, []);
 
   React.useEffect(() => {
@@ -260,7 +262,7 @@ export function useDeepMemo<T>(value: T, deps?: React.DependencyList): T {
       }
       return dep !== prevDep;
     });
-  }, deps);
+  }, deps || []);
 
   if (hasChanged) {
     ref.current = value;
@@ -274,6 +276,7 @@ export function useDeepMemo<T>(value: T, deps?: React.DependencyList): T {
 export function BundleAnalyzer({ enabled = false }: { enabled?: boolean }) {
   React.useEffect(() => {
     if (enabled && process.env.NODE_ENV === 'development') {
+      // @ts-ignore - Optional dependency
       import('@next/bundle-analyzer').then(({ default: analyzer }) => {
         console.log('Bundle analysis available');
       }).catch(() => {

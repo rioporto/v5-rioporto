@@ -111,7 +111,7 @@ export function StaggeredFadeIn({
   useEffect(() => {
     childrenArray.forEach((_, index) => {
       setTimeout(() => {
-        setVisibleItems(prev => new Set([...prev, index]));
+        setVisibleItems(prev => new Set([...Array.from(prev), index]));
       }, index * delay);
     });
   }, [childrenArray.length, delay]);

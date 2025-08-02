@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { 
-  TrendingUpIcon, 
-  TrendingDownIcon, 
-  ChartBarIcon,
-  ExclamationTriangleIcon
-} from '@heroicons/react/24/outline';
+  TrendingUp as TrendingUpIcon, 
+  TrendingDown as TrendingDownIcon, 
+  BarChart3 as ChartBarIcon,
+  AlertTriangle as ExclamationTriangleIcon
+} from 'lucide-react';
 
 interface MarketIndicator {
   name: string;
