@@ -152,7 +152,7 @@ export function VibeCheck({
 
   if (variant === 'meter') {
     return (
-      <Card className={`p-4 border-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-md ${className}`}>
+      <Card className={`p-4 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold text-foreground">Vibe Check</span>
@@ -219,7 +219,7 @@ export function VibeCheck({
 
   // Full variant (default)
   return (
-    <Card className={`p-6 border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md ${className}`}>
+    <Card className={`p-6 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
       <div className="space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">

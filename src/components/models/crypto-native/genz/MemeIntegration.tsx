@@ -148,7 +148,7 @@ export function MemeIntegration({
 
   if (variant === 'generator') {
     return (
-      <Card className={`p-6 border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md ${className}`}>
+      <Card className={`p-6 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
         <div className="space-y-6">
           <div className="text-center">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">

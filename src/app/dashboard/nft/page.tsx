@@ -93,7 +93,7 @@ export default function NFTPage() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md">
+          <Card className="border-0 bg-crypto-gradient backdrop-blur-md">
             <div className="p-6 text-center">
               <div className="text-3xl font-bold text-purple-400">12</div>
               <div className="text-sm text-muted-foreground">NFTs Owned</div>

@@ -1043,7 +1043,7 @@
   
   /* Web3 specific utilities */
   .web3-card {
-    @apply bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md border-0 shadow-xl;
+    @apply bg-crypto-gradient backdrop-blur-md border-0 shadow-xl;
   }
   
   .cyber-border-corners::before,

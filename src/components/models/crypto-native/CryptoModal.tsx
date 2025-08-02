@@ -71,7 +71,7 @@ export function CryptoModal({
       'shadow-[0_0_60px_rgba(153,69,255,0.4)]'
     ],
     holographic: [
-      'bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10',
+      'bg-gradient-to-br bg-crypto-gradient-multi',
       'border border-transparent backdrop-blur-xl relative',
       'before:absolute before:inset-0 before:rounded-2xl before:p-[1px]',
       'before:bg-gradient-to-r before:from-purple-400 before:via-pink-400 before:to-blue-400',

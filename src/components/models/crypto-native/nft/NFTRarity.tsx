@@ -215,7 +215,7 @@ export function NFTRarity({
       </div>
 
       {/* Holographic border effect */}
-      <div className="absolute inset-0 rounded-lg pointer-events-none bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-cyan-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 rounded-lg pointer-events-none bg-gradient-to-r bg-crypto-gradient-multi opacity-0 hover:opacity-100 transition-opacity duration-500" />
     </Card>
   );
 }

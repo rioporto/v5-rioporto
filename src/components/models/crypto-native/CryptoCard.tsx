@@ -51,7 +51,7 @@ export function CryptoCard({
       glow && animated && 'hover:shadow-[0_12px_40px_rgba(153,69,255,0.2)]'
     ],
     neon: [
-      'bg-gradient-to-br from-purple-500/10 to-pink-500/10',
+      'bg-crypto-gradient',
       'border-purple-400/30',
       blur && 'backdrop-blur-sm',
       glow && 'shadow-[0_0_30px_rgba(153,69,255,0.3)]',

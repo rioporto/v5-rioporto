@@ -213,7 +213,7 @@ export function NFTShowcase({
         triggerOnHover={true}
         intensity="medium"
       >
-        <Card className="border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md p-6">
+        <Card className="border-0 bg-crypto-gradient backdrop-blur-md p-6">
           <div className="aspect-square bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center text-6xl mb-4">
             {nft.image}
           </div>

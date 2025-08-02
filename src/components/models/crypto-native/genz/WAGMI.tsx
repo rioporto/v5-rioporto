@@ -130,7 +130,7 @@ export function WAGMI({
 
   if (variant === 'compact') {
     return (
-      <Card className={`p-4 border-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-md ${className}`}>
+      <Card className={`p-4 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`text-2xl ${animated ? 'animate-bounce' : ''}`}>
@@ -261,7 +261,7 @@ export function WAGMI({
 
   // Full variant (default)
   return (
-    <Card className={`p-8 border-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-cyan-500/10 backdrop-blur-md ${className}`}>
+    <Card className={`p-8 border-0 bg-gradient-to-br bg-crypto-gradient-multi backdrop-blur-md ${className}`}>
       <div className="space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">

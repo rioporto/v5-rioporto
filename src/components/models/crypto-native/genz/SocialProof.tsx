@@ -206,7 +206,7 @@ export function SocialProof({
           {currentData.testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="p-4 border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md"
+              className="p-4 border-0 bg-crypto-gradient backdrop-blur-md"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
@@ -352,7 +352,7 @@ export function SocialProof({
         <div className="text-sm text-muted-foreground">Online Now</div>
       </Card>
 
-      <Card className="p-4 border-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md text-center">
+      <Card className="p-4 border-0 bg-crypto-gradient backdrop-blur-md text-center">
         <div className="text-2xl mb-2">⭐</div>
         <div className="text-2xl font-bold text-purple-400">4.9</div>
         <div className="text-sm text-muted-foreground">Rating</div>
