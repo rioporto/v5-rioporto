@@ -18,6 +18,9 @@ export * from './Select';
 export * from './Table';
 export * from './Tooltip';
 export * from './Dropdown';
+export * from './Separator';
+export * from './Label';
+export * from './RadioGroup';
 
 // Layout Components
 export * from '../layout/Header';

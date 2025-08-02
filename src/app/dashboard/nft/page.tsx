@@ -110,7 +110,7 @@ export default function NFTPage() {
           <Card className="border-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-md">
             <div className="p-6 text-center">
               <div className="text-3xl font-bold text-green-400">+24.5%</div>
-              <div className="text-sm text-mute
+              <div className="text-sm text-muted-foreground">24h Change</div>
             </div>
           </Card>
           

@@ -165,4 +165,67 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = 'Select';
 
+// Additional components for compatibility with compound component pattern
+export const SelectTrigger = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { children?: React.ReactNode }
+>(({ className, children, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(selectVariants(), className)}
+    {...props}
+  >
+    {children}
+  </div>
+));
+
+SelectTrigger.displayName = 'SelectTrigger';
+
+export const SelectValue = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement> & { placeholder?: string }
+>(({ placeholder, ...props }, ref) => (
+  <span ref={ref} {...props}>
+    {placeholder}
+  </span>
+));
+
+SelectValue.displayName = 'SelectValue';
+
+export const SelectContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      'absolute z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md',
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+));
+
+SelectContent.displayName = 'SelectContent';
+
+export const SelectItem = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { value: string }
+>(({ className, children, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+));
+
+SelectItem.displayName = 'SelectItem';
+
 export { Select, selectVariants };

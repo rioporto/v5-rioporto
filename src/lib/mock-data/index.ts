@@ -125,6 +125,17 @@ export {
 
 // Usuários (já existente)
 export { mockUsers as MOCK_USERS } from './users';
+export { mockUsers } from './users';
+
+// Aliases para compatibilidade
+export const blogPosts = MOCK_BLOG_POSTS;
+export const courses = MOCK_COURSES;
+export const supportedTokens = MOCK_SUPPORTED_TOKENS;
+export const marketData = MOCK_MARKET_DATA;
+export const indicatorsData = MOCK_MARKET_INDICATORS;
+export const portfolioData = MOCK_PORTFOLIO_SUMMARY;
+export const kycLevelsData = KYC_LEVELS;
+export const influencers = MOCK_INFLUENCERS;
 
 // Constantes úteis para toda a aplicação
 export const MOCK_DATA_VERSION = '1.0.0';
