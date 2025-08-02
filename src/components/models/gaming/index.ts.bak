@@ -1,0 +1,63 @@
+// Gaming/Web3 Model Components
+// HUD-style interface with neon aesthetics and cyber elements
+
+// Main Components
+export { GamingButton } from './GamingButton';
+export { GamingCard } from './GamingCard';
+export { GamingHeader } from './GamingHeader';
+export { GamingPanel } from './GamingPanel';
+export { GamingInput } from './GamingInput';
+export { GamingModal } from './GamingModal';
+export { GamingBadge } from './GamingBadge';
+
+// HUD Components
+export { HealthBar } from './hud/HealthBar';
+export { ManaBar } from './hud/ManaBar';
+export { ExperienceBar } from './hud/ExperienceBar';
+export { RadarChart } from './hud/RadarChart';
+
+// Interface Components
+export { GameMenu } from './interface/GameMenu';
+export { InventoryGrid } from './interface/InventoryGrid';
+
+// Types
+export interface GamingTheme {
+  neonPink: '#FF006E';
+  neonCyan: '#00F5FF';
+  neonGreen: '#00FF00';
+  neonYellow: '#FFFF00';
+  neonRed: '#FF3333';
+  dark: '#0A0A0A';
+  surface: '#1A1A1A';
+  muted: '#262626';
+}
+
+export interface HUDElement {
+  id: string;
+  type: 'health' | 'mana' | 'xp' | 'radar' | 'status';
+  position: { x: number; y: number };
+  size: 'sm' | 'md' | 'lg';
+  visible: boolean;
+}
+
+export interface GameMenuItem {
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+  disabled?: boolean;
+  hotkey?: string;
+  description?: string;
+  onClick: () => void;
+}
+
+export interface InventoryItem {
+  id: string;
+  name: string;
+  icon?: React.ReactNode;
+  rarity?: 'common' | 'rare' | 'epic' | 'legendary' | 'mythic';
+  quantity?: number;
+  description?: string;
+  category?: string;
+  equipped?: boolean;
+  locked?: boolean;
+}

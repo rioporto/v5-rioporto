@@ -1,0 +1,605 @@
+/**
+ * Financial Dashboard Model Styles
+ * Professional trading interface with Bloomberg-style design
+ * Dark mode obrigatório, layout denso, precisão em números
+ */
+
+/* ===== THEME VARIABLES ===== */
+:root.theme-financial {
+  /* Core Colors - Professional Trading Palette */
+  --background: hsl(0 0% 4%);           /* #0A0A0A - Ultra dark */
+  --foreground: hsl(0 0% 98%);          /* #FAFAFA - Pure white text */
+  --primary: hsl(220 100% 50%);         /* #0066FF - Financial Blue */
+  --secondary: hsl(0 0% 10%);           /* #1A1A1A - Dark surface */
+  --surface: hsl(0 0% 10%);             /* #1A1A1A - Card surfaces */
+  --accent: hsl(220 100% 50%);          /* #0066FF - Blue accent */
+  --muted: hsl(0 0% 15%);               /* #262626 - Muted backgrounds */
+  --success: hsl(120 100% 40%);         /* #00D632 - Profit Green */
+  --error: hsl(0 100% 50%);             /* #FF0000 - Loss Red */
+  --warning: hsl(45 100% 50%);          /* #FFCC00 - Warning Amber */
+  --border: hsl(0 0% 20%);              /* #333333 - Subtle borders */
+  
+  /* Typography */
+  --font-mono: 'Roboto Mono', 'SF Mono', Monaco, Inconsolata, Consolas, monospace;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Layout */
+  --radius: 0.125rem;
+  --density: compact;
+  
+  /* Animation Speed - Professional precision */
+  --animation-speed: 150ms;
+}
+
+/* ===== GLOBAL OVERRIDES ===== */
+.theme-financial {
+  /* Force dark mode - no light mode allowed */
+  color-scheme: dark;
+  
+  /* High contrast for professional use */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Disable text selection on UI elements */
+  user-select: none;
+}
+
+.theme-financial input,
+.theme-financial textarea,
+.theme-financial [contenteditable] {
+  user-select: text;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.theme-financial {
+  /* Numbers always use monospace for alignment */
+  .tabular-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+  
+  /* Price displays - always precise */
+  .price-display {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Profit/Loss indicators */
+  .pnl-positive {
+    color: var(--success);
+    font-weight: 600;
+  }
+  
+  .pnl-negative {
+    color: var(--error);
+    font-weight: 600;
+  }
+  
+  /* Small text for metadata */
+  .metadata-text {
+    font-family: var(--font-mono);
+    font-size: 0.625rem; /* 10px */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: hsl(0 0% 60%);
+  }
+}
+
+/* ===== DENSE LAYOUT ===== */
+.theme-financial {
+  /* Compact spacing for maximum data density */
+  .dense-grid {
+    display: grid;
+    gap: 0.25rem;
+  }
+  
+  .dense-flex {
+    display: flex;
+    gap: 0.25rem;
+  }
+  
+  /* Smaller padding for cards and containers */
+  .financial-card {
+    padding: 0.5rem;
+  }
+  
+  .financial-card-dense {
+    padding: 0.25rem;
+  }
+  
+  /* Compact table styling */
+  .financial-table {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  
+  .financial-table th,
+  .financial-table td {
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+  }
+  
+  .financial-table th {
+    background: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: hsl(0 0% 70%);
+  }
+}
+
+/* ===== ORDER BOOK STYLES ===== */
+.theme-financial .order-book {
+  /* Precise alignment for price levels */
+  .order-book-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.125rem 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border-radius: 0;
+    transition: background-color var(--animation-speed);
+  }
+  
+  .order-book-row:hover {
+    background: var(--muted);
+  }
+  
+  /* Bid (buy) orders - green */
+  .order-book-bid {
+    position: relative;
+  }
+  
+  .order-book-bid::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--success);
+    opacity: 0.1;
+    width: var(--width, 0%);
+    transition: width var(--animation-speed);
+  }
+  
+  .order-book-bid .price {
+    color: var(--success);
+    font-weight: 600;
+  }
+  
+  /* Ask (sell) orders - red */
+  .order-book-ask {
+    position: relative;
+  }
+  
+  .order-book-ask::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--error);
+    opacity: 0.1;
+    width: var(--width, 0%);
+    transition: width var(--animation-speed);
+  }
+  
+  .order-book-ask .price {
+    color: var(--error);
+    font-weight: 600;
+  }
+  
+  /* Spread indicator */
+  .order-book-spread {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--muted);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+}
+
+/* ===== TRADING PANEL STYLES ===== */
+.theme-financial .trading-panel {
+  .buy-sell-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  
+  .toggle-buy,
+  .toggle-sell {
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    background: var(--surface);
+    color: var(--foreground);
+    transition: all var(--animation-speed);
+    cursor: pointer;
+  }
+  
+  .toggle-buy:hover {
+    background: hsl(120 100% 40% / 0.1);
+    color: var(--success);
+  }
+  
+  .toggle-sell:hover {
+    background: hsl(0 100% 50% / 0.1);
+    color: var(--error);
+  }
+  
+  .toggle-buy.active {
+    background: var(--success);
+    color: white;
+  }
+  
+  .toggle-sell.active {
+    background: var(--error);
+    color: white;
+  }
+  
+  /* Order summary */
+  .order-summary {
+    background: var(--muted);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+  
+  .order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+  
+  .order-summary-row:last-child {
+    margin-bottom: 0;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--border);
+    font-weight: 600;
+  }
+}
+
+/* ===== MARKET TICKER STYLES ===== */
+.theme-financial .market-ticker {
+  height: 3rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+.market-ticker-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  white-space: nowrap;
+  animation: scroll 60s linear infinite;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  border-right: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.ticker-symbol {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.ticker-price {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.ticker-change-positive {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.ticker-change-negative {
+  color: var(--error);
+  font-weight: 600;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== POSITION MANAGER STYLES ===== */
+.theme-financial .position-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: background-color var(--animation-speed);
+}
+
+.position-row:hover {
+  background: var(--muted);
+}
+
+.position-long {
+  border-left: 3px solid var(--success);
+}
+
+.position-short {
+  border-left: 3px solid var(--error);
+}
+
+.position-pnl-positive {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.position-pnl-negative {
+  color: var(--error);
+  font-weight: 600;
+}
+
+/* ===== BALANCE WIDGET STYLES ===== */
+.theme-financial .balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border-bottom: 1px solid hsl(0 0% 20% / 0.5);
+  transition: background-color var(--animation-speed);
+}
+
+.balance-item:hover {
+  background: var(--muted);
+}
+
+.balance-item:last-child {
+  border-bottom: none;
+}
+
+.balance-asset {
+  font-weight: 600;
+  color: var(--foreground);
+  min-width: 3rem;
+}
+
+.balance-amount {
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: right;
+}
+
+.balance-value {
+  font-size: 0.625rem;
+  color: hsl(0 0% 60%);
+  text-align: right;
+}
+
+/* ===== RISK INDICATOR STYLES ===== */
+.theme-financial .risk-gauge {
+  height: 0.5rem;
+  background: var(--muted);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.risk-gauge-fill {
+  height: 100%;
+  transition: width var(--animation-speed) ease-out;
+  border-radius: var(--radius);
+}
+
+.risk-safe { background: var(--success); }
+.risk-warning { background: var(--warning); }
+.risk-danger { background: var(--error); }
+.risk-critical { 
+  background: var(--error);
+  animation: pulse 1s infinite;
+}
+
+.risk-alert {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border-left: 3px solid;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.risk-alert-warning {
+  background: hsl(45 100% 50% / 0.1);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.risk-alert-danger {
+  background: hsl(0 100% 50% / 0.1);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.risk-alert-critical {
+  background: hsl(0 100% 50% / 0.2);
+  border-color: var(--error);
+  color: var(--error);
+  animation: pulse 2s infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+.theme-financial {
+  /* Price flash animations */
+  .price-flash-up {
+    animation: flashUp var(--animation-speed) ease-out;
+  }
+  
+  .price-flash-down {
+    animation: flashDown var(--animation-speed) ease-out;
+  }
+  
+  @keyframes flashUp {
+    0% { background-color: transparent; }
+    50% { background-color: hsl(120 100% 40% / 0.3); }
+    100% { background-color: transparent; }
+  }
+  
+  @keyframes flashDown {
+    0% { background-color: transparent; }
+    50% { background-color: hsl(0 100% 50% / 0.3); }
+    100% { background-color: transparent; }
+  }
+  
+  /* Loading states */
+  .skeleton-financial {
+    background: linear-gradient(
+      90deg,
+      var(--muted) 25%,
+      hsl(0 0% 20%) 50%,
+      var(--muted) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton var(--animation-speed) ease-in-out infinite;
+  }
+  
+  @keyframes skeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Pulsing indicators */
+  .pulse-success {
+    animation: pulseSuccess 2s infinite;
+  }
+  
+  .pulse-error {
+    animation: pulseError 2s infinite;
+  }
+  
+  @keyframes pulseSuccess {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  @keyframes pulseError {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .theme-financial {
+    /* More compact on mobile */
+    .financial-card {
+      padding: 0.375rem;
+    }
+    
+    .financial-table {
+      font-size: 0.6875rem;
+    }
+    
+    .order-book-row {
+      font-size: 0.6875rem;
+      padding: 0.1875rem;
+    }
+    
+    .ticker-item {
+      font-size: 0.6875rem;
+      gap: 0.5rem;
+      padding: 0 0.75rem;
+    }
+    
+    /* Hide less important columns on mobile */
+    .financial-table .hide-mobile {
+      display: none;
+    }
+  }
+}
+
+/* ===== FOCUS AND ACCESSIBILITY ===== */
+.theme-financial {
+  /* High contrast focus indicators */
+  button:focus,
+  input:focus,
+  select:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+  
+  /* Ensure sufficient contrast */
+  .financial-table th {
+    color: hsl(0 0% 85%);
+  }
+  
+  /* Screen reader support */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .theme-financial {
+    /* Ensure financial data is readable when printed */
+    color: black !important;
+    background: white !important;
+    
+    .financial-table {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    
+    .financial-table th,
+    .financial-table td {
+      border: 1px solid black;
+      padding: 0.25rem;
+    }
+    
+    .pnl-positive::after {
+      content: ' ↑';
+    }
+    
+    .pnl-negative::after {
+      content: ' ↓';
+    }
+  }
+}

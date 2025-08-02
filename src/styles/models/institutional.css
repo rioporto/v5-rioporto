@@ -1,0 +1,570 @@
+/**
+ * Institutional Model Styles
+ * Professional, conservative, and corporate design system
+ */
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+.theme-institutional {
+  /* Base font stacks */
+  --font-primary: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-display: Merriweather, Georgia, "Times New Roman", serif;
+  --font-mono: Consolas, "Courier New", monospace;
+
+  /* Typography scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+}
+
+/* Corporate typography */
+.theme-institutional h1,
+.theme-institutional h2,
+.theme-institutional h3,
+.theme-institutional h4,
+.theme-institutional h5,
+.theme-institutional h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: hsl(var(--foreground));
+}
+
+.theme-institutional h1 {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  margin-bottom: 1.5rem;
+}
+
+.theme-institutional h2 {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  margin-bottom: 1.25rem;
+}
+
+.theme-institutional h3 {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-normal);
+  margin-bottom: 1rem;
+}
+
+.theme-institutional h4 {
+  font-size: var(--text-xl);
+  line-height: var(--leading-normal);
+  margin-bottom: 0.75rem;
+}
+
+.theme-institutional p {
+  font-family: var(--font-primary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 1rem;
+}
+
+.theme-institutional .text-corporate {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  color: hsl(var(--foreground));
+}
+
+.theme-institutional .text-formal {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ========================================
+   LAYOUT & STRUCTURE
+   ======================================== */
+
+.theme-institutional .institutional-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.theme-institutional .institutional-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.theme-institutional .institutional-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.theme-institutional .institutional-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.theme-institutional .institutional-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Traditional layout patterns */
+.theme-institutional .institutional-sidebar {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+.theme-institutional .institutional-header {
+  border-bottom: 2px solid hsl(var(--border));
+  background: hsl(var(--card));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-institutional .institutional-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.theme-institutional .institutional-section:last-child {
+  border-bottom: none;
+}
+
+/* ========================================
+   CORPORATE COMPONENTS
+   ======================================== */
+
+/* Formal buttons */
+.theme-institutional .btn-corporate {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border-radius: 0.25rem;
+  border: 2px solid;
+  transition: all 300ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.theme-institutional .btn-primary {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: white;
+}
+
+.theme-institutional .btn-primary:hover {
+  background: hsl(var(--primary) / 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-institutional .btn-secondary {
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--secondary));
+  color: white;
+}
+
+.theme-institutional .btn-outline {
+  background: transparent;
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+.theme-institutional .btn-outline:hover {
+  background: hsl(var(--primary));
+  color: white;
+}
+
+/* Corporate cards */
+.theme-institutional .card-corporate {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.25rem;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 300ms ease;
+}
+
+.theme-institutional .card-corporate:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.theme-institutional .card-elevated {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.theme-institutional .card-elevated:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Professional tables */
+.theme-institutional .table-corporate {
+  width: 100%;
+  border-collapse: collapse;
+  background: hsl(var(--card));
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.theme-institutional .table-corporate th {
+  background: hsl(var(--muted) / 0.5);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--text-sm);
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid hsl(var(--border));
+}
+
+.theme-institutional .table-corporate td {
+  padding: 1rem;
+  border-bottom: 1px solid hsl(var(--border));
+  font-family: var(--font-primary);
+}
+
+.theme-institutional .table-corporate tr:hover {
+  background: hsl(var(--muted) / 0.25);
+}
+
+.theme-institutional .table-corporate tr:nth-child(even) {
+  background: hsl(var(--muted) / 0.1);
+}
+
+/* ========================================
+   FORMS
+   ======================================== */
+
+.theme-institutional .form-corporate {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.25rem;
+  padding: 2rem;
+}
+
+.theme-institutional .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.theme-institutional .form-label {
+  display: block;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+  letter-spacing: var(--tracking-wide);
+}
+
+.theme-institutional .form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid hsl(var(--border));
+  border-radius: 0.25rem;
+  background: hsl(var(--input));
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  transition: all 300ms ease;
+}
+
+.theme-institutional .form-input:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.theme-institutional .form-input:invalid {
+  border-color: hsl(var(--destructive));
+}
+
+.theme-institutional .form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.theme-institutional .nav-corporate {
+  background: hsl(var(--card));
+  border-bottom: 1px solid hsl(var(--border));
+  font-family: var(--font-primary);
+}
+
+.theme-institutional .nav-item {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: all 300ms ease;
+  border-bottom: 2px solid transparent;
+}
+
+.theme-institutional .nav-item:hover {
+  color: hsl(var(--primary));
+  background: hsl(var(--muted) / 0.3);
+}
+
+.theme-institutional .nav-item.active {
+  color: hsl(var(--primary));
+  border-bottom-color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.05);
+}
+
+/* Breadcrumbs */
+.theme-institutional .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 2rem;
+}
+
+.theme-institutional .breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-institutional .breadcrumb-separator {
+  color: hsl(var(--muted-foreground));
+}
+
+.theme-institutional .breadcrumb-link {
+  color: hsl(var(--muted-foreground));
+  text-decoration: none;
+  transition: color 300ms ease;
+}
+
+.theme-institutional .breadcrumb-link:hover {
+  color: hsl(var(--primary));
+}
+
+.theme-institutional .breadcrumb-current {
+  color: hsl(var(--foreground));
+  font-weight: 500;
+}
+
+/* ========================================
+   TRUST ELEMENTS
+   ======================================== */
+
+.theme-institutional .trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: hsl(var(--success) / 0.1);
+  border: 1px solid hsl(var(--success) / 0.2);
+  border-radius: 0.25rem;
+  color: hsl(var(--success));
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.theme-institutional .security-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.25rem;
+}
+
+.theme-institutional .compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* ========================================
+   ANIMATIONS (MINIMAL)
+   ======================================== */
+
+.theme-institutional .fade-in {
+  animation: institutional-fade-in 300ms ease-out;
+}
+
+.theme-institutional .slide-up {
+  animation: institutional-slide-up 300ms ease-out;
+}
+
+@keyframes institutional-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes institutional-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .theme-institutional .institutional-container {
+    padding: 0 1rem;
+  }
+  
+  .theme-institutional .institutional-sidebar {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .theme-institutional .btn-corporate {
+    padding: 0.625rem 1.5rem;
+    font-size: var(--text-sm);
+  }
+  
+  .theme-institutional .card-corporate {
+    padding: 1.5rem;
+  }
+  
+  .theme-institutional .form-corporate {
+    padding: 1.5rem;
+  }
+  
+  .theme-institutional h1 {
+    font-size: var(--text-3xl);
+  }
+  
+  .theme-institutional h2 {
+    font-size: var(--text-2xl);
+  }
+  
+  .theme-institutional h3 {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-institutional .institutional-container {
+    padding: 0 0.75rem;
+  }
+  
+  .theme-institutional .card-corporate {
+    padding: 1rem;
+  }
+  
+  .theme-institutional .form-corporate {
+    padding: 1rem;
+  }
+  
+  .theme-institutional .btn-corporate {
+    padding: 0.5rem 1rem;
+    font-size: var(--text-xs);
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .theme-institutional {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .theme-institutional .card-corporate,
+  .theme-institutional .form-corporate {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+  
+  .theme-institutional .btn-corporate {
+    border: 1px solid #333;
+    color: #333 !important;
+    background: transparent !important;
+  }
+  
+  .theme-institutional .nav-corporate,
+  .theme-institutional .trust-badge {
+    display: none;
+  }
+  
+  .theme-institutional h1,
+  .theme-institutional h2,
+  .theme-institutional h3 {
+    page-break-after: avoid;
+  }
+  
+  .theme-institutional .card-corporate {
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+.theme-institutional .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.theme-institutional .focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.theme-institutional .high-contrast {
+  filter: contrast(150%);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .theme-institutional * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
