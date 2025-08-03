@@ -23,7 +23,7 @@ const cardVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'primary',
+      variant: 'default',
       padding: 'md',
     },
   }

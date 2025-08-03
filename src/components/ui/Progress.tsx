@@ -24,7 +24,7 @@ const progressVariants = cva(
     },
     defaultVariants: {
       size: 'md',
-      variant: 'primary',
+      variant: 'default',
     },
   }
 );
@@ -41,7 +41,7 @@ const progressBarVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'primary',
+      variant: 'default',
     },
   }
 );

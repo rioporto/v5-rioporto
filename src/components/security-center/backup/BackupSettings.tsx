@@ -320,7 +320,7 @@ export function BackupSettings({
                 <p className="text-sm text-muted-foreground">Encrypted backup in RioPorto Cloud</p>
               </div>
             </div>
-            <Switch defaultChecked />
+            <Switch checked={true} />
           </div>
 
           <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
@@ -331,7 +331,7 @@ export function BackupSettings({
                 <p className="text-sm text-muted-foreground">Send encrypted file to your email</p>
               </div>
             </div>
-            <Switch defaultChecked />
+            <Switch checked={true} />
           </div>
 
           <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
@@ -360,7 +360,7 @@ export function BackupSettings({
                   <p className="text-sm text-muted-foreground">{category.size}</p>
                 </div>
               </div>
-              <Switch defaultChecked />
+              <Switch checked={true} />
             </div>
           ))}
         </div>

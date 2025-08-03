@@ -17,8 +17,8 @@ interface TooltipProps {
   asChild?: boolean;
 }
 
-const variantClasses = {
-  default: 'bg-gray-900 text-white border border-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:border-gray-200',
+const variantClasses: Record<string, string> = {
+  primary: 'bg-gray-900 text-white border border-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:border-gray-200',
   minimal: 'bg-white text-gray-900 border border-gray-200 shadow-sm dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700',
   contrast: 'bg-black text-white border-0 dark:bg-white dark:text-black',
   ghost: 'bg-gray-50 text-gray-700 border border-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-800'
@@ -35,7 +35,7 @@ export function DiscreteTooltip({
   content,
   side = 'top',
   align = 'center',
-  variant = 'default',
+  variant = 'primary',
   size = 'sm',
   delay = 500,
   offset = 8,
@@ -189,7 +189,7 @@ export function DiscreteTooltip({
           <div
             className={cn(
               'absolute w-2 h-2 rotate-45',
-              variant === 'default' && 'bg-gray-900 border-gray-800 dark:bg-gray-100 dark:border-gray-200',
+              variant === 'primary' && 'bg-gray-900 border-gray-800 dark:bg-gray-100 dark:border-gray-200',
               variant === 'minimal' && 'bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700',
               variant === 'contrast' && 'bg-black dark:bg-white',
               variant === 'ghost' && 'bg-gray-50 border-gray-100 dark:bg-gray-900 dark:border-gray-800',

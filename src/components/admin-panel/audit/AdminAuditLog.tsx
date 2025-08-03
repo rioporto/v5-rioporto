@@ -31,7 +31,8 @@ import {
   Trash2,
   Edit,
   Plus,
-  Minus
+  Minus,
+  X
 } from 'lucide-react';
 
 interface AdminAction {
@@ -231,7 +232,7 @@ export function AdminAuditLog({
   };
 
   const getRoleBadge = (role: string) => {
-    const variants = {
+    const variants: Record<string, string> = {
       super_admin: 'bg-purple-500/10 text-purple-500 border-purple-500/20',
       admin: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
       moderator: 'bg-green-500/10 text-green-500 border-green-500/20'
@@ -460,7 +461,7 @@ export function AdminAuditLog({
                   <td className="p-4">{getImpactBadge(action.impact)}</td>
                   <td className="p-4">
                     <Badge 
-                      variant={action.status === 'success' ? 'primary' : 'error'}
+                      variant={action.status === 'success' ? 'success' : 'error'}
                       className="text-xs"
                     >
                       {action.status}

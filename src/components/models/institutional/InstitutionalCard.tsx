@@ -18,7 +18,7 @@ const InstitutionalCard = React.forwardRef<HTMLDivElement, InstitutionalCardProp
       transition-all duration-300
     `;
 
-    const variants = {
+    const variants: Record<string, string> = {
       default: 'shadow-sm hover:shadow-md',
       elevated: 'shadow-md hover:shadow-lg border-0',
       outlined: 'border-2 shadow-none hover:shadow-sm',

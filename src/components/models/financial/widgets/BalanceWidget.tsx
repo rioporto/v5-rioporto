@@ -39,7 +39,7 @@ export function BalanceWidget({
   balances,
   totalBalance,
   showZeroBalances = false,
-  variant = 'default',
+  variant = 'primary',
   onDeposit,
   onWithdraw,
   onTrade,

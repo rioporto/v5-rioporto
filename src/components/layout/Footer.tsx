@@ -13,7 +13,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLElement> {
  */
 const Footer = React.forwardRef<HTMLElement, FooterProps>(
   ({ className, variant = 'default', ...props }, ref) => {
-    const variants = {
+    const variants: Record<string, string> = {
       default: 'bg-background border-t border-border',
       minimal: 'bg-transparent',
       dark: 'bg-muted',
@@ -24,7 +24,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
         ref={ref}
         className={cn(
           'w-full py-6 px-4 md:px-6 lg:px-8',
-          variants[variant],
+          variants[variant || 'default'],
           className
         )}
         {...props}

@@ -20,7 +20,7 @@ const InstitutionalButton = React.forwardRef<HTMLButtonElement, InstitutionalBut
       font-semibold tracking-wide uppercase letter-spacing-wide
     `;
 
-    const variants = {
+    const variants: Record<string, string> = {
       primary: 'bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg',
       secondary: 'bg-secondary text-white hover:bg-secondary/90 shadow-md hover:shadow-lg',
       outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
@@ -29,7 +29,7 @@ const InstitutionalButton = React.forwardRef<HTMLButtonElement, InstitutionalBut
       error: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md'
     };
 
-    const sizes = {
+    const sizes: Record<string, string> = {
       sm: 'h-9 px-4 text-xs',
       md: 'h-11 px-6 text-sm',
       lg: 'h-13 px-8 text-base',

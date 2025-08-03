@@ -74,7 +74,7 @@ const generateUserSegmentData = () => {
 const generateActivityHeatmap = () => {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const hours = Array.from({ length: 24 }, (_, i) => i);
-  const data = [];
+  const data: Array<{ day: string; hour: number; value: number; dayIndex: number }> = [];
   
   days.forEach((day, dayIndex) => {
     hours.forEach(hour => {
@@ -189,7 +189,7 @@ export function UserAnalytics({ className }: UserAnalyticsProps) {
         <Card className="p-4">
           <div className="flex items-center justify-between mb-2">
             <UserMinus className="w-4 h-4 text-muted-foreground" />
-            <Badge variant={kpis.churnRateChange < 0 ? 'default' : 'destructive'} className="text-xs">
+            <Badge variant={kpis.churnRateChange < 0 ? 'default' : 'error'} className="text-xs">
               {kpis.churnRateChange > 0 ? '+' : ''}{kpis.churnRateChange}%
             </Badge>
           </div>

@@ -44,7 +44,7 @@ export function RiskIndicator({
     maxDrawdown: 0.15,
     maxConsecutiveLosses: 5,
   },
-  variant = 'default',
+  variant = 'primary',
   showAlerts = true,
 }: RiskIndicatorProps) {
   const riskAnalysis = useMemo(() => {

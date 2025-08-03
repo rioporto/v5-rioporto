@@ -23,7 +23,7 @@ const inputVariants = cva(
     },
     defaultVariants: {
       size: 'md',
-      variant: 'primary',
+      variant: 'default',
     },
   }
 );

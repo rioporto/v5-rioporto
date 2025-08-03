@@ -82,7 +82,7 @@ export const GamingButton: React.FC<GamingButtonProps> = ({
     onClick?.(e);
   };
 
-  const variantStyles = {
+  const variantStyles: Record<string, string> = {
     primary: 'border-gaming-neon-pink text-gaming-neon-pink hover:bg-gaming-neon-pink/10 hover:shadow-[0_0_30px_rgba(255,0,110,0.5)]',
     secondary: 'border-gaming-neon-cyan text-gaming-neon-cyan hover:bg-gaming-neon-cyan/10 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]',
     success: 'border-gaming-neon-green text-gaming-neon-green hover:bg-gaming-neon-green/10 hover:shadow-[0_0_30px_rgba(0,255,0,0.5)]',
@@ -90,7 +90,7 @@ export const GamingButton: React.FC<GamingButtonProps> = ({
     error: 'border-gaming-neon-red text-gaming-neon-red hover:bg-gaming-neon-red/10 hover:shadow-[0_0_30px_rgba(255,51,51,0.5)]',
   };
 
-  const sizeStyles = {
+  const sizeStyles: Record<string, string> = {
     sm: 'px-3 py-1.5 text-sm',
     md: 'px-6 py-3 text-base',
     lg: 'px-8 py-4 text-lg',

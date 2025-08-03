@@ -37,7 +37,7 @@ export function ProfitLossCard({
   showPositions = false,
   showDayChange = true,
   loading = false,
-  variant = 'default',
+  variant = 'primary',
 }: ProfitLossCardProps) {
   const metrics = useMemo(() => {
     const isProfit = data.profit >= 0;

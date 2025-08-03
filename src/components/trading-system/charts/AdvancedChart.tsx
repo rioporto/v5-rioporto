@@ -155,7 +155,7 @@ export function AdvancedChart({
   ];
 
   const handleIntervalChange = (newInterval: string) => {
-    setSelectedInterval(newInterval);
+    setSelectedInterval(newInterval as typeof interval);
     onIntervalChange?.(newInterval);
   };
 

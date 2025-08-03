@@ -246,7 +246,7 @@ export default function OrderFlow({
                   {stats.imbalance.toFixed(1)}%
                 </span>
               </span>
-              <Badge variant='default'}>
+              <Badge variant='default'>
                 {stats.imbalance > 20 ? 'Buy Heavy' : stats.imbalance < -20 ? 'Sell Heavy' : 'Balanced'}
               </Badge>
             </div>

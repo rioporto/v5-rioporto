@@ -162,7 +162,7 @@ export function KYCQueue({
   };
 
   const getDocumentIcon = (type: string) => {
-    const icons = {
+    const icons: Record<string, React.ReactNode> = {
       id: <CreditCard className="w-4 h-4" />,
       address: <Home className="w-4 h-4" />,
       selfie: <Camera className="w-4 h-4" />,
@@ -172,7 +172,7 @@ export function KYCQueue({
   };
 
   const getDocumentStatusIcon = (status: string) => {
-    const icons = {
+    const icons: Record<string, React.ReactNode> = {
       pending: <Clock className="w-4 h-4 text-yellow-500" />,
       reviewing: <Eye className="w-4 h-4 text-blue-500" />,
       approved: <CheckCircle className="w-4 h-4 text-green-500" />,

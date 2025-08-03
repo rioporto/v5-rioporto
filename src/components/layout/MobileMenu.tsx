@@ -89,7 +89,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           <Navigation 
             items={items} 
             orientation="vertical" 
-            variant="default"
+            variant="primary"
           />
           {children}
         </div>

@@ -33,7 +33,7 @@ export function PriceChange({
   symbol = '',
   currency = 'BRL',
   size = 'md',
-  variant = 'default',
+  variant = 'primary',
   showArrow = true,
   showPercentage = true,
   showAbsolute = true,

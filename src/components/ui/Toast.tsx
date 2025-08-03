@@ -20,7 +20,7 @@ const toastVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'primary',
+      variant: 'default',
     },
   }
 );
@@ -36,7 +36,7 @@ const toastIconVariants = cva('flex-shrink-0', {
     },
   },
   defaultVariants: {
-    variant: 'primary',
+    variant: 'default',
   },
 });
 

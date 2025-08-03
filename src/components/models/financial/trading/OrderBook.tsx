@@ -46,7 +46,7 @@ export function OrderBook({
   showSpread = true,
   onPriceClick,
   loading = false,
-  variant = 'default',
+  variant = 'primary',
 }: OrderBookProps) {
   const processedData = useMemo(() => {
     // Limit levels and calculate cumulative totals

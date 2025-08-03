@@ -16,7 +16,7 @@ const skeletonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'primary',
+      variant: 'default',
     },
   }
 );

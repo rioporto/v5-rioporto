@@ -207,7 +207,7 @@ export function MinimalistExample() {
           </div>
 
           {/* Market Table */}
-          <MinimalistCard variant="default">
+          <MinimalistCard variant="primary">
             <MinimalistCardHeader>
               <MinimalistCardTitle>Market Overview</MinimalistCardTitle>
               <MinimalistCardDescription>

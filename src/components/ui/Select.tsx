@@ -20,7 +20,7 @@ const selectVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'primary',
+      variant: 'default',
       size: 'md',
     },
   }

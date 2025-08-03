@@ -131,7 +131,7 @@ export function OrderConfirmation({
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground">Order Type</span>
             <div className="flex items-center space-x-2">
-              <Badge variant='default' : 'secondary'}>
+              <Badge variant={order.side === 'buy' ? 'success' : 'error'}>
                 {order.side.toUpperCase()}
               </Badge>
               <span className="font-medium">{getOrderTypeDisplay()}</span>

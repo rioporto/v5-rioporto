@@ -37,13 +37,13 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
     children,
     ...props 
   }, ref) => {
-    const variants = {
+    const variants: Record<string, string> = {
       default: 'bg-background border-b border-border',
       transparent: 'bg-transparent',
       blur: 'bg-background/80 backdrop-blur-md border-b border-border/50',
     };
 
-    const heights = {
+    const heights: Record<string, string> = {
       sm: 'h-12',
       md: 'h-16',
       lg: 'h-20',
@@ -54,8 +54,8 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
         ref={ref}
         className={cn(
           'w-full z-40 flex items-center justify-between px-4 md:px-6 lg:px-8',
-          heights[height],
-          variants[variant],
+          heights[height || 'md'],
+          variants[variant || 'default'],
           sticky && 'sticky top-0',
           className
         )}

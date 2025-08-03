@@ -37,7 +37,7 @@ const RSIChart = ({ data }: { data: RSIData[] }) => {
           <div className="flex justify-between gap-4">
             <span className="text-gray-600 dark:text-gray-400">Signal:</span>
             <Badge
-              variant={rsiData.overbought ? 'error' : rsiData.oversold ? 'success' : 'primary'}
+              variant={rsiData.overbought ? 'error' : rsiData.oversold ? 'success' : 'secondary'}
             >
               {rsiData.overbought ? 'Overbought' : rsiData.oversold ? 'Oversold' : 'Neutral'}
             </Badge>
@@ -296,7 +296,7 @@ const IndicatorsSummary = ({ indicators }: { indicators: TechnicalIndicator[] })
         <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">Overall Signal</div>
         <Badge
           variant={summary.overallSignal === 'BUY' ? 'success' : 
-                  summary.overallSignal === 'SELL' ? 'error' : 'primary'}
+                  summary.overallSignal === 'SELL' ? 'error' : 'secondary'}
           size="lg"
         >
           {summary.overallSignal}
@@ -334,7 +334,7 @@ const IndicatorsSummary = ({ indicators }: { indicators: TechnicalIndicator[] })
               <div className="text-sm font-mono">{indicator.value.toFixed(2)}</div>
               <Badge
                 variant={indicator.signal === 'BUY' ? 'success' : 
-                        indicator.signal === 'SELL' ? 'error' : 'primary'}
+                        indicator.signal === 'SELL' ? 'error' : 'secondary'}
                 size="sm"
               >
                 {indicator.signal}

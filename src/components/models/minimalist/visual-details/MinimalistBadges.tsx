@@ -21,8 +21,8 @@ const sizeClasses = {
   lg: 'text-sm px-3 py-2 gap-2'
 };
 
-const colorVariants = {
-  default: {
+const colorVariants: Record<string, Record<string, string>> = {
+  primary: {
     gray: 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700',
     blue: 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800',
     green: 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800',
@@ -87,7 +87,7 @@ const dotColors = {
 
 export function MinimalistBadge({
   children,
-  variant = 'default',
+  variant = 'primary',
   color = 'gray',
   size = 'sm',
   className,
@@ -104,7 +104,7 @@ export function MinimalistBadge({
   );
 
   const variantClasses = variant === 'pill' 
-    ? colorVariants.default[color]
+    ? colorVariants.primary[color]
     : colorVariants[variant][color];
 
   const dotSize = {
@@ -141,7 +141,7 @@ export function MinimalistBadge({
 export function StatusBadge({
   status,
   size = 'sm',
-  variant = 'default',
+  variant = 'primary',
   className
 }: {
   status: 'success' | 'warning' | 'error' | 'info' | 'pending' | 'active' | 'inactive';
@@ -177,7 +177,7 @@ export function StatusBadge({
 export function NumberBadge({
   count,
   max = 99,
-  variant = 'default',
+  variant = 'primary',
   color = 'red',
   size = 'sm',
   showZero = false,
@@ -211,7 +211,7 @@ export function NumberBadge({
 export function IconBadge({
   icon,
   children,
-  variant = 'default',
+  variant = 'primary',
   color = 'gray',
   size = 'sm',
   iconPosition = 'left',
@@ -278,7 +278,7 @@ export function CategoryBadge({
 export function BadgeGroup({
   badges,
   maxVisible = 3,
-  variant = 'default',
+  variant = 'primary',
   size = 'sm',
   className,
   onShowAll

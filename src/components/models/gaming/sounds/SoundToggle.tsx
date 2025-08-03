@@ -56,7 +56,7 @@ export const SoundToggle: React.FC<SoundToggleProps> = ({
     lg: 'w-12 h-12 text-base'
   };
 
-  const variantStyles = {
+  const variantStyles: Record<string, { enabled: string; disabled: string; transition: string }> = {
     default: {
       enabled: 'bg-green-500 hover:bg-green-600 text-white border-green-400',
       disabled: 'bg-red-500 hover:bg-red-600 text-white border-red-400',

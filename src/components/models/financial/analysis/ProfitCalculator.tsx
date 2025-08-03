@@ -615,7 +615,7 @@ export function ProfitCalculator() {
                     <div className="p-4">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-muted-foreground">R/R Ratio</span>
-                        <Badge variant='default' : 'secondary'}>
+                        <Badge variant={advancedCalculations.riskRewardRatio >= 2 ? 'success' : 'warning'}>
                           {advancedCalculations.riskRewardRatio >= 2 ? 'Good' : 'Risk'}
                         </Badge>
                       </div>

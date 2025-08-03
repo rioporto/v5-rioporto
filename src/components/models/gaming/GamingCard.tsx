@@ -65,7 +65,7 @@ export const GamingCard: React.FC<GamingCardProps> = ({
     },
   };
 
-  const variantStyles = {
+  const variantStyles: Record<string, string> = {
     default: 'bg-gaming-surface border-2 rounded-lg p-6',
     hud: 'bg-gaming-surface/80 backdrop-blur-sm border-2 rounded-lg p-4 relative',
     cyber: 'bg-gradient-to-br from-gaming-surface to-gaming-dark border-2 rounded-lg p-6 relative overflow-hidden',

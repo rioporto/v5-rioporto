@@ -30,7 +30,8 @@ import {
   Info,
   LogIn,
   LogOut,
-  RefreshCw
+  RefreshCw,
+  X
 } from 'lucide-react';
 
 interface AuditEvent {

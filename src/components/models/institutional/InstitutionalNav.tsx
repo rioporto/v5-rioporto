@@ -68,7 +68,7 @@ const InstitutionalNav: React.FC<InstitutionalNavProps> = ({
     vertical: 'flex flex-col space-y-1'
   };
 
-  const variants = {
+  const variants: Record<string, string> = {
     primary: 'bg-card border-b border-border shadow-sm',
     secondary: 'bg-muted/50',
     minimal: 'bg-transparent'
@@ -292,13 +292,13 @@ export const InstitutionalTabs: React.FC<InstitutionalTabsProps> = ({
 
   const activeItem = items.find(item => item.key === currentActiveKey);
 
-  const tabVariants = {
+  const tabVariants: Record<string, string> = {
     default: 'border-b border-border',
     pills: 'bg-muted rounded-lg p-1',
     underline: 'border-b-2 border-transparent'
   };
 
-  const tabItemVariants = {
+  const tabItemVariants: Record<string, { base: string; active: string; inactive: string }> = {
     default: {
       base: 'px-4 py-2 font-medium transition-colors relative',
       active: 'text-primary border-b-2 border-primary',

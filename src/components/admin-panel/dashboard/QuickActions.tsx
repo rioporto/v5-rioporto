@@ -244,7 +244,7 @@ export function QuickActions({
     : actions.filter(action => action.category === selectedCategory);
 
   const getCategoryColor = (category: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       user: 'bg-blue-500/10 text-blue-500',
       system: 'bg-purple-500/10 text-purple-500',
       finance: 'bg-green-500/10 text-green-500',
@@ -255,7 +255,7 @@ export function QuickActions({
   };
 
   const getImportanceBadge = (importance: string) => {
-    const variants = {
+    const variants: Record<string, string> = {
       high: 'bg-red-500/10 text-red-500 border-red-500/20',
       medium: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
       low: 'bg-gray-500/10 text-gray-500 border-gray-500/20'
@@ -373,19 +373,19 @@ export function QuickActions({
           Emergency Actions
         </h4>
         <div className="flex flex-wrap gap-2">
-          <Button variant="error" size="sm">
+          <Button variant="danger" size="sm">
             <Ban className="w-4 h-4 mr-2" />
             Emergency Stop Trading
           </Button>
-          <Button variant="error" size="sm">
+          <Button variant="danger" size="sm">
             <Shield className="w-4 h-4 mr-2" />
             Enable Maintenance Mode
           </Button>
-          <Button variant="error" size="sm">
+          <Button variant="danger" size="sm">
             <Database className="w-4 h-4 mr-2" />
             Emergency Backup
           </Button>
-          <Button variant="error" size="sm">
+          <Button variant="danger" size="sm">
             <AlertTriangle className="w-4 h-4 mr-2" />
             Alert All Users
           </Button>

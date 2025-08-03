@@ -26,7 +26,7 @@ interface ComplianceBadgeProps {
 
 const ComplianceBadge: React.FC<ComplianceBadgeProps> = ({
   item,
-  variant = 'default',
+  variant = 'primary',
   className,
   showDetails = true
 }) => {
@@ -307,7 +307,7 @@ export const ComplianceDashboard: React.FC<ComplianceDashboardProps> = ({
           <ComplianceBadge
             key={item.id}
             item={item}
-            variant="default"
+            variant="primary"
           />
         ))}
       </div>

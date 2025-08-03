@@ -149,7 +149,7 @@ export function SystemMetrics({ className }: SystemMetricsProps) {
   };
 
   const getStatusBadge = (status: string) => {
-    const variants = {
+    const variants: Record<string, string> = {
       healthy: 'bg-green-500/10 text-green-500 border-green-500/20',
       warning: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
       critical: 'bg-red-500/10 text-red-500 border-red-500/20',
@@ -164,7 +164,7 @@ export function SystemMetrics({ className }: SystemMetricsProps) {
   };
 
   const getMetricIcon = (name: string) => {
-    const icons = {
+    const icons: Record<string, React.ReactNode> = {
       'CPU Usage': <Cpu className="w-5 h-5" />,
       'Memory Usage': <MemoryStick className="w-5 h-5" />,
       'Disk Usage': <HardDrive className="w-5 h-5" />,

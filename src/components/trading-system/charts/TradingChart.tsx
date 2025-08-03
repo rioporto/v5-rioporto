@@ -332,7 +332,7 @@ export function TradingChart({
           {availableIndicators.slice(0, 4).map((indicator) => (
             <Badge
               key={indicator}
-              variant={selectedIndicators.includes(indicator) ? 'primary' : 'outline'}
+              variant={selectedIndicators.includes(indicator) ? 'success' : 'outline'}
               className="cursor-pointer text-xs"
               onClick={() => {
                 if (selectedIndicators.includes(indicator)) {

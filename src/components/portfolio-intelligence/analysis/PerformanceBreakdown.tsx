@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Card } from '@/components/ui/Card';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -193,7 +193,20 @@ export function PerformanceBreakdown({
         </div>
       </div>
 
-      <Tabs defaultValue="7d" tabs={tabContent} />
+      <Tabs defaultValue="7d">
+        <TabsList>
+          {data.map((period) => (
+            <TabsTrigger key={period.period} value={period.period}>
+              {period.period}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {tabContent.map((tab) => (
+          <TabsContent key={tab.value} value={tab.value}>
+            {tab.content}
+          </TabsContent>
+        ))}
+      </Tabs>
     </Card>
   );
 }

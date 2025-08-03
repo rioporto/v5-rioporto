@@ -81,7 +81,7 @@ export default function TransactionsPage() {
     }
   };
 
-  const getStatusVariant = (status: string): 'secondary' | 'success' | 'warning' | 'error' => {
+  const getStatusVariant = (status: string): 'secondary' | 'success' | 'warning' | 'error' | 'default' => {
     switch (status) {
       case 'COMPLETED':
         return 'success';

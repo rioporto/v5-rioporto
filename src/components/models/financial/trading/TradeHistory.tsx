@@ -206,7 +206,7 @@ export function TradeHistory() {
 
                 <Badge 
                   variant={
-                    trade.status === 'completed' ? 'primary' : 
+                    trade.status === 'completed' ? 'success' : 
                     trade.status === 'cancelled' ? 'secondary' : 
                     'outline'
                   }

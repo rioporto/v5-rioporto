@@ -88,13 +88,13 @@ export const GamingInput: React.FC<GamingInputProps> = ({
     },
   };
 
-  const sizeStyles = {
+  const sizeStyles: Record<string, string> = {
     sm: 'px-3 py-2 text-sm',
     md: 'px-4 py-3 text-base',
     lg: 'px-6 py-4 text-lg',
   };
 
-  const variantStyles = {
+  const variantStyles: Record<string, string> = {
     default: 'bg-gaming-surface border-2 rounded-lg',
     terminal: 'bg-gaming-dark border-2 rounded-none font-gaming-mono',
     hud: 'bg-gaming-surface/80 backdrop-blur-sm border-2 rounded-lg',

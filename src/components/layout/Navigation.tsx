@@ -34,7 +34,7 @@ const Navigation = React.forwardRef<HTMLElement, NavigationProps>(
     className, 
     items,
     orientation = 'horizontal',
-    variant = 'default',
+    variant = 'primary',
     ...props 
   }, ref) => {
     const orientationClasses = {
@@ -65,7 +65,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ item, variant }) => {
   const baseClasses = 'flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors rounded-md';
   
   const variantClasses = {
-    default: item.active 
+    primary: item.active 
       ? 'bg-accent text-accent-foreground' 
       : 'text-muted-foreground hover:text-foreground hover:bg-accent/50',
     pills: item.active 

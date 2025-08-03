@@ -115,7 +115,7 @@ export function TwoFactorSetup({
               Change Authentication Method
             </Button>
             <Button 
-              variant="error" 
+              variant="danger" 
               onClick={onDisable}
             >
               Disable 2FA

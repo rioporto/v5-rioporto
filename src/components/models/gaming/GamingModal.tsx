@@ -73,7 +73,7 @@ export const GamingModal: React.FC<GamingModalProps> = ({
     xl: 'max-w-4xl',
   };
 
-  const variantStyles = {
+  const variantStyles: Record<string, { border: string; glow: string; bg: string }> = {
     default: {
       border: 'border-gaming-neon-cyan',
       glow: 'shadow-[0_0_50px_rgba(0,245,255,0.4)]',

@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { 
   TrendingUp,
   TrendingDown,
@@ -281,7 +281,20 @@ export function ScenarioAnalysis({
         </Badge>
       </div>
 
-      <Tabs defaultValue="neutral" tabs={tabs} />
+      <Tabs defaultValue="neutral">
+        <TabsList>
+          {tabs.map((tab) => (
+            <TabsTrigger key={tab.value} value={tab.value}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {tabs.map((tab) => (
+          <TabsContent key={tab.value} value={tab.value}>
+            {tab.content}
+          </TabsContent>
+        ))}
+      </Tabs>
 
       <div className="mt-6 p-3 bg-muted/50 rounded-lg">
         <p className="text-xs text-muted-foreground">

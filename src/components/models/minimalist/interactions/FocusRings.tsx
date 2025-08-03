@@ -15,7 +15,7 @@ interface FocusRingsProps {
 }
 
 const variantClasses = {
-  default: 'focus-visible:ring-2 focus-visible:ring-offset-2',
+  primary: 'focus-visible:ring-2 focus-visible:ring-offset-2',
   subtle: 'focus-visible:ring-1 focus-visible:ring-offset-1',
   prominent: 'focus-visible:ring-4 focus-visible:ring-offset-2',
   inset: 'focus-visible:ring-2 focus-visible:ring-inset',
@@ -65,7 +65,7 @@ const radiusClasses = {
 
 export function FocusRings({
   children,
-  variant = 'default',
+  variant = 'primary',
   color = 'blue',
   thickness = 'medium',
   radius = 'md',
@@ -97,7 +97,7 @@ export function FocusRings({
 // Componentes especializados
 export function FocusButton({ children, className, ...props }: Omit<FocusRingsProps, 'variant'>) {
   return (
-    <FocusRings variant="default" radius="md" className={cn('cursor-pointer', className)} {...props}>
+    <FocusRings variant="primary" radius="md" className={cn('cursor-pointer', className)} {...props}>
       {children}
     </FocusRings>
   );
@@ -106,7 +106,7 @@ export function FocusButton({ children, className, ...props }: Omit<FocusRingsPr
 export function FocusInput({ children, className, ...props }: Omit<FocusRingsProps, 'variant' | 'color'>) {
   return (
     <FocusRings 
-      variant="default" 
+      variant="primary" 
       color="blue" 
       radius="md" 
       className={cn('w-full', className)} 
@@ -135,7 +135,7 @@ export function FocusLink({ children, className, ...props }: Omit<FocusRingsProp
 
 // Hook para aplicar foco personalizado
 export function useFocusRing(
-  variant: FocusRingsProps['variant'] = 'default',
+  variant: FocusRingsProps['variant'] = 'primary',
   color: FocusRingsProps['color'] = 'blue',
   options?: {
     thickness?: FocusRingsProps['thickness'];

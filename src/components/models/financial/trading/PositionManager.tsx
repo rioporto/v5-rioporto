@@ -51,7 +51,7 @@ export function PositionManager({
   onCloseAllPositions,
   onModifyPosition,
   loading = false,
-  variant = 'default',
+  variant = 'primary',
 }: PositionManagerProps) {
   const positionMetrics = useMemo(() => {
     const openPositions = positions.filter(p => p.status === 'open');

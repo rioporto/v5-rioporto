@@ -24,7 +24,7 @@ const SecurityBadge: React.FC<SecurityBadgeProps> = ({
   validUntil,
   certificationBody,
   className,
-  variant = 'default',
+  variant = 'primary',
   showTooltip = true
 }) => {
   const getIcon = () => {
@@ -198,7 +198,7 @@ interface SecurityBadgeGridProps {
 export const SecurityBadgeGrid: React.FC<SecurityBadgeGridProps> = ({
   badges,
   columns = 3,
-  variant = 'default',
+  variant = 'primary',
   className
 }) => {
   const gridCols = {
