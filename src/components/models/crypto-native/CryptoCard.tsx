@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { gradientStyles } from '@/styles/gradients';
 
 interface CryptoCardProps {
   children: React.ReactNode;
@@ -51,11 +52,9 @@ export function CryptoCard({
       glow && animated && 'hover:shadow-[0_12px_40px_rgba(153,69,255,0.2)]'
     ],
     neon: [
-      'bg-crypto-gradient',
       'border-purple-400/30',
       blur && 'backdrop-blur-sm',
       glow && 'shadow-[0_0_30px_rgba(153,69,255,0.3)]',
-      animated && 'hover:from-purple-500/20 hover:to-pink-500/20',
       animated && 'hover:border-purple-400/50',
       glow && animated && 'hover:shadow-[0_0_50px_rgba(153,69,255,0.5)]'
     ],
@@ -90,6 +89,7 @@ export function CryptoCard({
   return (
     <div
       className={classes}
+      style={variant === 'neon' ? gradientStyles.cryptoGradient : undefined}
       onClick={onClick}
       onMouseEnter={onHover}
       {...props}

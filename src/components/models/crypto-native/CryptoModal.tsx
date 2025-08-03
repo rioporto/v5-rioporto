@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { gradientStyles } from '@/styles/gradients';
 
 interface CryptoModalProps {
   isOpen: boolean;
@@ -71,7 +72,7 @@ export function CryptoModal({
       'shadow-[0_0_60px_rgba(153,69,255,0.4)]'
     ],
     holographic: [
-      'bg-gradient-to-br bg-crypto-gradient-multi',
+      'bg-gradient-to-br',
       'border border-transparent backdrop-blur-xl relative',
       'before:absolute before:inset-0 before:rounded-2xl before:p-[1px]',
       'before:bg-gradient-to-r before:from-purple-400 before:via-pink-400 before:to-blue-400',
@@ -105,6 +106,7 @@ export function CryptoModal({
           animated && 'animate-in zoom-in-95 fade-in duration-300',
           className
         )}
+        style={variant === 'holographic' ? gradientStyles.cryptoGradientMulti : undefined}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Holographic inner container */}

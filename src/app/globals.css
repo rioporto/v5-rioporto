@@ -294,19 +294,6 @@
 }
 
 @layer utilities {
-  /* Custom gradient backgrounds */
-  .bg-crypto-gradient {
-    background-image: linear-gradient(to bottom right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
-  }
-  
-  .bg-crypto-gradient-reverse {
-    background-image: linear-gradient(to top left, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
-  }
-  
-  .bg-crypto-gradient-multi {
-    background-image: linear-gradient(to bottom right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1));
-  }
-
   /* Custom animations */
   @keyframes shimmer {
     0% {

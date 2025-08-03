@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { gradientStyles } from '@/styles/gradients';
 
 interface Meme {
   id: string;
@@ -148,7 +149,7 @@ export function MemeIntegration({
 
   if (variant === 'generator') {
     return (
-      <Card className={`p-6 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
+      <Card className={`p-6 border-0 backdrop-blur-md ${className}`} style={gradientStyles.cryptoGradient}>
         <div className="space-y-6">
           <div className="text-center">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">

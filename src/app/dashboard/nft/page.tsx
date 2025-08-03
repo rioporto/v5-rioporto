@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { gradientStyles } from '@/styles/gradients';
 
 export default function NFTPage() {
   const [filter, setFilter] = useState('all');
@@ -93,7 +94,7 @@ export default function NFTPage() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="border-0 bg-crypto-gradient backdrop-blur-md">
+          <Card className="border-0 backdrop-blur-md" style={gradientStyles.cryptoGradient}>
             <div className="p-6 text-center">
               <div className="text-3xl font-bold text-purple-400">12</div>
               <div className="text-sm text-muted-foreground">NFTs Owned</div>

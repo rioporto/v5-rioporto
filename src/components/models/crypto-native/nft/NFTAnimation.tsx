@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
+import { gradientStyles } from '@/styles/gradients';
 
 interface NFTAnimationProps {
   type: 'float' | 'glow' | 'rotate' | 'pulse' | 'holographic' | 'glitch' | 'matrix';
@@ -213,7 +214,7 @@ export function NFTShowcase({
         triggerOnHover={true}
         intensity="medium"
       >
-        <Card className="border-0 bg-crypto-gradient backdrop-blur-md p-6">
+        <Card className="border-0 backdrop-blur-md p-6" style={gradientStyles.cryptoGradient}>
           <div className="aspect-square bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center text-6xl mb-4">
             {nft.image}
           </div>

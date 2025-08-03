@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Progress } from '@/components/ui/Progress';
+import { gradientStyles } from '@/styles/gradients';
 
 interface WAGMIProps {
   variant?: 'full' | 'banner' | 'compact' | 'motivational' | 'counter';
@@ -130,7 +131,7 @@ export function WAGMI({
 
   if (variant === 'compact') {
     return (
-      <Card className={`p-4 border-0 bg-crypto-gradient backdrop-blur-md ${className}`}>
+      <Card className={`p-4 border-0 backdrop-blur-md ${className}`} style={gradientStyles.cryptoGradient}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className={`text-2xl ${animated ? 'animate-bounce' : ''}`}>
@@ -261,7 +262,7 @@ export function WAGMI({
 
   // Full variant (default)
   return (
-    <Card className={`p-8 border-0 bg-gradient-to-br bg-crypto-gradient-multi backdrop-blur-md ${className}`}>
+    <Card className={`p-8 border-0 bg-gradient-to-br backdrop-blur-md ${className}`} style={gradientStyles.cryptoGradientMulti}>
       <div className="space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">

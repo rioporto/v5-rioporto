@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Progress } from '@/components/ui/Progress';
+import { gradientStyles } from '@/styles/gradients';
 
 export default function DAOPage() {
   const [votingPower, setVotingPower] = useState(25420);
@@ -80,7 +81,7 @@ export default function DAOPage() {
         {/* Governance Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {governance.map((item, index) => (
-            <Card key={index} className="border-0 bg-crypto-gradient backdrop-blur-md">
+            <Card key={index} className="border-0 backdrop-blur-md" style={gradientStyles.cryptoGradient}>
               <div className="p-6 text-center space-y-2">
                 <div className="text-2xl">{item.icon}</div>
                 <div className="text-2xl font-bold text-purple-400">{item.value}</div>

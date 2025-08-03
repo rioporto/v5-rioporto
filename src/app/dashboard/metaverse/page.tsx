@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { gradientStyles } from '@/styles/gradients';
 
 export default function MetaversePage() {
   const [connectedWorlds, setConnectedWorlds] = useState(3);
@@ -139,7 +140,7 @@ export default function MetaversePage() {
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="border-0 bg-crypto-gradient backdrop-blur-md">
+          <Card className="border-0 backdrop-blur-md" style={gradientStyles.cryptoGradient}>
             <div className="p-6 text-center">
               <div className="text-3xl font-bold text-purple-400">{avatarLevel}</div>
               <div className="text-sm text-muted-foreground">Avatar Level</div>

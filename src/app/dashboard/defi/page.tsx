@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { gradientStyles } from '@/styles/gradients';
 
 export default function DeFiPage() {
   const [tvl, setTvl] = useState(4200000);
@@ -68,7 +69,7 @@ export default function DeFiPage() {
 
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="border-0 bg-crypto-gradient backdrop-blur-md">
+          <Card className="border-0 backdrop-blur-md" style={gradientStyles.cryptoGradient}>
             <div className="p-6 text-center">
               <div className="text-3xl font-bold text-purple-400">${(tvl / 1000000).toFixed(1)}M</div>
               <div className="text-sm text-muted-foreground">Total Value Locked</div>

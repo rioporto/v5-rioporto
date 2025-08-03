@@ -115,9 +115,6 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'crypto-gradient': 'linear-gradient(to bottom right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1))',
-        'crypto-gradient-reverse': 'linear-gradient(to top left, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1))',
-        'crypto-gradient-multi': 'linear-gradient(to bottom right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1), rgba(59, 130, 246, 0.1))',
       },
     },
   },

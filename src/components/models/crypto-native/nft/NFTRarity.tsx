@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Progress } from '@/components/ui/Progress';
+import { gradientStyles } from '@/styles/gradients';
 
 interface Trait {
   name: string;
@@ -215,7 +216,7 @@ export function NFTRarity({
       </div>
 
       {/* Holographic border effect */}
-      <div className="absolute inset-0 rounded-lg pointer-events-none bg-gradient-to-r bg-crypto-gradient-multi opacity-0 hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 rounded-lg pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500" style={gradientStyles.cryptoGradientMulti} />
     </Card>
   );
 }
