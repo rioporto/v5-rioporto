@@ -11,7 +11,7 @@ import {
   DollarSign,
   History, 
   Activity, 
-  Tool, 
+  Wrench, 
   Settings,
   User,
   Shield,
@@ -98,7 +98,7 @@ const navigationItems: NavigationItem[] = [
   {
     title: 'Tools',
     href: '/dashboard-temp/tools',
-    icon: Tool,
+    icon: Wrench,
   },
   {
     title: 'DeFi',

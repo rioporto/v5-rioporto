@@ -6,7 +6,7 @@ import {
   TwoFactorSetup,
   ActiveSessions,
   SecurityActivity,
-  PrivacySettings,
+  // PrivacySettings,
   BackupSettings,
   AuditLog
 } from '@/components/security-center';
@@ -178,7 +178,7 @@ export default function SecurityCenterPage() {
       {activeTab === '2fa' && <TwoFactorSetup />}
       {activeTab === 'sessions' && <ActiveSessions />}
       {activeTab === 'activity' && <SecurityActivity />}
-      {activeTab === 'privacy' && <PrivacySettings />}
+      {activeTab === 'privacy' && <div>Privacy Settings Coming Soon</div>}
       {activeTab === 'backup' && <BackupSettings />}
       {activeTab === 'audit' && <AuditLog />}
     </div>
