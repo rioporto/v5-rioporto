@@ -23,7 +23,7 @@ const tabsListVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       size: 'md',
     },
   }
@@ -40,7 +40,7 @@ const tabsTriggerVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
     },
   }
 );

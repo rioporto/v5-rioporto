@@ -28,7 +28,7 @@ export interface ProfitLossCardProps {
   showPositions?: boolean;
   showDayChange?: boolean;
   loading?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'primary' | 'compact' | 'detailed';
 }
 
 export function ProfitLossCard({

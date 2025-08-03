@@ -244,7 +244,7 @@ export function AdvancedChart({
             <div className="flex items-center gap-2 mt-1">
               <span className="text-2xl font-bold">${currentPrice.toFixed(2)}</span>
               <Badge 
-                variant={priceChange > 0 ? 'default' : 'destructive'}
+                variant={priceChange > 0 ? 'default' : 'error'}
                 className="gap-1"
               >
                 {priceChange > 0 ? (
@@ -263,7 +263,7 @@ export function AdvancedChart({
           {intervals.map((int) => (
             <Button
               key={int.value}
-              variant={selectedInterval === int.value ? 'default' : 'ghost'}
+              variant={selectedInterval === int.value ? 'primary' : 'ghost'}
               size="sm"
               onClick={() => handleIntervalChange(int.value)}
             >
@@ -278,7 +278,7 @@ export function AdvancedChart({
             {chartTypes.map((type) => (
               <Button
                 key={type.value}
-                variant={selectedChartType === type.value ? 'default' : 'ghost'}
+                variant={selectedChartType === type.value ? 'primary' : 'ghost'}
                 size="sm"
                 onClick={() => setSelectedChartType(type.value as any)}
                 className="gap-1"
@@ -310,7 +310,7 @@ export function AdvancedChart({
           {availableIndicators.slice(0, 5).map((ind) => (
             <Button
               key={ind.value}
-              variant={selectedIndicators.includes(ind.value) ? 'default' : 'outline'}
+              variant={selectedIndicators.includes(ind.value) ? 'primary' : 'outline'}
               size="sm"
               onClick={() => toggleIndicator(ind.value)}
               className="h-7 text-xs"
@@ -332,7 +332,7 @@ export function AdvancedChart({
           {drawingTools.map((tool) => (
             <Button
               key={tool.value}
-              variant={drawingMode === tool.value ? 'default' : 'ghost'}
+              variant={drawingMode === tool.value ? 'primary' : 'ghost'}
               size="sm"
               onClick={() => setDrawingMode(drawingMode === tool.value ? null : tool.value)}
               title={tool.label}
@@ -458,13 +458,13 @@ export function AdvancedChart({
                 <p className="text-sm font-medium mb-2">Theme</p>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm">Light</Button>
-                  <Button variant="default" size="sm">Dark</Button>
+                  <Button variant="primary" size="sm">Dark</Button>
                 </div>
               </div>
               <div>
                 <p className="text-sm font-medium mb-2">Grid</p>
                 <div className="flex gap-2">
-                  <Button variant="default" size="sm">Show</Button>
+                  <Button variant="primary" size="sm">Show</Button>
                   <Button variant="outline" size="sm">Hide</Button>
                 </div>
               </div>

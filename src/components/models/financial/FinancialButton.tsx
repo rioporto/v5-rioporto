@@ -15,7 +15,7 @@ export interface FinancialButtonProps
 const FinancialButton = forwardRef<HTMLButtonElement, FinancialButtonProps>(
   ({ 
     className, 
-    variant = 'primary', 
+    variant = 'default', 
     size = 'md', 
     loading = false,
     actionType,
@@ -45,7 +45,7 @@ const FinancialButton = forwardRef<HTMLButtonElement, FinancialButtonProps>(
           // Variant styles
           {
             // Primary - Financial Blue
-            'bg-primary text-white border-primary hover:bg-primary/90': variant === 'primary',
+            'bg-primary text-white border-primary hover:bg-primary/90': variant === 'default',
             
             // Secondary - Dark surface
             'bg-secondary text-foreground border-border hover:bg-secondary/80': variant === 'secondary',

@@ -259,7 +259,7 @@ export function SecurityActivity({
                   <div className="flex items-center gap-2">
                     <h4 className="font-medium">{event.title}</h4>
                     {event.status === 'failed' && (
-                      <Badge variant="destructive" className="text-xs">
+                      <Badge variant="error" className="text-xs">
                         Failed
                       </Badge>
                     )}

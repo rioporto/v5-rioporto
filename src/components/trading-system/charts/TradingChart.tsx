@@ -284,7 +284,7 @@ export function TradingChart({
             {['line', 'area', 'candlestick'].map((type) => (
               <Button
                 key={type}
-                variant={chartType === type ? 'default' : 'ghost'}
+                variant={chartType === type ? 'primary' : 'ghost'}
                 size="sm"
                 className="p-1"
                 onClick={() => {}}
@@ -320,7 +320,7 @@ export function TradingChart({
           {timeframes.map((tf) => (
             <Button
               key={tf}
-              variant={timeframe === tf ? 'default' : 'ghost'}
+              variant={timeframe === tf ? 'primary' : 'ghost'}
               size="sm"
               className="px-2 h-7 text-xs"
             >
@@ -332,7 +332,7 @@ export function TradingChart({
           {availableIndicators.slice(0, 4).map((indicator) => (
             <Badge
               key={indicator}
-              variant={selectedIndicators.includes(indicator) ? 'default' : 'outline'}
+              variant={selectedIndicators.includes(indicator) ? 'primary' : 'outline'}
               className="cursor-pointer text-xs"
               onClick={() => {
                 if (selectedIndicators.includes(indicator)) {

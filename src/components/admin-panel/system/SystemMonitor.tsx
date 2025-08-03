@@ -249,7 +249,7 @@ export function SystemMonitor({
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">Auto-refresh</span>
             <Button
-              variant={autoRefresh ? 'default' : 'outline'}
+              variant={autoRefresh ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setAutoRefresh(!autoRefresh)}
             >
@@ -300,7 +300,7 @@ export function SystemMonitor({
           <div className="space-y-2">
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold">{currentMetrics.cpu.toFixed(1)}%</span>
-              <Badge variant={currentMetrics.cpu > 80 ? 'destructive' : 'outline'} className="text-xs">
+              <Badge variant={currentMetrics.cpu > 80 ? 'error' : 'outline'} className="text-xs">
                 {currentMetrics.cpu > 80 ? 'High' : 'Normal'}
               </Badge>
             </div>

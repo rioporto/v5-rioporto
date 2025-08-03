@@ -203,7 +203,7 @@ interface PressableButtonProps {
   children: React.ReactNode;
   onPress?: () => void;
   className?: string;
-  variant?: 'default' | 'cyber' | 'neon' | 'matrix';
+  variant?: 'primary' | 'cyber' | 'neon' | 'matrix';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   loading?: boolean;

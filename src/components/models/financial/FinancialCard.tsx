@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface FinancialCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'bordered' | 'elevated' | 'dense';
+  variant?: 'primary' | 'bordered' | 'elevated' | 'dense';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   header?: React.ReactNode;
   footer?: React.ReactNode;

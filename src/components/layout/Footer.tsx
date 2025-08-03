@@ -5,7 +5,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Footer variant
    */
-  variant?: 'default' | 'minimal' | 'dark';
+  variant?: 'primary' | 'minimal' | 'dark';
 }
 
 /**

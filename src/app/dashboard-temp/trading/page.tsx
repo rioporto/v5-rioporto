@@ -114,7 +114,7 @@ export default function TradingPage() {
           {tabs.map((tab) => (
             <Button
               key={tab.id}
-              variant={activeTab === tab.id ? 'default' : 'ghost'}
+              variant={activeTab === tab.id ? 'primary' : 'ghost'}
               onClick={() => setActiveTab(tab.id as any)}
               className="flex items-center gap-2"
             >
@@ -146,7 +146,6 @@ export default function TradingPage() {
             />
             <TradeExecution 
               pair={selectedPair}
-              onSubmit={(data) => console.log('Order submitted:', data)}
             />
           </div>
 
@@ -182,7 +181,6 @@ export default function TradingPage() {
       {activeTab === 'advanced' && (
         <AdvancedChart 
           pair={selectedPair}
-          onPairChange={setSelectedPair}
         />
       )}
 

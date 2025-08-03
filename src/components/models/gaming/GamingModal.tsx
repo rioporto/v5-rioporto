@@ -7,7 +7,7 @@ interface GamingModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
-  variant?: 'default' | 'alert' | 'confirm' | 'terminal';
+  variant?: 'primary' | 'alert' | 'confirm' | 'terminal';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showCloseButton?: boolean;
   children: React.ReactNode;

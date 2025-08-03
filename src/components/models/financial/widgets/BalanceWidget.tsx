@@ -27,7 +27,7 @@ export interface BalanceWidgetProps {
     changePercent24h: number;
   };
   showZeroBalances?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'primary' | 'compact' | 'detailed';
   onDeposit?: (asset: string) => void;
   onWithdraw?: (asset: string) => void;
   onTrade?: (asset: string) => void;

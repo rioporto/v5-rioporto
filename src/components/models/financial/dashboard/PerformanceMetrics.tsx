@@ -59,7 +59,7 @@ const MetricCard = ({
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h4>
         {trend && (
-          <Badge variant={trend === 'up' ? 'success' : trend === 'down' ? 'error' : 'default'} size="sm">
+          <Badge variant='default'} size="sm">
             {trend}
           </Badge>
         )}

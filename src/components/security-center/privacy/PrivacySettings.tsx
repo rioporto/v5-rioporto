@@ -331,7 +331,7 @@ export function PrivacySettings({
         {categories.map((category) => (
           <Button
             key={category.id}
-            variant={selectedCategory === category.id ? 'default' : 'outline'}
+            variant={selectedCategory === category.id ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setSelectedCategory(category.id)}
             className="gap-2"

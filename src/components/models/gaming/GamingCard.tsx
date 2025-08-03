@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 interface GamingCardProps {
-  variant?: 'default' | 'hud' | 'cyber' | 'nft';
+  variant?: 'primary' | 'hud' | 'cyber' | 'nft';
   glowColor?: 'pink' | 'cyan' | 'green' | 'yellow';
   animated?: boolean;
   scanlines?: boolean;

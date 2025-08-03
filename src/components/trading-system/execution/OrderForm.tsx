@@ -96,7 +96,7 @@ export function OrderForm({
             {['market', 'limit', 'stop'].map((type) => (
               <Button
                 key={type}
-                variant={orderType === type ? 'default' : 'ghost'}
+                variant={orderType === type ? 'primary' : 'ghost'}
                 size="sm"
                 className="flex-1 capitalize"
                 onClick={() => setOrderType(type as any)}
@@ -109,7 +109,7 @@ export function OrderForm({
           {/* Buy/Sell Toggle */}
           <div className="grid grid-cols-2 gap-2">
             <Button
-              variant={side === 'buy' ? 'default' : 'outline'}
+              variant={side === 'buy' ? 'primary' : 'outline'}
               className={cn(
                 'h-12',
                 side === 'buy' && 'bg-green-500 hover:bg-green-600'
@@ -120,7 +120,7 @@ export function OrderForm({
               Buy {pair.split('/')[0]}
             </Button>
             <Button
-              variant={side === 'sell' ? 'default' : 'outline'}
+              variant={side === 'sell' ? 'primary' : 'outline'}
               className={cn(
                 'h-12',
                 side === 'sell' && 'bg-red-500 hover:bg-red-600'

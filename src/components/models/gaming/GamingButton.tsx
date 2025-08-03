@@ -12,7 +12,7 @@ interface GamingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 }
 
 export const GamingButton: React.FC<GamingButtonProps> = ({
-  variant = 'primary',
+  variant = 'default',
   size = 'md',
   glow = true,
   soundEnabled = true,

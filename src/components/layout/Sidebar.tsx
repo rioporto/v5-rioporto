@@ -23,7 +23,7 @@ const sidebarVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       width: 'md',
       position: 'sticky',
     },

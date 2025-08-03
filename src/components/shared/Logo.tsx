@@ -22,7 +22,7 @@ const logoVariants = cva(
     },
     defaultVariants: {
       size: 'md',
-      variant: 'default',
+      variant: 'primary',
     },
   }
 );

@@ -282,7 +282,7 @@ export function ActiveSessions({
             {session.status === 'suspicious' && (
               <div className="mt-3 pt-3 border-t border-red-500/20">
                 <Button
-                  variant="destructive"
+                  variant="error"
                   size="sm"
                   className="w-full"
                   onClick={() => onTerminate?.(session.id)}

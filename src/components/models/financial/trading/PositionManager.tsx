@@ -40,7 +40,7 @@ export interface PositionManagerProps {
   onCloseAllPositions?: () => void;
   onModifyPosition?: (positionId: string, action: 'add_margin' | 'reduce_margin' | 'set_stop_loss' | 'set_take_profit') => void;
   loading?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'primary' | 'compact' | 'detailed';
 }
 
 export function PositionManager({

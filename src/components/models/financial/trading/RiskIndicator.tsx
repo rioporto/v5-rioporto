@@ -31,7 +31,7 @@ export interface RiskIndicatorProps {
     maxDrawdown: number; // e.g., 0.15 (15%)
     maxConsecutiveLosses: number; // e.g., 5
   };
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'primary' | 'compact' | 'detailed';
   showAlerts?: boolean;
 }
 

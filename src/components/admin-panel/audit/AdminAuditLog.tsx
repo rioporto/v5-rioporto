@@ -460,7 +460,7 @@ export function AdminAuditLog({
                   <td className="p-4">{getImpactBadge(action.impact)}</td>
                   <td className="p-4">
                     <Badge 
-                      variant={action.status === 'success' ? 'default' : 'destructive'}
+                      variant={action.status === 'success' ? 'primary' : 'error'}
                       className="text-xs"
                     >
                       {action.status}

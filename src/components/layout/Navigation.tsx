@@ -23,7 +23,7 @@ export interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Navigation variant
    */
-  variant?: 'default' | 'pills' | 'underline';
+  variant?: 'primary' | 'pills' | 'underline';
 }
 
 /**
@@ -58,7 +58,7 @@ const Navigation = React.forwardRef<HTMLElement, NavigationProps>(
 
 interface NavigationLinkProps {
   item: NavigationItem;
-  variant: 'default' | 'pills' | 'underline';
+  variant: 'primary' | 'pills' | 'underline';
 }
 
 const NavigationLink: React.FC<NavigationLinkProps> = ({ item, variant }) => {

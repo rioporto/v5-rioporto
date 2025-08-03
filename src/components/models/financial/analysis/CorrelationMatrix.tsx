@@ -110,7 +110,7 @@ const CorrelationTooltip = ({
           <span className="text-gray-600 dark:text-gray-400">Significance:</span>
           <Badge 
             variant={data.significance === 'HIGH' ? 'success' : 
-                    data.significance === 'MEDIUM' ? 'warning' : 'default'} 
+                    data.significance === 'MEDIUM' ? 'warning' : 'primary'} 
             size="sm"
           >
             {data.significance}

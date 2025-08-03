@@ -11,7 +11,7 @@ interface InstitutionalButtonProps extends React.ButtonHTMLAttributes<HTMLButton
 }
 
 const InstitutionalButton = React.forwardRef<HTMLButtonElement, InstitutionalButtonProps>(
-  ({ className, variant = 'primary', size = 'md', loading = false, disabled, children, ...props }, ref) => {
+  ({ className, variant = 'default', size = 'md', loading = false, disabled, children, ...props }, ref) => {
     const baseStyles = `
       inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md 
       text-sm font-medium ring-offset-background transition-colors duration-300 

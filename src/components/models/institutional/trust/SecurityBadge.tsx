@@ -12,7 +12,7 @@ interface SecurityBadgeProps {
   validUntil?: string;
   certificationBody?: string;
   className?: string;
-  variant?: 'default' | 'minimal' | 'detailed';
+  variant?: 'primary' | 'minimal' | 'detailed';
   showTooltip?: boolean;
 }
 

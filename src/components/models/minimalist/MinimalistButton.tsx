@@ -11,7 +11,7 @@ export interface MinimalistButtonProps
 }
 
 const MinimalistButton = forwardRef<HTMLButtonElement, MinimalistButtonProps>(
-  ({ className, variant = 'primary', size = 'md', loading = false, children, disabled, ...props }, ref) => {
+  ({ className, variant = 'default', size = 'md', loading = false, children, disabled, ...props }, ref) => {
     return (
       <button
         ref={ref}
@@ -29,7 +29,7 @@ const MinimalistButton = forwardRef<HTMLButtonElement, MinimalistButtonProps>(
           // Variant styles
           {
             // Primary - Gold accent
-            'bg-primary text-black hover:bg-primary/90 focus-visible:ring-primary shadow-sm': variant === 'primary',
+            'bg-primary text-black hover:bg-primary/90 focus-visible:ring-primary shadow-sm': variant === 'default',
             
             // Secondary - Light background
             'bg-secondary text-foreground hover:bg-secondary/80 focus-visible:ring-primary shadow-sm': variant === 'secondary',

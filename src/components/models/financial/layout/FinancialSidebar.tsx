@@ -205,7 +205,7 @@ function NavigationItemComponent({
           <span className="flex-1">{item.title}</span>
           {item.badge && (
             <Badge 
-              variant={typeof item.badge === 'string' ? 'default' : 'secondary'}
+              variant={typeof item.badge === 'string' ? 'primary' : 'secondary'}
               size="sm"
               className="text-xs"
             >
@@ -258,7 +258,7 @@ function NavigationItemComponent({
           <div className="flex items-center space-x-1">
             {item.badge && (
               <Badge 
-                variant={typeof item.badge === 'string' ? 'default' : 'secondary'}
+                variant={typeof item.badge === 'string' ? 'primary' : 'secondary'}
                 size="sm"
                 className="text-xs"
               >

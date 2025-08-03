@@ -47,7 +47,7 @@ interface InstitutionalFooterProps {
   copyrightText?: string;
   legalLinks?: FooterLink[];
   logo?: React.ReactNode;
-  variant?: 'default' | 'minimal' | 'extended';
+  variant?: 'primary' | 'minimal' | 'extended';
 }
 
 const InstitutionalFooter: React.FC<InstitutionalFooterProps> = ({

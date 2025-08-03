@@ -4,7 +4,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface InstitutionalCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'elevated' | 'outlined' | 'minimal';
+  variant?: 'primary' | 'elevated' | 'outlined' | 'minimal';
   padding?: 'sm' | 'md' | 'lg' | 'xl';
   header?: React.ReactNode;
   footer?: React.ReactNode;

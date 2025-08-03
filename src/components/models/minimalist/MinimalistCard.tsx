@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface MinimalistCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'elevated' | 'outlined';
+  variant?: 'primary' | 'elevated' | 'outlined';
   padding?: 'sm' | 'md' | 'lg';
 }
 

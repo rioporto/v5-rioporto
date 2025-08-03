@@ -19,7 +19,7 @@ export interface PriceChangeProps {
   symbol?: string;
   currency?: 'BRL' | 'USD';
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'compact' | 'detailed' | 'minimal';
+  variant?: 'primary' | 'compact' | 'detailed' | 'minimal';
   showArrow?: boolean;
   showPercentage?: boolean;
   showAbsolute?: boolean;

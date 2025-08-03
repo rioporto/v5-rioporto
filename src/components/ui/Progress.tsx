@@ -24,7 +24,7 @@ const progressVariants = cva(
     },
     defaultVariants: {
       size: 'md',
-      variant: 'default',
+      variant: 'primary',
     },
   }
 );
@@ -41,7 +41,7 @@ const progressBarVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
     },
   }
 );
@@ -162,7 +162,7 @@ export interface CircularProgressProps {
   /**
    * Progress variant
    */
-  variant?: 'default' | 'success' | 'warning' | 'error';
+  variant?: 'primary' | 'success' | 'warning' | 'error';
   /**
    * Stroke width
    */

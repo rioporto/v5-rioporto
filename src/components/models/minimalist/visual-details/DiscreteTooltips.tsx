@@ -8,7 +8,7 @@ interface TooltipProps {
   content: React.ReactNode;
   side?: 'top' | 'right' | 'bottom' | 'left';
   align?: 'start' | 'center' | 'end';
-  variant?: 'default' | 'minimal' | 'contrast' | 'ghost';
+  variant?: 'primary' | 'minimal' | 'contrast' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   delay?: number;
   offset?: number;

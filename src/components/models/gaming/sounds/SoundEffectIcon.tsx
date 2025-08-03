@@ -6,7 +6,7 @@ interface SoundEffectIconProps {
   type: 'success' | 'error' | 'warning' | 'info' | 'achievement' | 'powerup' | 'combo' | 'click' | 'hover' | 'notification';
   trigger?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'neon' | 'retro' | 'gaming';
+  variant?: 'primary' | 'neon' | 'retro' | 'gaming';
   duration?: number;
   onComplete?: () => void;
   className?: string;

@@ -312,7 +312,7 @@ export function QuickActions({
         {categories.map((category) => (
           <Button
             key={category.id}
-            variant={selectedCategory === category.id ? 'default' : 'outline'}
+            variant={selectedCategory === category.id ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setSelectedCategory(category.id)}
             className="gap-2"
@@ -344,7 +344,7 @@ export function QuickActions({
                 <div className="flex items-start justify-between">
                   <h4 className="font-medium">{action.label}</h4>
                   {action.badge && (
-                    <Badge variant="destructive" className="text-xs">
+                    <Badge variant="error" className="text-xs">
                       {action.badge}
                     </Badge>
                   )}
@@ -373,19 +373,19 @@ export function QuickActions({
           Emergency Actions
         </h4>
         <div className="flex flex-wrap gap-2">
-          <Button variant="destructive" size="sm">
+          <Button variant="error" size="sm">
             <Ban className="w-4 h-4 mr-2" />
             Emergency Stop Trading
           </Button>
-          <Button variant="destructive" size="sm">
+          <Button variant="error" size="sm">
             <Shield className="w-4 h-4 mr-2" />
             Enable Maintenance Mode
           </Button>
-          <Button variant="destructive" size="sm">
+          <Button variant="error" size="sm">
             <Database className="w-4 h-4 mr-2" />
             Emergency Backup
           </Button>
-          <Button variant="destructive" size="sm">
+          <Button variant="error" size="sm">
             <AlertTriangle className="w-4 h-4 mr-2" />
             Alert All Users
           </Button>

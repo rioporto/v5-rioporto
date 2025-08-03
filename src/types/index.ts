@@ -204,7 +204,7 @@ export interface BaseComponentProps {
 }
 
 export interface ButtonProps extends BaseComponentProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
+  variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'error';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   loading?: boolean;

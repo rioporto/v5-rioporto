@@ -7,7 +7,7 @@ interface VolumeControlProps {
   onVolumeChange?: (volume: number) => void;
   orientation?: 'horizontal' | 'vertical';
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'neon' | 'retro' | 'gaming';
+  variant?: 'primary' | 'neon' | 'retro' | 'gaming';
   showValue?: boolean;
   showIcon?: boolean;
   mutable?: boolean;

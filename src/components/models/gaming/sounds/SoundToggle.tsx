@@ -6,7 +6,7 @@ interface SoundToggleProps {
   onToggle?: (enabled: boolean) => void;
   defaultEnabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'neon' | 'retro' | 'minimal';
+  variant?: 'primary' | 'neon' | 'retro' | 'minimal';
   className?: string;
   showLabel?: boolean;
   persistState?: boolean;

@@ -22,7 +22,7 @@ const sectionVariants = cva(
     },
     defaultVariants: {
       padding: 'md',
-      background: 'default',
+      background: 'primary',
     },
   }
 );

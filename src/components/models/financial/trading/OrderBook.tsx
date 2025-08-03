@@ -33,7 +33,7 @@ export interface OrderBookProps {
   showSpread?: boolean;
   onPriceClick?: (price: number, type: 'bid' | 'ask') => void;
   loading?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'primary' | 'compact' | 'detailed';
 }
 
 export function OrderBook({

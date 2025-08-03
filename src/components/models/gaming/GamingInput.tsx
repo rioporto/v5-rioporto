@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface GamingInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
-  variant?: 'default' | 'terminal' | 'hud' | 'cyber';
+  variant?: 'primary' | 'terminal' | 'hud' | 'cyber';
   size?: 'sm' | 'md' | 'lg';
   glowColor?: 'pink' | 'cyan' | 'green' | 'yellow';
   showScanline?: boolean;

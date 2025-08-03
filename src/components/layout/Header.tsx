@@ -9,7 +9,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Header variant
    */
-  variant?: 'default' | 'transparent' | 'blur';
+  variant?: 'primary' | 'transparent' | 'blur';
   /**
    * Height of header
    */

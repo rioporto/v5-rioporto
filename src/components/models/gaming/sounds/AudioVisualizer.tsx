@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 interface AudioVisualizerProps {
   isPlaying?: boolean;
   type?: 'bars' | 'circular' | 'waveform' | 'spectrum' | 'matrix';
-  variant?: 'default' | 'neon' | 'retro' | 'gaming';
+  variant?: 'primary' | 'neon' | 'retro' | 'gaming';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   color?: string;
   responsive?: boolean;

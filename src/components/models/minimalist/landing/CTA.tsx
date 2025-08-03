@@ -17,7 +17,7 @@ export interface MinimalistCTAProps extends React.HTMLAttributes<HTMLElement> {
     label: string;
     onClick: () => void;
   };
-  variant?: 'default' | 'card' | 'split' | 'minimal';
+  variant?: 'primary' | 'card' | 'split' | 'minimal';
   backgroundImage?: string;
 }
 

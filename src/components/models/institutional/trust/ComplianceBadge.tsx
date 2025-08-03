@@ -19,7 +19,7 @@ interface ComplianceItem {
 
 interface ComplianceBadgeProps {
   item: ComplianceItem;
-  variant?: 'default' | 'minimal' | 'detailed';
+  variant?: 'primary' | 'minimal' | 'detailed';
   className?: string;
   showDetails?: boolean;
 }

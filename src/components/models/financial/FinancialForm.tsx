@@ -9,7 +9,7 @@ export interface FinancialInputProps
   error?: string;
   prefix?: string;
   suffix?: string;
-  variant?: 'default' | 'price' | 'quantity';
+  variant?: 'primary' | 'price' | 'quantity';
 }
 
 const FinancialInput = forwardRef<HTMLInputElement, FinancialInputProps>(

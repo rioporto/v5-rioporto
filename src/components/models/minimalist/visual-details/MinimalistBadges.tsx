@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'default' | 'outline' | 'ghost' | 'dot' | 'pill' | 'minimal';
+  variant?: 'primary' | 'outline' | 'ghost' | 'dot' | 'pill' | 'minimal';
   color?: 'gray' | 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'orange' | 'pink';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;

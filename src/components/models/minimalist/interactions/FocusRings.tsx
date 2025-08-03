@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface FocusRingsProps {
   children: React.ReactNode;
-  variant?: 'default' | 'subtle' | 'prominent' | 'inset' | 'glow';
+  variant?: 'primary' | 'subtle' | 'prominent' | 'inset' | 'glow';
   color?: 'blue' | 'gray' | 'green' | 'red' | 'yellow' | 'purple';
   thickness?: 'thin' | 'medium' | 'thick';
   radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';

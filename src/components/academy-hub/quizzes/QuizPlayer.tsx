@@ -478,7 +478,7 @@ export function QuizPlayer({
                   {currentQuestion.points} points
                 </Badge>
                 {currentQuestion.timeLimit && (
-                  <Badge variant="destructive" className="gap-1">
+                  <Badge variant="error" className="gap-1">
                     <Clock className="w-3 h-3" />
                     {currentQuestion.timeLimit}s
                   </Badge>

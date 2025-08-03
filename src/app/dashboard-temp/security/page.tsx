@@ -79,7 +79,7 @@ export default function SecurityCenterPage() {
           {tabs.map((tab) => (
             <Button
               key={tab.id}
-              variant={activeTab === tab.id ? 'default' : 'ghost'}
+              variant={activeTab === tab.id ? 'primary' : 'ghost'}
               onClick={() => setActiveTab(tab.id as any)}
               className="flex items-center gap-2"
             >

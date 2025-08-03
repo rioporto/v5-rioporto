@@ -161,7 +161,7 @@ export function StopLossManager({ positions = [] }: StopLossManagerProps) {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
                       <Badge 
-                        variant={position.side === 'long' ? 'default' : 'secondary'}
+                        variant={position.side === 'long' ? 'primary' : 'secondary'}
                         size="sm"
                       >
                         {position.side.toUpperCase()}

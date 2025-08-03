@@ -28,7 +28,7 @@ interface InstitutionalNavProps {
 const InstitutionalNav: React.FC<InstitutionalNavProps> = ({
   items,
   orientation = 'horizontal',
-  variant = 'primary',
+  variant = 'default',
   size = 'md',
   className,
   onItemClick
@@ -268,7 +268,7 @@ interface InstitutionalTabsProps {
   items: TabItem[];
   activeKey?: string;
   onChange?: (key: string) => void;
-  variant?: 'default' | 'pills' | 'underline';
+  variant?: 'primary' | 'pills' | 'underline';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
