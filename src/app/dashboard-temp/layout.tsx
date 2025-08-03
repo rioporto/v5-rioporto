@@ -11,7 +11,7 @@ import {
   SidebarContent, 
   SidebarFooter 
 } from '@/components/layout/Sidebar';
-import { DashboardNavigation } from '@/components/dashboard/DashboardNavigation';
+import { DashboardNavigation } from '@/components/dashboard/DashboardTempNavigation';
 import { Logo } from '@/components/shared/Logo';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
@@ -60,12 +60,12 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   const userMenuItems = [
     {
       label: 'Perfil',
-      href: '/dashboard/settings',
+      href: '/dashboard-temp/settings',
       icon: User,
     },
     {
       label: 'Configurações',
-      href: '/dashboard/settings',
+      href: '/dashboard-temp/settings',
       icon: Settings,
     },
     {
