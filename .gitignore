@@ -70,6 +70,8 @@ rioporto-complete-project-docs.md:Zone.Identifier
 !README.md
 !src/**/README.md
 BACKUP-INFO.txt
+COMANDOS-SISTEMA.md
+EXEMPLO-INICIO-CHAT.txt
 
 # Temporary files
 *.tmp
