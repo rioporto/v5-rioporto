@@ -8,7 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next node_modules",
-    "vercel-build": "next build"
+    "vercel-build": "next build",
+    "vercel:status": "tsx scripts/vercel-integration.ts status",
+    "vercel:logs": "tsx scripts/vercel-integration.ts logs",
+    "vercel:list": "tsx scripts/vercel-integration.ts list",
+    "vercel:diagnose": "tsx scripts/vercel-integration.ts diagnose",
+    "vercel:redeploy": "tsx scripts/vercel-integration.ts redeploy",
+    "vercel:help": "tsx scripts/vercel-integration.ts help"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +25,7 @@
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "@vercel/sdk": "^1.10.0",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -33,5 +40,7 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tsx": "^4.20.3"
+  }
 }
