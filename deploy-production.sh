@@ -37,16 +37,14 @@ fi
 echo "📤 Fazendo push para branch $BRANCH..."
 git push origin $BRANCH
 
-# Disparar webhook do Vercel
-echo "🔄 Disparando deploy no Vercel..."
-RESPONSE=$(curl -s -X POST "$WEBHOOK_URL")
+echo "✅ Push concluído!"
+echo "📌 O Vercel iniciará o deploy automaticamente"
+echo ""
+echo "💡 NOTA: O webhook NÃO será disparado para evitar deploys duplicados"
+echo "   O Vercel já detecta automaticamente pushes na branch production"
 
-# Extrair job ID da resposta
-JOB_ID=$(echo $RESPONSE | grep -o '"id":"[^"]*"' | cut -d'"' -f4)
-
-echo "✅ Deploy iniciado!"
-echo "📌 Job ID: $JOB_ID"
-echo "📌 Verifique o progresso em: https://vercel.com/dashboard"
+# NÃO disparar webhook para evitar duplicação
+# RESPONSE=$(curl -s -X POST "$WEBHOOK_URL")
 
 # Verificar status após 5 segundos
 echo "⏳ Aguardando 5 segundos para verificar status..."
