@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { Tabs } from '@/components/ui/Tabs';
 import { Badge } from '@/components/ui/Badge';
-import { Slider } from '@/components/ui/Slider';
+// import { Slider } from '@/components/ui/Slider';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -211,13 +211,13 @@ export function OrderForm({
               <Label>Amount %</Label>
               <span className="text-sm font-medium">{percentage}%</span>
             </div>
-            <Slider
+            {/* <Slider
               value={[percentage]}
               onValueChange={([value]) => handlePercentageChange(value)}
               max={100}
               step={25}
               className="w-full"
-            />
+            /> */}
             <div className="flex justify-between mt-1 text-xs text-muted-foreground">
               <button onClick={() => handlePercentageChange(25)}>25%</button>
               <button onClick={() => handlePercentageChange(50)}>50%</button>

@@ -171,7 +171,7 @@ export default function AdminPanelPage() {
                 onClick={() => setSelectedUserId(null)}
                 className="mb-4"
               >
-                 Back to User List
+                Â Back to User List
               </Button>
               <UserDetails 
                 userId={selectedUserId}
