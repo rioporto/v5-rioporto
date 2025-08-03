@@ -58,7 +58,7 @@
 - **Estado**: Context API + localStorage
 - **Gráficos**: Recharts
 - **Ícones**: Lucide React
-- **Deploy**: Railway
+- **Deploy**: Vercel (domínios já configurados)
 - **Subdomínios**: v1-v5.rioporto.com.br
 
 ### 📈 Métricas de Sucesso
@@ -72,9 +72,9 @@
 ### 🚀 Próximos Passos
 
 1. **Deploy Imediato**
-   - Configurar 5 subdomínios no Railway
-   - Adicionar CNAMEs no DNS
-   - Testar cada modelo individualmente
+   - Executar `vercel --prod`
+   - Domínios já configurados no Vercel ✅
+   - Testar cada subdomínio individualmente
 
 2. **Otimizações**
    - Lazy loading de componentes pesados
