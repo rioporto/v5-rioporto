@@ -4,6 +4,10 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const hostname = request.headers.get('host') || '';
   
+  // Log para debug - remover após resolver
+  console.log('[Middleware] Hostname:', hostname);
+  console.log('[Middleware] Pathname:', url.pathname);
+  
   // Extrai o subdomínio
   const subdomain = hostname.split('.')[0];
   
@@ -18,6 +22,7 @@ export function middleware(request: NextRequest) {
 
   // Se estiver em um dos subdomínios v1-v5 e na raiz
   if (subdomainRoutes[subdomain] && url.pathname === '/') {
+    console.log('[Middleware] Rewriting to:', subdomainRoutes[subdomain]);
     const newUrl = new URL(subdomainRoutes[subdomain], request.url);
     return NextResponse.rewrite(newUrl);
   }

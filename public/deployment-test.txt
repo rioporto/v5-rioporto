@@ -1,0 +1,12 @@
+DEPLOYMENT TEST FILE
+====================
+Created: 03/08/2025 22:28
+Branch: production
+Purpose: Verify Vercel is serving correct content
+
+If you can access this file at /deployment-test.txt, 
+it means Vercel is serving files from the public directory.
+
+Expected behavior:
+- Main domain: Full system with login/register
+- v1-v5 subdomains: Demo pages for each model
