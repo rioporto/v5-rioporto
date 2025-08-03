@@ -20,6 +20,9 @@ export default function Home() {
   const router = useRouter();
   const { currentTheme, themeConfig } = useTheme();
   const { isAuthenticated, isLoading } = useAuth();
+  
+  // Debug - remover após confirmar deploy
+  console.log('Home page loaded - Version 1.0.1');
 
   // Redirect to dashboard if authenticated
   useEffect(() => {
