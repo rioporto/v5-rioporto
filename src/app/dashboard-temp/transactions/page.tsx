@@ -81,7 +81,7 @@ export default function TransactionsPage() {
     }
   };
 
-  const getStatusVariant = (status: string): 'default' | 'success' | 'warning' | 'error' => {
+  const getStatusVariant = (status: string): 'primary' | 'success' | 'warning' | 'error' => {
     switch (status) {
       case 'COMPLETED':
         return 'success';
@@ -90,9 +90,9 @@ export default function TransactionsPage() {
       case 'FAILED':
         return 'error';
       case 'CANCELLED':
-        return 'default';
+        return 'primary';
       default:
-        return 'default';
+        return 'primary';
     }
   };
 
