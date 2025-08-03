@@ -1,3 +1,7 @@
 {
-  "framework": "nextjs"
+  "functions": {
+    "src/middleware.ts": {
+      "runtime": "@vercel/edge"
+    }
+  }
 }
