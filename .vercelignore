@@ -1,3 +1,2 @@
-# Force clean builds
+# Ignore only local Vercel files
 .vercel
-.next
