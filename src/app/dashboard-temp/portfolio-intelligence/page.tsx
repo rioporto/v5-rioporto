@@ -46,7 +46,7 @@ export default function PortfolioIntelligencePage() {
       content: (
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <PortfolioScore />
+            <PortfolioScore score={85} />
             <PerformanceMetrics />
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
