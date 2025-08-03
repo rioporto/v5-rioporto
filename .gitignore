@@ -65,6 +65,7 @@ rioporto-complete-project-docs.md:Zone.Identifier
 # Keep only essential README files
 !README.md
 !src/**/README.md
+BACKUP-INFO.txt
 
 # Temporary files
 *.tmp
