@@ -49,7 +49,7 @@ export default function SettingsPage() {
 
   const getKycLevelBadge = (level: number) => {
     const configs = {
-      0: { variant: 'default' as const, label: 'Não verificado', color: 'text-muted-foreground' },
+      0: { variant: 'secondary' as const, label: 'Não verificado', color: 'text-muted-foreground' },
       1: { variant: 'warning' as const, label: 'Básico', color: 'text-warning' },
       2: { variant: 'default' as const, label: 'Intermediário', color: 'text-blue-500' },
       3: { variant: 'success' as const, label: 'Completo', color: 'text-success' },
