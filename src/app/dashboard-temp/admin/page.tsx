@@ -175,7 +175,6 @@ export default function AdminPanelPage() {
               </Button>
               <UserDetails 
                 userId={selectedUserId}
-                onBack={() => setSelectedUserId(null)}
               />
             </>
           ) : (
