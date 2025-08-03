@@ -106,7 +106,7 @@ const commands: Record<string, () => Promise<void>> = {
     
     console.log('📊 Latest Deployment Status:');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log(`🆔 ID: ${deployment.id}`);
+    console.log(`🆔 ID: ${(deployment as any).uid || 'N/A'}`);
     console.log(`📅 Created: ${new Date(deployment.created).toLocaleString()}`);
     console.log(`🌿 Branch: ${deployment.gitSource?.ref || 'N/A'}`);
     console.log(`🎯 Target: ${deployment.target || 'production'}`);
@@ -135,14 +135,14 @@ const commands: Record<string, () => Promise<void>> = {
       return;
     }
     
-    const logs = await getDeploymentLogs(deployment.id);
+    const logs = await getDeploymentLogs((deployment as any).uid);
     
     if (!logs || !logs.events) {
       console.error('❌ No logs found');
       return;
     }
     
-    console.log(`📋 Logs for deployment ${deployment.id}:`);
+    console.log(`📋 Logs for deployment ${(deployment as any).uid}:`);
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
     
     logs.events.forEach((event: any) => {
@@ -173,7 +173,7 @@ const commands: Record<string, () => Promise<void>> = {
       result.deployments.forEach((dep: any, index: number) => {
         const statusIcon = dep.ready ? '✅' : dep.state === 'ERROR' ? '❌' : '🔨';
         const time = new Date(dep.created).toLocaleString();
-        console.log(`\n${index + 1}. ${statusIcon} ${dep.id}`);
+        console.log(`\n${index + 1}. ${statusIcon} ${dep.uid || 'N/A'}`);
         console.log(`   Created: ${time}`);
         console.log(`   Branch: ${dep.gitSource?.ref || 'N/A'}`);
         console.log(`   State: ${dep.state}`);
