@@ -4,5 +4,4 @@ export * from './sessions';
 export * from './activity';
 export * from './privacy';
 export * from './backup';
-export * from './alerts';
 export * from './audit';
