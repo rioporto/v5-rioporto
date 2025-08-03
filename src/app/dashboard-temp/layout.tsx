@@ -29,6 +29,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useSearchParams } from 'next/navigation';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -37,9 +38,18 @@ interface DashboardLayoutProps {
 function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   const { user, logout } = useAuth();
   const router = useRouter();
-  const { currentTheme, setTheme } = useTheme();
+  const { currentTheme, setTheme, setCurrentTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const searchParams = useSearchParams();
+
+  // Aplicar tema baseado no parâmetro de busca
+  useEffect(() => {
+    const theme = searchParams.get('theme');
+    if (theme && ['minimalist', 'financial', 'crypto-native', 'institutional', 'gaming'].includes(theme)) {
+      setCurrentTheme(theme as any);
+    }
+  }, [searchParams, setCurrentTheme]);
 
   // Fechar sidebar mobile em telas grandes
   useEffect(() => {

@@ -1,198 +1,117 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowRight, Bitcoin, ChevronDown, Globe, Zap, Shield } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeProvider';
+import React from 'react';
+import { Building2, Rocket, Shield, Zap } from 'lucide-react';
 
-export default function ComingSoon() {
-  const { currentTheme, themeConfig } = useTheme();
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  useEffect(() => {
-    const launchDate = new Date();
-    launchDate.setDate(launchDate.getDate() + 30);
-
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate.getTime() - now;
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-    }
-  };
-
-  const headlines = {
-    minimalist: {
-      main: 'Simplicidade no',
-      highlight: 'P2P Trading',
-      sub: 'Menos é mais. Trading sem distrações.'
-    },
-    financial: {
-      main: 'Trading profissional',
-      highlight: 'Bloomberg-style',
-      sub: 'Ferramentas institucionais para todos os traders.'
-    },
-    'crypto-native': {
-      main: 'O futuro é',
-      highlight: 'Descentralizado',
-      sub: 'Web3 native. DeFi ready. Totalmente on-chain.'
-    },
-    institutional: {
-      main: 'Confiança e',
-      highlight: 'Compliance',
-      sub: 'Segurança institucional para grandes volumes.'
-    },
-    gaming: {
-      main: 'Level up your',
-      highlight: 'Trading Game',
-      sub: 'Gamificação e recompensas para traders.'
-    }
-  };
-
-  const headline = headlines[currentTheme] || headlines.minimalist;
-
+export default function ComingSoonPage() {
   return (
-    <div className="min-h-screen overflow-hidden relative bg-background text-foreground">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10 animate-gradient-shift" />
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex items-center justify-center relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-600 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-700 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Logo */}
-        <div className="mb-8 animate-fade-in">
-          <div className="flex items-center justify-center space-x-2 mb-2">
-            <Bitcoin className="h-12 w-12 text-primary" />
+        <div className="mb-8 flex justify-center">
+          <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <Building2 className="w-12 h-12 text-black" />
           </div>
-          <h3 className="text-2xl font-light tracking-wider text-center">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              RioPorto {themeConfig.name}
-            </span>
-          </h3>
         </div>
 
-        {/* Headline */}
-        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            {headline.main}
-            <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient-x">
-              {headline.highlight}
-            </span>
-            está chegando
-          </h1>
+        {/* Title */}
+        <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+          RioPorto P2P
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-2xl md:text-3xl text-gray-300 mb-8">
+          A Nova Era do Bitcoin no Brasil
+        </p>
+
+        {/* Coming Soon Badge */}
+        <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/50 rounded-full px-6 py-3 mb-12">
+          <Rocket className="w-5 h-5 text-yellow-500" />
+          <span className="text-yellow-500 font-semibold">EM BREVE</span>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+            <Shield className="w-10 h-10 text-yellow-500 mb-4 mx-auto" />
+            <h3 className="text-xl font-semibold mb-2">Segurança Total</h3>
+            <p className="text-gray-400">Proteção de nível bancário para suas transações P2P</p>
+          </div>
           
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed text-muted-foreground">
-            {headline.sub}
-            <br />
-            <span className="opacity-70">Aprenda Bitcoin. Negocie sem intermediários. Tenha controle total.</span>
-          </p>
-
-          {/* Features */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center space-x-2 px-4 py-2 backdrop-blur-sm bg-card border border-border rounded-lg">
-              <Globe className="h-4 w-4 text-primary" />
-              <span className="text-sm">5 Modelos Visuais</span>
-            </div>
-            <div className="flex items-center space-x-2 px-4 py-2 backdrop-blur-sm bg-card border border-border rounded-lg">
-              <Zap className="h-4 w-4 text-warning" />
-              <span className="text-sm">Execução Instantânea</span>
-            </div>
-            <div className="flex items-center space-x-2 px-4 py-2 backdrop-blur-sm bg-card border border-border rounded-lg">
-              <Shield className="h-4 w-4 text-success" />
-              <span className="text-sm">100% Seguro</span>
-            </div>
+          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+            <Zap className="w-10 h-10 text-yellow-500 mb-4 mx-auto" />
+            <h3 className="text-xl font-semibold mb-2">Ultra Rápido</h3>
+            <p className="text-gray-400">Transações instantâneas com confirmação imediata</p>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+            <Building2 className="w-10 h-10 text-yellow-500 mb-4 mx-auto" />
+            <h3 className="text-xl font-semibold mb-2">100% Regulado</h3>
+            <p className="text-gray-400">Conformidade total com a legislação brasileira</p>
           </div>
         </div>
 
-        {/* Countdown */}
-        <div className="mb-12 animate-fade-in-up animation-delay-200">
-          <div className="grid grid-cols-4 gap-4 text-center">
-            {[
-              { value: timeLeft.days, label: 'Dias' },
-              { value: timeLeft.hours, label: 'Horas' },
-              { value: timeLeft.minutes, label: 'Minutos' },
-              { value: timeLeft.seconds, label: 'Segundos' }
-            ].map((item, i) => (
-              <div key={i} className="backdrop-blur-sm p-4 shadow-md bg-card border border-border rounded-lg">
-                <div className="text-3xl md:text-4xl font-bold text-primary font-mono">{item.value}</div>
-                <div className="text-sm text-muted-foreground">{item.label}</div>
-              </div>
-            ))}
+        {/* Contact Info */}
+        <div className="text-gray-400">
+          <p className="mb-2">Enquanto isso, conheça nossas versões de demonstração:</p>
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
+            <a href="https://v1.rioporto.com.br" className="text-yellow-500 hover:text-yellow-400 transition-colors">
+              V1 - Minimalista
+            </a>
+            <span className="text-gray-600">•</span>
+            <a href="https://v2.rioporto.com.br" className="text-yellow-500 hover:text-yellow-400 transition-colors">
+              V2 - Financeiro
+            </a>
+            <span className="text-gray-600">•</span>
+            <a href="https://v3.rioporto.com.br" className="text-yellow-500 hover:text-yellow-400 transition-colors">
+              V3 - Crypto Native
+            </a>
+            <span className="text-gray-600">•</span>
+            <a href="https://v4.rioporto.com.br" className="text-yellow-500 hover:text-yellow-400 transition-colors">
+              V4 - Institucional
+            </a>
+            <span className="text-gray-600">•</span>
+            <a href="https://v5.rioporto.com.br" className="text-yellow-500 hover:text-yellow-400 transition-colors">
+              V5 - Gaming
+            </a>
           </div>
-        </div>
-
-        {/* Email capture */}
-        <div className="w-full max-w-md animate-fade-in-up animation-delay-400">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Seja o primeiro a saber..."
-                className="w-full px-6 py-4 pr-32 backdrop-blur-sm transition-all bg-input border border-border rounded-full text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 font-medium transition-opacity flex items-center space-x-2 group hover:opacity-90 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground"
-              >
-                <span>Notificar</span>
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          ) : (
-            <div className="text-center py-4 px-6 backdrop-blur-sm bg-success/20 rounded-full border border-success/30">
-              <p className="flex items-center justify-center space-x-2 text-success">
-                <span>✓</span>
-                <span>Pronto! Você será o primeiro a saber.</span>
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Teaser */}
-        <div className="mt-12 text-center animate-fade-in-up animation-delay-600">
-          <p className="mb-4 text-muted-foreground">
-            Enquanto isso, que tal começar sua jornada Bitcoin?
-          </p>
-          <a
-            href="https://bitcoin.org/pt_BR/comecando"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors underline underline-offset-4 hover:opacity-80 text-primary"
-          >
-            Aprenda sobre Bitcoin →
-          </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-6 w-6 text-muted-foreground" />
         </div>
       </div>
+
+      {/* CSS for blob animation */}
+      <style jsx>{`
+        @keyframes blob {
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </div>
   );
 }
