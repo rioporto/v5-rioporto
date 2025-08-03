@@ -1,0 +1,12 @@
+{
+  "name": "rioporto-p2p",
+  "scripts": {},
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "required": false
+    }
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": []
+}
