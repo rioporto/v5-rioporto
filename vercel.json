@@ -1,24 +1,11 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install",
+  "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "regions": ["cdg1"],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
+  "installCommand": "npm install",
   "build": {
     "env": {
       "NEXT_TELEMETRY_DISABLED": "1"
-    }
-  },
-  "functions": {
-    "src/pages/api/*.js": {
-      "maxDuration": 30
     }
   }
 }

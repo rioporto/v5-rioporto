@@ -4,14 +4,6 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
-  transpilePackages: [],
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': require('path').resolve(__dirname, './src'),
-    }
-    return config
-  },
 }
 
 module.exports = nextConfig
