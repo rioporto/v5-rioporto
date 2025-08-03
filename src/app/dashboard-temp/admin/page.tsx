@@ -178,9 +178,7 @@ export default function AdminPanelPage() {
               />
             </>
           ) : (
-            <UserManagement 
-              onUserSelect={(userId) => setSelectedUserId(userId)}
-            />
+            <UserManagement />
           )}
         </div>
       )}
