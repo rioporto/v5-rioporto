@@ -38,7 +38,7 @@ interface DashboardLayoutProps {
 function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   const { user, logout } = useAuth();
   const router = useRouter();
-  const { currentTheme, setTheme, setCurrentTheme } = useTheme();
+  const { currentTheme, setTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const searchParams = useSearchParams();
@@ -47,9 +47,9 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   useEffect(() => {
     const theme = searchParams.get('theme');
     if (theme && ['minimalist', 'financial', 'crypto-native', 'institutional', 'gaming'].includes(theme)) {
-      setCurrentTheme(theme as any);
+      setTheme(theme as any);
     }
-  }, [searchParams, setCurrentTheme]);
+  }, [searchParams, setTheme]);
 
   // Fechar sidebar mobile em telas grandes
   useEffect(() => {
