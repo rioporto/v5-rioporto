@@ -2,6 +2,12 @@
 
 Sistema de exchange P2P com 5 modelos visuais diferentes.
 
+## 🚀 Status: LIVE!
+
+✅ **Site no ar**: https://rioporto.com.br  
+✅ **5 Modelos funcionando**: v1 até v5.rioporto.com.br  
+✅ **Deploy automático**: Push para main faz deploy no Vercel
+
 ## 🚀 Stack
 
 - **Next.js 14** com App Router
