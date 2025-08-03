@@ -378,7 +378,6 @@ export default function AcademyPage() {
                   category: 'Bitcoin',
                   difficulty: 'beginner',
                   duration: 10,
-                  points: 100,
                   questions: []
                 }}
                 onComplete={(score) => {
