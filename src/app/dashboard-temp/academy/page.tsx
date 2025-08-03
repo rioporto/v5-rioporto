@@ -371,7 +371,11 @@ export default function AcademyPage() {
                 ← Back to Quizzes
               </Button>
               <QuizPlayer 
-                quizId="quiz-1"
+                quiz={{
+                  id: 'quiz-1',
+                  title: 'Bitcoin Fundamentals',
+                  questions: []
+                }}
                 onComplete={(score) => {
                   console.log('Quiz completed with score:', score);
                   setShowQuiz(false);
