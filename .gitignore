@@ -53,6 +53,18 @@ CURRENT-STATE.md
 docs-planejamento/
 *.backup.md
 *-backup.md
+IMPLEMENTATION-LOG.md
+MCP-GITHUB-VERCEL-SETUP.md
+ORCHESTRATION-PLAN.md
+PROJECT-STATUS.md
+QUICKSTART.md
+SESSION-SUMMARY-*.md
+VERCEL-MANUAL-DEPLOY.md
+rioporto-complete-project-docs.md
+rioporto-complete-project-docs.md:Zone.Identifier
+# Keep only essential README files
+!README.md
+!src/**/README.md
 
 # Temporary files
 *.tmp
