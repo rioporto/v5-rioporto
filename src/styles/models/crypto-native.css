@@ -1043,7 +1043,10 @@
   
   /* Web3 specific utilities */
   .web3-card {
-    @apply bg-crypto-gradient backdrop-blur-md border-0 shadow-xl;
+    background-image: linear-gradient(to bottom right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+    backdrop-filter: blur(12px);
+    border: 0;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
   
   .cyber-border-corners::before,
