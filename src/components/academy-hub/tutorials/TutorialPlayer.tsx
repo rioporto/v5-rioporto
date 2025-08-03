@@ -210,7 +210,7 @@ export function TutorialPlayer({
                   <SkipBack className="w-4 h-4" />
                 </Button>
                 <Button
-                  variant="default"
+                  variant="primary"
                   size="sm"
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
@@ -290,7 +290,7 @@ export function TutorialPlayer({
                     {[0.5, 0.75, 1, 1.25, 1.5, 2].map((speed) => (
                       <Button
                         key={speed}
-                        variant={playbackSpeed === speed ? 'default' : 'outline'}
+                        variant={playbackSpeed === speed ? 'primary' : 'outline'}
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
                       >
@@ -305,7 +305,7 @@ export function TutorialPlayer({
                     {['Auto', '1080p', '720p', '480p'].map((q) => (
                       <Button
                         key={q}
-                        variant={quality === q ? 'default' : 'outline'}
+                        variant={quality === q ? 'primary' : 'outline'}
                         size="sm"
                         onClick={() => setQuality(q)}
                       >
@@ -353,7 +353,7 @@ export function TutorialPlayer({
           {/* Action Buttons */}
           <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
             <Button
-              variant={showTranscript ? 'default' : 'outline'}
+              variant={showTranscript ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setShowTranscript(!showTranscript)}
             >
