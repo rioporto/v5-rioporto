@@ -44,7 +44,7 @@ export default function V3DemoPage() {
                     Entrar no Futuro
                   </Button>
                 </Link>
-                <Link href="/dashboard-temp?theme=crypto-native">
+                <Link href="/dashboard?theme=crypto-native">
                   <Button variant="outline" size="lg" className="backdrop-blur-sm">
                     Ver Interface
                   </Button>

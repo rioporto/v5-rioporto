@@ -70,12 +70,12 @@ function DashboardLayoutContent({ children }: DashboardLayoutProps) {
   const userMenuItems = [
     {
       label: 'Perfil',
-      href: '/dashboard-temp/settings',
+      href: '/dashboard/settings',
       icon: User,
     },
     {
       label: 'Configurações',
-      href: '/dashboard-temp/settings',
+      href: '/dashboard/settings',
       icon: Settings,
     },
     {

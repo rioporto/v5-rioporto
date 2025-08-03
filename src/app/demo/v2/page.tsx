@@ -36,7 +36,7 @@ export default function V2DemoPage() {
                     <TrendingUp className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/dashboard-temp?theme=financial">
+                <Link href="/dashboard?theme=financial">
                   <Button variant="outline" size="lg">
                     Explorar Dashboard
                   </Button>

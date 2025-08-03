@@ -36,7 +36,7 @@ export default function V1DemoPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/dashboard-temp?theme=minimalist">
+                <Link href="/dashboard?theme=minimalist">
                   <Button variant="outline" size="lg">
                     Ver Dashboard
                   </Button>

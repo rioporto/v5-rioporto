@@ -36,7 +36,7 @@ export default function V4DemoPage() {
                     Abrir Conta Corporativa
                   </Button>
                 </Link>
-                <Link href="/dashboard-temp?theme=institutional">
+                <Link href="/dashboard?theme=institutional">
                   <Button variant="outline" size="lg">
                     Acessar Plataforma
                   </Button>

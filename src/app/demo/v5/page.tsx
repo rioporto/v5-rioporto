@@ -49,7 +49,7 @@ export default function V5DemoPage() {
                     Start Game
                   </Button>
                 </Link>
-                <Link href="/dashboard-temp?theme=gaming">
+                <Link href="/dashboard?theme=gaming">
                   <Button 
                     variant="outline" 
                     size="lg" 

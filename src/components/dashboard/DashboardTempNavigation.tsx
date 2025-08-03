@@ -39,120 +39,120 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   {
     title: 'Dashboard',
-    href: '/dashboard-temp',
+    href: '/dashboard',
     icon: Home,
   },
   {
     title: 'Portfolio',
-    href: '/dashboard-temp/portfolio',
+    href: '/dashboard/portfolio',
     icon: Wallet,
   },
   {
     title: 'Intelligence',
-    href: '/dashboard-temp/portfolio-intelligence',
+    href: '/dashboard/portfolio-intelligence',
     icon: Brain,
     badge: 'AI'
   },
   {
     title: 'Trading',
-    href: '/dashboard-temp/trading',
+    href: '/dashboard/trading',
     icon: LineChart,
     badge: 'NEW'
   },
   {
     title: 'Security Center',
-    href: '/dashboard-temp/security',
+    href: '/dashboard/security',
     icon: Lock,
   },
   {
     title: 'Academy',
-    href: '/dashboard-temp/academy',
+    href: '/dashboard/academy',
     icon: GraduationCap,
   },
   {
     title: 'Admin',
-    href: '/dashboard-temp/admin',
+    href: '/dashboard/admin',
     icon: UserCog,
     badge: 'ADMIN'
   },
   {
     title: 'Buy Crypto',
-    href: '/dashboard-temp/buy',
+    href: '/dashboard/buy',
     icon: ShoppingCart,
   },
   {
     title: 'Sell Crypto',
-    href: '/dashboard-temp/sell',
+    href: '/dashboard/sell',
     icon: DollarSign,
   },
   {
     title: 'Transactions',
-    href: '/dashboard-temp/transactions',
+    href: '/dashboard/transactions',
     icon: History,
   },
   {
     title: 'Indicators',
-    href: '/dashboard-temp/indicators',
+    href: '/dashboard/indicators',
     icon: Activity,
   },
   {
     title: 'Tools',
-    href: '/dashboard-temp/tools',
+    href: '/dashboard/tools',
     icon: Wrench,
   },
   {
     title: 'DeFi',
-    href: '/dashboard-temp/defi',
+    href: '/dashboard/defi',
     icon: Layers,
   },
   {
     title: 'NFT',
-    href: '/dashboard-temp/nft',
+    href: '/dashboard/nft',
     icon: Image,
   },
   {
     title: 'DAO',
-    href: '/dashboard-temp/dao',
+    href: '/dashboard/dao',
     icon: Users,
   },
   {
     title: 'Metaverse',
-    href: '/dashboard-temp/metaverse',
+    href: '/dashboard/metaverse',
     icon: Globe,
   },
   {
     title: 'Settings',
-    href: '/dashboard-temp/settings',
+    href: '/dashboard/settings',
     icon: Settings,
     children: [
       {
         title: 'Profile',
-        href: '/dashboard-temp/settings',
+        href: '/dashboard/settings',
         icon: User,
       },
       {
         title: 'Security',
-        href: '/dashboard-temp/settings/security',
+        href: '/dashboard/settings/security',
         icon: Shield,
       },
       {
         title: 'Sessions',
-        href: '/dashboard-temp/settings/sessions',
+        href: '/dashboard/settings/sessions',
         icon: Key,
       },
       {
         title: 'KYC',
-        href: '/dashboard-temp/settings/kyc',
+        href: '/dashboard/settings/kyc',
         icon: FileCheck,
       },
       {
         title: 'PIX',
-        href: '/dashboard-temp/settings/pix',
+        href: '/dashboard/settings/pix',
         icon: CreditCard,
       },
       {
         title: 'Wallets',
-        href: '/dashboard-temp/settings/wallets',
+        href: '/dashboard/settings/wallets',
         icon: Wallet,
       },
     ],
