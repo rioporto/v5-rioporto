@@ -34,7 +34,7 @@ import {
 import {
   AlertCenter
 } from '@/components/portfolio-intelligence/alerts';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs';
 import { Brain, Activity, TrendingUp, Shield, Bell } from 'lucide-react';
 
 export default function PortfolioIntelligencePage() {
@@ -119,7 +119,21 @@ export default function PortfolioIntelligencePage() {
           </p>
         </div>
 
-        <Tabs defaultValue="overview" tabs={tabs} className="space-y-6" />
+        <Tabs defaultValue="overview" className="space-y-6">
+          <TabsList>
+            {tabs.map((tab) => (
+              <TabsTrigger key={tab.value} value={tab.value}>
+                {tab.icon}
+                <span className="ml-2">{tab.label}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {tabs.map((tab) => (
+            <TabsContent key={tab.value} value={tab.value}>
+              {tab.content}
+            </TabsContent>
+          ))}
+        </Tabs>
       </Container>
     </ProtectedRoute>
   );
