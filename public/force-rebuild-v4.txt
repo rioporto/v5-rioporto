@@ -1,0 +1,3 @@
+Force rebuild: 04/08/2025 - 02:45
+Deploy should show the full system, not Coming Soon page
+Check: /login, /register, /dashboard, /academy
