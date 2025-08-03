@@ -82,3 +82,14 @@ EXEMPLO-INICIO-CHAT.txt
 
 # OS generated files
 Thumbs.db
+
+# Screenshots and sensitive images
+prints/
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+!public/*.png
+!public/*.jpg
+!public/*.ico
