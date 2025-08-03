@@ -49,6 +49,9 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Apenas subdomínios e rotas específicas
+    '/',
+    '/demo/:path*',
+    '/dashboard/:path*',
   ],
 };
