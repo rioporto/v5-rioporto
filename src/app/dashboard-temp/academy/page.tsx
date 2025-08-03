@@ -379,7 +379,7 @@ export default function AcademyPage() {
                   difficulty: 'beginner',
                   duration: 10,
                   passingScore: 70,
-                  rewards: { xp: 100, coins: 50 },
+                  rewards: { points: 100, badge: 'Bitcoin Basics', certificate: true },
                   questions: []
                 }}
                 onComplete={(score) => {
