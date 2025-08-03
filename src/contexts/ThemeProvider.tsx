@@ -6,7 +6,8 @@ import {
   applyTheme, 
   getSavedTheme, 
   saveTheme, 
-  THEME_CONFIGS 
+  THEME_CONFIGS,
+  detectThemeFromSubdomain 
 } from '@/lib/theme-system';
 
 interface ThemeContextType {
@@ -37,10 +38,15 @@ export function ThemeProvider({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Get saved theme or detect from subdomain
-    const savedTheme = getSavedTheme();
-    setCurrentTheme(savedTheme);
-    applyTheme(savedTheme);
+    // Detect theme from subdomain first, then check saved preference
+    const detectedTheme = detectThemeFromSubdomain();
+    // Only use saved theme if we're not on a specific subdomain
+    const hostname = window.location.hostname;
+    const isSubdomain = hostname.match(/^v\d+\./);
+    
+    const themeToUse = isSubdomain ? detectedTheme : getSavedTheme();
+    setCurrentTheme(themeToUse);
+    applyTheme(themeToUse);
     setIsLoading(false);
   }, []);
 
