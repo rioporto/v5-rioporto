@@ -374,6 +374,11 @@ export default function AcademyPage() {
                 quiz={{
                   id: 'quiz-1',
                   title: 'Bitcoin Fundamentals',
+                  description: 'Test your knowledge about Bitcoin basics',
+                  category: 'Bitcoin',
+                  difficulty: 'beginner',
+                  duration: 10,
+                  points: 100,
                   questions: []
                 }}
                 onComplete={(score) => {
