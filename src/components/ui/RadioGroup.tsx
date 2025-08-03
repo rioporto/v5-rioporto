@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, createContext, useContext } from 'react';
 import { cn } from '@/lib/utils';
 
