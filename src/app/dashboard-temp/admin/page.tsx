@@ -184,12 +184,7 @@ export default function AdminPanelPage() {
       )}
 
       {activeTab === 'kyc' && (
-        <KYCQueue 
-          onUserSelect={(userId) => {
-            setSelectedUserId(userId);
-            setActiveTab('users');
-          }}
-        />
+        <KYCQueue />
       )}
 
       {activeTab === 'system' && (
