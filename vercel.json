@@ -10,5 +10,15 @@
       "source": "/(.*)",
       "destination": "/$1"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1"
+    }
+  },
+  "functions": {
+    "src/pages/api/*.js": {
+      "maxDuration": 30
+    }
+  }
 }
