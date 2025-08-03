@@ -21,7 +21,11 @@ import {
   Globe,
   FileCheck,
   CreditCard,
-  Key
+  Key,
+  LineChart,
+  Lock,
+  GraduationCap,
+  UserCog
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -48,6 +52,28 @@ const navigationItems: NavigationItem[] = [
     href: '/dashboard-temp/portfolio-intelligence',
     icon: Brain,
     badge: 'AI'
+  },
+  {
+    title: 'Trading',
+    href: '/dashboard-temp/trading',
+    icon: LineChart,
+    badge: 'NEW'
+  },
+  {
+    title: 'Security Center',
+    href: '/dashboard-temp/security',
+    icon: Lock,
+  },
+  {
+    title: 'Academy',
+    href: '/dashboard-temp/academy',
+    icon: GraduationCap,
+  },
+  {
+    title: 'Admin',
+    href: '/dashboard-temp/admin',
+    icon: UserCog,
+    badge: 'ADMIN'
   },
   {
     title: 'Buy Crypto',
