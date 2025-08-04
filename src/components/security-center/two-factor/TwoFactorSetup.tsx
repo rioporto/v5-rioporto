@@ -32,16 +32,32 @@ export function TwoFactorSetup({
 }: TwoFactorSetupProps) {
   const [step, setStep] = React.useState(1);
   const [verificationCode, setVerificationCode] = React.useState('');
-  const [secretKey] = React.useState('JBSWY3DPEHPK3PXP');
+  
+  // Gerar chave secreta dinâmica para 2FA
+  const generateSecretKey = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    let key = '';
+    for (let i = 0; i < 16; i++) {
+      key += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return key;
+  };
+  
+  // Gerar códigos de backup dinâmicos
+  const generateBackupCodes = () => {
+    const codes = [];
+    for (let i = 0; i < 6; i++) {
+      const part1 = Math.random().toString(36).substring(2, 6).toUpperCase();
+      const part2 = Math.random().toString(36).substring(2, 6).toUpperCase();
+      const part3 = Math.random().toString(36).substring(2, 6).toUpperCase();
+      codes.push(`${part1}-${part2}-${part3}`);
+    }
+    return codes;
+  };
+  
+  const [secretKey] = React.useState(() => generateSecretKey());
   const [copied, setCopied] = React.useState(false);
-  const [backupCodes] = React.useState([
-    'A3K9-2M5P-8Q7R',
-    'B7N4-3X6L-9W2E',
-    'C5H8-4J2K-7T9Y',
-    'D9L3-6M8N-2P4Q',
-    'E2W7-5R3T-8K6J',
-    'F4Y9-7N5M-3L2H'
-  ]);
+  const [backupCodes] = React.useState(() => generateBackupCodes());
 
   const handleCopySecret = () => {
     navigator.clipboard.writeText(secretKey);

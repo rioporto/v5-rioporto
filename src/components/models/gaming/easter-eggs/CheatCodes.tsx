@@ -298,16 +298,36 @@ export const CheatCodes: React.FC<CheatCodesProps> = ({
   const showCheatActivatedMessage = (cheat: CheatCode) => {
     const message = document.createElement('div');
     message.className = 'fixed top-4 right-4 z-50 bg-black/90 border border-green-400 rounded-lg p-4 text-green-400 animate-slide-in-right';
-    message.innerHTML = `
-      <div class="flex items-center space-x-2">
-        <span class="text-2xl">${cheat.icon}</span>
-        <div>
-          <div class="font-bold">Cheat Activated!</div>
-          <div class="text-sm">${cheat.name}</div>
-          <div class="text-xs opacity-80">${cheat.description}</div>
-        </div>
-      </div>
-    `;
+    
+    // Criar elementos de forma segura para evitar XSS
+    const container = document.createElement('div');
+    container.className = 'flex items-center space-x-2';
+    
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'text-2xl';
+    iconSpan.textContent = cheat.icon;
+    
+    const textDiv = document.createElement('div');
+    
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'font-bold';
+    titleDiv.textContent = 'Cheat Activated!';
+    
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'text-sm';
+    nameDiv.textContent = cheat.name;
+    
+    const descDiv = document.createElement('div');
+    descDiv.className = 'text-xs opacity-80';
+    descDiv.textContent = cheat.description;
+    
+    textDiv.appendChild(titleDiv);
+    textDiv.appendChild(nameDiv);
+    textDiv.appendChild(descDiv);
+    
+    container.appendChild(iconSpan);
+    container.appendChild(textDiv);
+    message.appendChild(container);
     
     document.body.appendChild(message);
     
