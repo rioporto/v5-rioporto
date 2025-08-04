@@ -46,9 +46,9 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://api.vercel.com https://vercel.live",
-              "style-src 'self' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https: blob:",
-              "font-src 'self' data:",
+              "font-src 'self' data: https://fonts.googleapis.com https://fonts.gstatic.com",
               "connect-src 'self' https://api.vercel.com https://vercel.live wss://ws-us3.pusher.com https://sockjs-us3.pusher.com",
               "media-src 'self'",
               "object-src 'none'",
