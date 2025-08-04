@@ -84,6 +84,11 @@ EXEMPLO-INICIO-CHAT.txt
 # OS generated files
 Thumbs.db
 
+# Scripts and executables (sensitive operations)
+*.sh
+deploy-*.sh
+scripts/
+
 # Screenshots and sensitive images
 prints/
 screenshots/
