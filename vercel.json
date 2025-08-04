@@ -1,7 +1,12 @@
 {
-  "buildCommand": "rm -rf .next && npm run build",
+  "buildCommand": "rm -rf .next node_modules/.cache && npm run build",
   "framework": "nextjs",
   "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "outputDirectory": ".next"
+  "installCommand": "rm -rf node_modules && npm install",
+  "outputDirectory": ".next",
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1"
+    }
+  }
 }
