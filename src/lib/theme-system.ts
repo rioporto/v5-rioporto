@@ -275,9 +275,42 @@ export function applyTheme(model: ThemeModel): void {
   const theme = THEME_CONFIGS[model];
   const root = document.documentElement;
   
-  // Apply color variables
+  // Remove all theme classes first
+  root.classList.remove('theme-minimalist', 'theme-financial', 'theme-crypto-native', 'theme-institutional', 'theme-gaming');
+  
+  // Add the new theme class
+  root.classList.add(`theme-${model}`);
+  
+  // Apply color variables with kebab-case conversion
+  const colorMap: Record<string, string> = {
+    background: '--background',
+    foreground: '--foreground',
+    primary: '--primary',
+    primaryForeground: '--primary-foreground',
+    secondary: '--secondary',
+    secondaryForeground: '--secondary-foreground',
+    surface: '--surface',
+    accent: '--accent',
+    accentForeground: '--accent-foreground',
+    muted: '--muted',
+    mutedForeground: '--muted-foreground',
+    success: '--success',
+    error: '--error',
+    warning: '--warning',
+    border: '--border',
+    input: '--input',
+    ring: '--ring',
+    card: '--card',
+    cardForeground: '--card-foreground',
+    popover: '--popover',
+    popoverForeground: '--popover-foreground',
+    destructive: '--destructive',
+    destructiveForeground: '--destructive-foreground',
+  };
+  
   Object.entries(theme.colors).forEach(([key, value]) => {
-    root.style.setProperty(`--${key}`, value);
+    const cssVar = colorMap[key] || `--${key}`;
+    root.style.setProperty(cssVar, value);
   });
   
   // Apply font variables
