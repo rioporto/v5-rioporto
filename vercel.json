@@ -1,0 +1,7 @@
+{
+  "buildCommand": "rm -rf .next && npm run build",
+  "framework": "nextjs",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
+}

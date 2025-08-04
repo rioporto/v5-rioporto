@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  experimental: {
+    optimizeCss: false,
+  },
   async headers() {
     return [
       {
