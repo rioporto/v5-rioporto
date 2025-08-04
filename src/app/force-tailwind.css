@@ -1,0 +1,8 @@
+/* Force Tailwind to include specific classes */
+.bg-blue-500 { @apply bg-blue-500; }
+.bg-green-500 { @apply bg-green-500; }
+.bg-red-500 { @apply bg-red-500; }
+.text-white { @apply text-white; }
+.p-4 { @apply p-4; }
+.mb-2 { @apply mb-2; }
+.rounded { @apply rounded; }

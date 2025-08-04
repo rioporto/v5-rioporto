@@ -6,6 +6,10 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    { 
+      raw: 'theme-minimalist theme-financial theme-crypto-native theme-institutional theme-gaming', 
+      extension: 'html' 
+    },
   ],
   theme: {
     container: {
@@ -118,6 +122,24 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-red-500',
+    'bg-gray-100',
+    'text-white',
+    'text-black',
+    'text-2xl',
+    'text-4xl',
+    'font-bold',
+    'font-semibold',
+    'p-4',
+    'p-8',
+    'mb-2',
+    'mb-4',
+    'mb-8',
+    'rounded',
+  ],
   plugins: [],
 };
 export default config;

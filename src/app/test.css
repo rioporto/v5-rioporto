@@ -1,0 +1,24 @@
+/* CSS de teste básico */
+.test-red {
+  background-color: #ff0000 !important;
+  color: white !important;
+  padding: 20px !important;
+  margin: 10px !important;
+  border-radius: 8px !important;
+}
+
+.test-blue {
+  background-color: #0000ff !important;
+  color: white !important;
+  padding: 20px !important;
+  margin: 10px !important;
+  border-radius: 8px !important;
+}
+
+.test-green {
+  background-color: #00ff00 !important;
+  color: black !important;
+  padding: 20px !important;
+  margin: 10px !important;
+  border-radius: 8px !important;
+}
