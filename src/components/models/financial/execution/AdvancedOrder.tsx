@@ -136,7 +136,7 @@ export function AdvancedOrder({ pair }: AdvancedOrderProps) {
           <label className="text-sm font-medium">Order Type</label>
           <Select
             value={orderType}
-            onChange={(e) => setOrderType(e.target.value)}
+            onChange={(value) => setOrderType(value)}
             options={orderTypes}
           />
         </div>
@@ -203,7 +203,7 @@ export function AdvancedOrder({ pair }: AdvancedOrderProps) {
           <label className="text-sm font-medium">Trigger Type</label>
           <Select
             value={triggerType}
-            onChange={(e) => setTriggerType(e.target.value)}
+            onChange={(value) => setTriggerType(value)}
             options={triggerTypes}
           />
         </div>

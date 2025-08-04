@@ -309,14 +309,14 @@ export default function CorrelationMatrix({
           {/* Period Selector */}
           <Select
             value={selectedPeriod}
-            onChange={(e) => setSelectedPeriod(e.target.value as "7d" | "30d" | "1d" | "90d")}
+            onChange={(value) => setSelectedPeriod(value as "7d" | "30d" | "1d" | "90d")}
             options={CORRELATION_PERIODS}
           />
           
           {/* Sort By */}
           <Select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as 'alphabetical' | 'correlation')}
+            onChange={(value) => setSortBy(value as 'alphabetical' | 'correlation')}
             options={[
               { value: 'alphabetical', label: 'A-Z' },
               { value: 'correlation', label: 'Correlation' }

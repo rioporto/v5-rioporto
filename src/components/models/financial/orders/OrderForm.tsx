@@ -51,7 +51,7 @@ export function OrderForm({ className }: OrderFormProps) {
           <Label>Criptomoeda</Label>
           <Select 
             value={crypto} 
-            onChange={(e) => setCrypto(e.target.value)}
+            onChange={(value) => setCrypto(value)}
             options={[
               { value: 'BTC', label: 'Bitcoin (BTC)' },
               { value: 'ETH', label: 'Ethereum (ETH)' },
@@ -87,7 +87,7 @@ export function OrderForm({ className }: OrderFormProps) {
           <Label>Tipo de Ordem</Label>
           <Select 
             value={orderTypeValue} 
-            onChange={(e) => setOrderTypeValue(e.target.value)}
+            onChange={(value) => setOrderTypeValue(value)}
             options={[
               { value: 'market', label: 'Mercado' },
               { value: 'limit', label: 'Limite' },

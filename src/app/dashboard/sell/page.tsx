@@ -83,7 +83,7 @@ export default function SellPage() {
                 </label>
                 <Select
                   value={orderType}
-                  onChange={(e) => setOrderType(e.target.value)}
+                  onChange={(value) => setOrderType(value)}
                   options={orderTypes}
                 />
               </div>
@@ -95,7 +95,7 @@ export default function SellPage() {
                 </label>
                 <Select
                   value={selectedAsset}
-                  onChange={(e) => setSelectedAsset(e.target.value)}
+                  onChange={(value) => setSelectedAsset(value)}
                   options={availableAssets.map(asset => ({
                     value: asset.symbol,
                     label: `${asset.symbol} - Disponível: ${asset.amount.toLocaleString('pt-BR', { maximumFractionDigits: 8 })}`,
@@ -217,7 +217,7 @@ export default function SellPage() {
                     </label>
                     <Select
                       value={sellMethod}
-                      onChange={(e) => setSellMethod(e.target.value)}
+                      onChange={(value) => setSellMethod(value)}
                       options={sellMethods}
                     />
                   </div>

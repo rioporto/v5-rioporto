@@ -1,69 +1,18 @@
 'use client';
 
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-/**
- * Tabs component variants using CVA
- */
-const tabsListVariants = cva(
-  'inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground',
-  {
-    variants: {
-      variant: {
-        default: 'bg-muted',
-        outline: 'bg-transparent border border-border',
-        underline: 'bg-transparent border-b border-border rounded-none',
-      },
-      size: {
-        sm: 'h-8 text-sm',
-        md: 'h-10',
-        lg: 'h-12 text-base',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
-    },
-  }
-);
+export type TabsVariant = 'default' | 'outline' | 'underline';
+export type TabsSize = 'sm' | 'md' | 'lg';
 
-const tabsTriggerVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-  {
-    variants: {
-      variant: {
-        default: 'data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
-        outline: 'border border-transparent data-[state=active]:border-primary data-[state=active]:bg-background data-[state=active]:text-foreground',
-        underline: 'border-b-2 border-transparent rounded-none data-[state=active]:border-primary data-[state=active]:text-foreground',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-);
-
-export interface TabsProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof tabsListVariants> {
-  /**
-   * Default active tab value
-   */
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultValue?: string;
-  /**
-   * Controlled active tab value
-   */
   value?: string;
-  /**
-   * Callback when tab changes
-   */
   onValueChange?: (value: string) => void;
-  /**
-   * Orientation of tabs
-   */
   orientation?: 'horizontal' | 'vertical';
+  variant?: TabsVariant;
+  size?: TabsSize;
 }
 
 /**
@@ -73,26 +22,16 @@ const TabsContext = React.createContext<{
   value: string;
   onValueChange: (value: string) => void;
   orientation: 'horizontal' | 'vertical';
+  variant: TabsVariant;
 }>({
   value: '',
   onValueChange: () => {},
   orientation: 'horizontal',
+  variant: 'default',
 });
 
 /**
  * Main Tabs component
- * 
- * @example
- * ```tsx
- * <Tabs defaultValue="tab1">
- *   <TabsList>
- *     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
- *     <TabsTrigger value="tab2">Tab 2</TabsTrigger>
- *   </TabsList>
- *   <TabsContent value="tab1">Content 1</TabsContent>
- *   <TabsContent value="tab2">Content 2</TabsContent>
- * </Tabs>
- * ```
  */
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   ({ 
@@ -101,6 +40,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     value: controlledValue,
     onValueChange,
     orientation = 'horizontal',
+    variant = 'default',
+    size,
     children,
     ...props 
   }, ref) => {
@@ -115,7 +56,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     };
 
     return (
-      <TabsContext.Provider value={{ value, onValueChange: handleValueChange, orientation }}>
+      <TabsContext.Provider value={{ value, onValueChange: handleValueChange, orientation, variant }}>
         <div
           ref={ref}
           className={cn(
@@ -136,86 +77,104 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 /**
  * Tabs list component
  */
-const TabsList = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof tabsListVariants>
->(({ className, variant, size, ...props }, ref) => {
-  const { orientation } = React.useContext(TabsContext);
+const TabsList = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { variant?: TabsVariant }>(
+  ({ className, variant: propVariant, ...props }, ref) => {
+    const { orientation, variant: contextVariant } = React.useContext(TabsContext);
+    const variant = propVariant || contextVariant;
+    
+    const getVariantClasses = () => {
+      switch (variant) {
+        case 'outline':
+          return 'bg-transparent border';
+        case 'underline':
+          return 'bg-transparent border-b rounded-none';
+        default:
+          return 'bg-muted';
+      }
+    };
 
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        tabsListVariants({ variant, size }),
-        orientation === 'vertical' && 'flex-col h-auto w-48',
-        className
-      )}
-      role="tablist"
-      aria-orientation={orientation}
-      {...props}
-    />
-  );
-});
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'inline-flex items-center justify-center rounded-md p-1',
+          getVariantClasses(),
+          orientation === 'vertical' && 'flex-col h-auto w-48',
+          className
+        )}
+        role="tablist"
+        aria-orientation={orientation}
+        {...props}
+      />
+    );
+  }
+);
 
 /**
  * Tabs trigger component
  */
-const TabsTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement> & 
-  VariantProps<typeof tabsTriggerVariants> & {
-    value: string;
-  }
->(({ className, variant, value: triggerValue, ...props }, ref) => {
-  const { value, onValueChange } = React.useContext(TabsContext);
-  const isActive = value === triggerValue;
+const TabsTrigger = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & { value: string }>(
+  ({ className, value: triggerValue, ...props }, ref) => {
+    const { value, onValueChange, variant } = React.useContext(TabsContext);
+    const isActive = value === triggerValue;
+    
+    const getVariantClasses = () => {
+      switch (variant) {
+        case 'outline':
+          return isActive ? 'border-primary bg-background' : 'border-transparent';
+        case 'underline':
+          return isActive ? 'border-b-2 border-primary rounded-none' : 'border-b-2 border-transparent rounded-none';
+        default:
+          return isActive ? 'bg-background text-foreground shadow-sm' : '';
+      }
+    };
 
-  return (
-    <button
-      ref={ref}
-      className={cn(tabsTriggerVariants({ variant }), className)}
-      role="tab"
-      aria-selected={isActive}
-      data-state={isActive ? 'active' : 'inactive'}
-      onClick={() => onValueChange(triggerValue)}
-      {...props}
-    />
-  );
-});
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-2 text-sm font-medium transition-all',
+          'focus:outline-none disabled:pointer-events-none disabled:opacity-50',
+          getVariantClasses(),
+          className
+        )}
+        role="tab"
+        aria-selected={isActive}
+        data-state={isActive ? 'active' : 'inactive'}
+        onClick={() => onValueChange(triggerValue)}
+        {...props}
+      />
+    );
+  }
+);
 
 /**
  * Tabs content component
  */
-const TabsContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    value: string;
+const TabsContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { value: string }>(
+  ({ className, value: contentValue, children, ...props }, ref) => {
+    const { value } = React.useContext(TabsContext);
+    const isActive = value === contentValue;
+
+    if (!isActive) return null;
+
+    return (
+      <div
+        ref={ref}
+        className={cn('mt-2 focus:outline-none', className)}
+        role="tabpanel"
+        data-state={isActive ? 'active' : 'inactive'}
+        {...props}
+      >
+        {children}
+      </div>
+    );
   }
->(({ className, value: contentValue, children, ...props }, ref) => {
-  const { value } = React.useContext(TabsContext);
-  const isActive = value === contentValue;
-
-  if (!isActive) return null;
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        className
-      )}
-      role="tabpanel"
-      data-state={isActive ? 'active' : 'inactive'}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-});
+);
 
 Tabs.displayName = 'Tabs';
 TabsList.displayName = 'TabsList';
 TabsTrigger.displayName = 'TabsTrigger';
 TabsContent.displayName = 'TabsContent';
 
-export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants, tabsTriggerVariants };
+export { Tabs, TabsList, TabsTrigger, TabsContent };

@@ -233,7 +233,7 @@ export function StopLossManager({ positions = [] }: StopLossManagerProps) {
                   <label className="text-sm font-medium">Stop Loss Type</label>
                   <Select
                     value={stopLossType}
-                    onChange={(e) => setStopLossType(e.target.value)}
+                    onChange={(value) => setStopLossType(value)}
                     options={stopLossTypes}
                   />
                 </div>

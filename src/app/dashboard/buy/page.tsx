@@ -83,7 +83,7 @@ export default function BuyPage() {
                 </label>
                 <Select
                   value={orderType}
-                  onChange={(e) => setOrderType(e.target.value)}
+                  onChange={(value) => setOrderType(value)}
                   options={orderTypes}
                 />
               </div>
@@ -95,7 +95,7 @@ export default function BuyPage() {
                 </label>
                 <Select
                   value={selectedToken}
-                  onChange={(e) => setSelectedToken(e.target.value)}
+                  onChange={(value) => setSelectedToken(value)}
                   options={activeTokens.map(token => ({
                     value: token.symbol,
                     label: `${token.symbol} - ${token.name}`,
@@ -160,7 +160,7 @@ export default function BuyPage() {
                     </label>
                     <Select
                       value={paymentMethod}
-                      onChange={(e) => setPaymentMethod(e.target.value)}
+                      onChange={(value) => setPaymentMethod(value)}
                       options={paymentMethods}
                     />
                   </div>

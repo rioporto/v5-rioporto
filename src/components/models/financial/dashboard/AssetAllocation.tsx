@@ -160,7 +160,6 @@ const AllocationList = ({
                 value={item.percentage} 
                 max={Math.max(...data.map(d => d.percentage))} 
                 className="h-2"
-                color={item.color}
               />
             </div>
           );

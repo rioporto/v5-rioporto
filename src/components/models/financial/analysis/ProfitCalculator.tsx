@@ -187,7 +187,7 @@ export function ProfitCalculator() {
                 <label className="text-sm font-medium">Position Type</label>
                 <Select
                   value={positionType}
-                  onChange={(e) => setPositionType(e.target.value)}
+                  onChange={(value) => setPositionType(value)}
                   options={positionTypes}
                 />
               </div>

@@ -1,146 +1,133 @@
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+export type CardVariant = 'default' | 'outline' | 'filled' | 'elevated';
+export type CardSize = 'sm' | 'md' | 'lg';
+
+const getVariantClasses = (variant: CardVariant): string => {
+  const variants = {
+    default: 'bg-card border',
+    outline: 'border-2 bg-transparent',
+    filled: 'bg-muted border-0',
+    elevated: 'bg-card border shadow-lg'
+  };
+  return variants[variant];
+};
+
+const getSizeClasses = (size: CardSize): string => {
+  const sizes = {
+    sm: 'p-3',
+    md: 'p-4',
+    lg: 'p-6'
+  };
+  return sizes[size];
+};
+
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: CardVariant;
+  size?: CardSize;
+}
+
+export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 /**
- * Card component variants using CVA
+ * Card component
  */
-const cardVariants = cva(
-  'rounded-lg border bg-card text-card-foreground shadow transition-all duration-200',
-  {
-    variants: {
-      variant: {
-        default: 'shadow-sm hover:shadow-md',
-        elevated: 'shadow-md hover:shadow-lg',
-        outline: 'border-2 shadow-none hover:shadow-sm',
-        ghost: 'border-transparent shadow-none hover:bg-accent/5',
-      },
-      padding: {
-        none: 'p-0',
-        sm: 'p-4',
-        md: 'p-6',
-        lg: 'p-8',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      padding: 'md',
-    },
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant = 'default', size = 'md', ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'rounded text-card-foreground transition-all',
+          getVariantClasses(variant),
+          getSizeClasses(size),
+          className
+        )}
+        {...props}
+      />
+    );
   }
 );
 
-export interface CardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
-  /**
-   * Whether the card is clickable
-   */
-  clickable?: boolean;
-  /**
-   * Whether the card is disabled
-   */
-  disabled?: boolean;
-}
-
 /**
- * Card component for grouping content
- * 
- * @example
- * ```tsx
- * <Card>
- *   <CardHeader>
- *     <CardTitle>Title</CardTitle>
- *   </CardHeader>
- *   <CardContent>Content goes here</CardContent>
- * </Card>
- * ```
+ * Card Header component
  */
-const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ 
-    className, 
-    variant,
-    padding,
-    clickable = false,
-    disabled = false,
-    ...props 
-  }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        cardVariants({ variant, padding, className }),
-        clickable && 'cursor-pointer hover:bg-accent/5 active:scale-[0.98]',
-        disabled && 'opacity-50 cursor-not-allowed',
-      )}
-      {...props}
-    />
-  )
+const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn('flex flex-col space-y-1.5', className)}
+        {...props}
+      />
+    );
+  }
 );
 
 /**
- * Card header component
+ * Card Title component
  */
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex flex-col space-y-1.5 p-6', className)}
-    {...props}
-  />
-));
+const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <h3
+        ref={ref}
+        className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+        {...props}
+      />
+    );
+  }
+);
 
 /**
- * Card title component
+ * Card Description component
  */
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn('text-2xl font-semibold leading-none tracking-tight', className)}
-    {...props}
-  />
-));
+const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <p
+        ref={ref}
+        className={cn('text-sm text-muted-foreground', className)}
+        {...props}
+      />
+    );
+  }
+);
 
 /**
- * Card description component
+ * Card Content component
  */
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn('text-sm text-muted-foreground', className)}
-    {...props}
-  />
-));
+const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn('pt-0', className)}
+        {...props}
+      />
+    );
+  }
+);
 
 /**
- * Card content component
+ * Card Footer component
  */
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
-));
-
-/**
- * Card footer component
- */
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex items-center p-6 pt-0', className)}
-    {...props}
-  />
-));
+const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn('flex items-center pt-0', className)}
+        {...props}
+      />
+    );
+  }
+);
 
 Card.displayName = 'Card';
 CardHeader.displayName = 'CardHeader';
@@ -149,12 +136,11 @@ CardDescription.displayName = 'CardDescription';
 CardContent.displayName = 'CardContent';
 CardFooter.displayName = 'CardFooter';
 
-export { 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
-  CardContent, 
-  CardFooter,
-  cardVariants 
+export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
 };

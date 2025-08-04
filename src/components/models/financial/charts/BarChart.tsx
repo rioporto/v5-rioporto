@@ -188,7 +188,7 @@ export default function BarChart({
           {/* Timeframe Selector */}
           <Select
             value={selectedTimeframe}
-            onChange={(e) => handleTimeframeChange(e.target.value)}
+            onChange={(value) => handleTimeframeChange(value)}
             options={TIMEFRAMES}
           />
           

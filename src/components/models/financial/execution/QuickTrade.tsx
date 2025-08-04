@@ -126,7 +126,7 @@ export function QuickTrade({ pair }: QuickTradeProps) {
           <label className="text-sm font-medium">Order Type</label>
           <Select
             value={orderType}
-            onChange={(e) => setOrderType(e.target.value)}
+            onChange={(value) => setOrderType(value)}
             options={orderTypes}
           />
         </div>
@@ -210,7 +210,7 @@ export function QuickTrade({ pair }: QuickTradeProps) {
             <label className="text-sm font-medium">Time in Force</label>
             <Select
               value={timeInForceValue}
-              onChange={(e) => setTimeInForceValue(e.target.value)}
+              onChange={(value) => setTimeInForceValue(value)}
               options={timeInForce}
             />
           </div>

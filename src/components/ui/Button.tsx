@@ -1,45 +1,58 @@
 'use client';
 
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 /**
- * Button component variants using CVA
- * Supports multiple visual styles and sizes with theme-aware colors
+ * Button variant type
  */
-const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        danger: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md hover:shadow-lg',
-        success: 'bg-success text-white hover:bg-success/90 shadow-md hover:shadow-lg',
-        warning: 'bg-warning text-black hover:bg-warning/90 shadow-md hover:shadow-lg',
-        link: 'text-primary underline-offset-4 hover:underline',
-      },
-      size: {
-        sm: 'h-8 px-3 text-xs',
-        md: 'h-10 px-4 py-2',
-        lg: 'h-12 px-8 text-base',
-        xl: 'h-14 px-10 text-lg',
-        icon: 'h-10 w-10',
-      },
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'md',
-    },
-  }
-);
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success' | 'warning' | 'link';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+/**
+ * Button size type
+ */
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl' | 'icon';
+
+/**
+ * Get button variant classes
+ */
+const getVariantClasses = (variant: ButtonVariant): string => {
+  const variants = {
+    primary: 'btn btn-primary',
+    secondary: 'btn btn-secondary',
+    outline: 'btn border bg-background hover:bg-accent',
+    ghost: 'btn hover:bg-accent',
+    danger: 'btn bg-error text-white hover:opacity-90',
+    success: 'btn bg-success text-white hover:opacity-90',
+    warning: 'btn bg-warning text-black hover:opacity-90',
+    link: 'text-primary hover:opacity-80 underline'
+  };
+  return variants[variant];
+};
+
+/**
+ * Get button size classes
+ */
+const getSizeClasses = (size: ButtonSize): string => {
+  const sizes = {
+    sm: 'text-sm px-3 py-1',
+    md: 'px-4 py-2',
+    lg: 'text-lg px-8 py-3',
+    xl: 'text-xl px-10 py-4',
+    icon: 'p-2 w-10 h-10'
+  };
+  return sizes[size];
+};
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button visual variant
+   */
+  variant?: ButtonVariant;
+  /**
+   * Button size
+   */
+  size?: ButtonSize;
   /**
    * Loading state to show spinner
    */
@@ -71,8 +84,8 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ 
     className, 
-    variant, 
-    size, 
+    variant = 'primary', 
+    size = 'md', 
     loading = false,
     leftIcon,
     rightIcon,
@@ -84,8 +97,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          buttonVariants({ variant, size, className }),
+          getVariantClasses(variant),
+          getSizeClasses(size),
+          'transition-all',
           fullWidth && 'w-full',
+          className
         )}
         ref={ref}
         disabled={disabled || loading}
@@ -93,14 +109,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && (
           <svg
-            className="mr-2 h-4 w-4 animate-spin"
+            className="animate-spin"
+            style={{
+              width: '1rem',
+              height: '1rem',
+              marginRight: '0.5rem'
+            }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
             <circle
-              className="opacity-25"
+              style={{ opacity: 0.25 }}
               cx="12"
               cy="12"
               r="10"
@@ -108,7 +129,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               strokeWidth="4"
             />
             <path
-              className="opacity-75"
+              style={{ opacity: 0.75 }}
               fill="currentColor"
               d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             />
@@ -116,13 +137,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         
         {!loading && leftIcon && (
-          <span className="mr-2 flex items-center">{leftIcon}</span>
+          <span className="flex items-center" style={{ marginRight: '0.5rem' }}>
+            {leftIcon}
+          </span>
         )}
         
         {children}
         
         {!loading && rightIcon && (
-          <span className="ml-2 flex items-center">{rightIcon}</span>
+          <span className="flex items-center" style={{ marginLeft: '0.5rem' }}>
+            {rightIcon}
+          </span>
         )}
       </button>
     );
@@ -131,4 +156,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { Button, buttonVariants };
+export { Button };

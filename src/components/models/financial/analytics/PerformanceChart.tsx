@@ -28,7 +28,7 @@ export function PerformanceChart({ className }: PerformanceChartProps) {
         <CardTitle>Performance vs Benchmark</CardTitle>
         <Select 
           value={timeframe} 
-          onChange={(e) => setTimeframe(e.target.value)}
+          onChange={(value) => setTimeframe(value)}
           options={[
             { value: '7d', label: '7 dias' },
             { value: '30d', label: '30 dias' },

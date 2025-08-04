@@ -1,13 +1,35 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
 /**
- * Combines class names with tailwind-merge for proper CSS class handling
- * @param inputs - Class names to combine
- * @returns Merged class names string
+ * Simple class name utility function
+ * @param inputs - Class names to combine (strings, objects, arrays, booleans)
+ * @returns Combined class names string
  */
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+export function cn(...inputs: any[]): string {
+  const classes: string[] = [];
+  
+  for (const input of inputs) {
+    if (!input) continue;
+    
+    if (typeof input === 'string') {
+      classes.push(input);
+    } else if (typeof input === 'boolean') {
+      // Boolean values are ignored (used for conditional classes)
+      continue;
+    } else if (Array.isArray(input)) {
+      // Recursively process arrays
+      const arrayResult = cn(...input);
+      if (arrayResult) {
+        classes.push(arrayResult);
+      }
+    } else if (typeof input === 'object') {
+      for (const [key, value] of Object.entries(input)) {
+        if (value) {
+          classes.push(key);
+        }
+      }
+    }
+  }
+  
+  return classes.join(' ');
 }
 
 /**

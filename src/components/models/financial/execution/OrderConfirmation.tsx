@@ -347,7 +347,7 @@ export function OrderConfirmation({
             <span className="text-muted-foreground">Processing order...</span>
             <span className="text-muted-foreground">⏱️ ~30s</span>
           </div>
-          <Progress value={undefined} className="h-2" />
+          <Progress value={30} className="h-2" />
         </div>
       )}
     </div>

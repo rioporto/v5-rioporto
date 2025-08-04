@@ -234,7 +234,7 @@ export function BackupSettings({
               <X className="w-4 h-4" />
             </Button>
           </div>
-          <Progress value={currentBackup.progress} className="mb-2" />
+          <Progress value={currentBackup.progress || 0} className="mb-2" />
           <p className="text-xs text-muted-foreground text-right">
             {currentBackup.progress}% complete
           </p>

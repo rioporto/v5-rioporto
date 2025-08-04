@@ -1,35 +1,34 @@
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const sectionVariants = cva(
-  'w-full',
-  {
-    variants: {
-      padding: {
-        none: '',
-        sm: 'py-8',
-        md: 'py-12',
-        lg: 'py-16',
-        xl: 'py-20',
-      },
-      background: {
-        default: '',
-        muted: 'bg-muted/50',
-        accent: 'bg-accent/5',
-        primary: 'bg-primary text-primary-foreground',
-      },
-    },
-    defaultVariants: {
-      padding: 'md',
-      background: 'primary',
-    },
-  }
-);
+export type SectionPadding = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+export type SectionBackground = 'default' | 'muted' | 'accent' | 'primary';
 
-export interface SectionProps
-  extends React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof sectionVariants> {}
+const getPaddingClasses = (padding: SectionPadding): string => {
+  const paddings = {
+    none: '',
+    sm: 'py-8',
+    md: 'py-12',
+    lg: 'py-16',
+    xl: 'py-20'
+  };
+  return paddings[padding];
+};
+
+const getBackgroundClasses = (background: SectionBackground): string => {
+  const backgrounds = {
+    default: '',
+    muted: 'bg-muted',
+    accent: 'bg-accent',
+    primary: 'bg-primary text-primary-foreground'
+  };
+  return backgrounds[background];
+};
+
+export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
+  padding?: SectionPadding;
+  background?: SectionBackground;
+}
 
 /**
  * Section component for page content areas
@@ -45,11 +44,16 @@ export interface SectionProps
  * ```
  */
 const Section = React.forwardRef<HTMLElement, SectionProps>(
-  ({ className, padding, background, ...props }, ref) => {
+  ({ className, padding = 'md', background = 'default', ...props }, ref) => {
     return (
       <section
         ref={ref}
-        className={cn(sectionVariants({ padding, background, className }))}
+        className={cn(
+          'w-full',
+          getPaddingClasses(padding),
+          getBackgroundClasses(background),
+          className
+        )}
         {...props}
       />
     );
@@ -58,4 +62,4 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
 
 Section.displayName = 'Section';
 
-export { Section, sectionVariants };
+export { Section };

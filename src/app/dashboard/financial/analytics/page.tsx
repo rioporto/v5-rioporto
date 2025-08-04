@@ -79,7 +79,7 @@ export default function AnalyticsPage() {
         <div className="flex items-center space-x-2">
           <Select
             value={timeFrame}
-            onChange={(e) => setTimeFrame(e.target.value)}
+            onChange={(value) => setTimeFrame(value)}
             options={timeFrames}
             placeholder="Select time frame"
           />

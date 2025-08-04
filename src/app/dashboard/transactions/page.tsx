@@ -203,19 +203,19 @@ export default function TransactionsPage() {
           <div className="flex flex-col sm:flex-row gap-2">
             <Select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
+              onChange={(value) => setStatusFilter(value)}
               options={statusOptions}
             />
             
             <Select
               value={typeFilter}
-              onChange={(e) => setTypeFilter(e.target.value)}
+              onChange={(value) => setTypeFilter(value)}
               options={typeOptions}
             />
             
             <Select
               value={timeFilter}
-              onChange={(e) => setTimeFilter(e.target.value)}
+              onChange={(value) => setTimeFilter(value)}
               options={timeOptions}
             />
           </div>

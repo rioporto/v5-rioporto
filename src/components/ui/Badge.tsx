@@ -1,78 +1,51 @@
 'use client';
 
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-/**
- * Badge component variants using CVA
- */
-const badgeVariants = cva(
-  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-  {
-    variants: {
-      variant: {
-        default: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
-        secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        success: 'border-transparent bg-success text-white hover:bg-success/80',
-        error: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-        warning: 'border-transparent bg-warning text-black hover:bg-warning/80',
-        outline: 'text-foreground border-border hover:bg-accent hover:text-accent-foreground',
-        ghost: 'border-transparent text-muted-foreground hover:bg-accent hover:text-accent-foreground',
-      },
-      size: {
-        sm: 'px-2 py-0.5 text-xs',
-        md: 'px-2.5 py-0.5 text-xs',
-        lg: 'px-3 py-1 text-sm',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
-    },
-  }
-);
+export type BadgeVariant = 'default' | 'secondary' | 'success' | 'error' | 'warning' | 'outline' | 'ghost';
+export type BadgeSize = 'sm' | 'md' | 'lg';
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
-  /**
-   * Icon to display before text
-   */
+const getVariantClasses = (variant: BadgeVariant): string => {
+  const variants = {
+    default: 'bg-primary text-primary-foreground',
+    secondary: 'bg-secondary text-secondary-foreground',
+    success: 'bg-success text-white',
+    error: 'bg-error text-white',
+    warning: 'bg-warning text-black',
+    outline: 'border text-foreground hover:bg-accent',
+    ghost: 'text-muted hover:bg-accent'
+  };
+  return variants[variant];
+};
+
+const getSizeClasses = (size: BadgeSize): string => {
+  const sizes = {
+    sm: 'px-2 py-1 text-xs',
+    md: 'px-3 py-1 text-sm',
+    lg: 'px-4 py-2 text-base'
+  };
+  return sizes[size];
+};
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: BadgeVariant;
+  size?: BadgeSize;
   leftIcon?: React.ReactNode;
-  /**
-   * Icon to display after text
-   */
   rightIcon?: React.ReactNode;
-  /**
-   * Whether the badge is clickable
-   */
   clickable?: boolean;
-  /**
-   * Whether the badge can be dismissed
-   */
   dismissible?: boolean;
-  /**
-   * Callback when badge is dismissed
-   */
   onDismiss?: () => void;
 }
 
 /**
  * Badge component for status and labels
- * 
- * @example
- * ```tsx
- * <Badge variant="success">Active</Badge>
- * <Badge variant="error" dismissible onDismiss={() => {}}>Error</Badge>
- * <Badge leftIcon={<Icon />}>With icon</Badge>
- * ```
  */
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   ({ 
     className, 
-    variant, 
-    size,
+    variant = 'default', 
+    size = 'md',
     leftIcon,
     rightIcon,
     clickable = false,
@@ -97,9 +70,11 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       <div
         ref={ref}
         className={cn(
-          badgeVariants({ variant, size, className }),
+          'inline-flex items-center rounded font-medium transition-all',
+          getVariantClasses(variant),
+          getSizeClasses(size),
           (clickable || dismissible) && 'cursor-pointer select-none',
-          clickable && 'hover:scale-105 active:scale-95',
+          className
         )}
         onClick={handleClick}
         role={clickable ? 'button' : undefined}
@@ -113,24 +88,33 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         {...props}
       >
         {leftIcon && (
-          <span className="mr-1 flex items-center">{leftIcon}</span>
+          <span className="flex items-center" style={{ marginRight: '0.25rem' }}>
+            {leftIcon}
+          </span>
         )}
         
         {children}
         
         {rightIcon && !dismissible && (
-          <span className="ml-1 flex items-center">{rightIcon}</span>
+          <span className="flex items-center" style={{ marginLeft: '0.25rem' }}>
+            {rightIcon}
+          </span>
         )}
         
         {dismissible && (
           <button
             type="button"
-            className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full hover:bg-black/10 dark:hover:bg-white/10 focus:outline-none focus:ring-1 focus:ring-current"
+            className="inline-flex items-center justify-center rounded-full hover:opacity-70 focus:outline-none"
+            style={{ 
+              marginLeft: '0.25rem',
+              width: '1rem',
+              height: '1rem'
+            }}
             onClick={handleDismiss}
             aria-label="Dismiss"
           >
             <svg
-              className="w-3 h-3"
+              style={{ width: '0.75rem', height: '0.75rem' }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -147,4 +131,4 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
 Badge.displayName = 'Badge';
 
-export { Badge, badgeVariants };
+export { Badge };

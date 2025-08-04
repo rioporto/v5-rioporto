@@ -1,50 +1,46 @@
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const logoVariants = cva(
-  'flex items-center gap-2 font-bold transition-colors',
-  {
-    variants: {
-      size: {
-        sm: 'text-lg',
-        md: 'text-xl',
-        lg: 'text-2xl',
-        xl: 'text-3xl',
-      },
-      variant: {
-        default: 'text-foreground',
-        primary: 'text-primary',
-        white: 'text-white',
-        muted: 'text-muted-foreground',
-      },
-    },
-    defaultVariants: {
-      size: 'md',
-      variant: 'primary',
-    },
-  }
-);
+export type LogoSize = 'sm' | 'md' | 'lg' | 'xl';
+export type LogoVariant = 'default' | 'primary' | 'white' | 'muted';
 
-export interface LogoProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof logoVariants> {
-  /**
-   * Whether logo is clickable (links to home)
-   */
+const getSizeClasses = (size: LogoSize): string => {
+  const sizes = {
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-2xl',
+    xl: 'text-3xl'
+  };
+  return sizes[size];
+};
+
+const getVariantClasses = (variant: LogoVariant): string => {
+  const variants = {
+    default: 'text-foreground',
+    primary: 'text-primary',
+    white: 'text-white',
+    muted: 'text-muted'
+  };
+  return variants[variant];
+};
+
+const getIconSize = (size: LogoSize): string => {
+  const iconSizes = {
+    sm: 'w-6 h-6',
+    md: 'w-8 h-8',
+    lg: 'w-10 h-10',
+    xl: 'w-12 h-12'
+  };
+  return iconSizes[size];
+};
+
+export interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: LogoSize;
+  variant?: LogoVariant;
   clickable?: boolean;
-  /**
-   * Custom href for clickable logo
-   */
   href?: string;
-  /**
-   * Whether to show icon
-   */
   showIcon?: boolean;
-  /**
-   * Custom icon
-   */
   icon?: React.ReactNode;
 }
 
@@ -63,18 +59,12 @@ const DefaultLogoIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 /**
  * Logo component adaptable to theme
- * 
- * @example
- * ```tsx
- * <Logo clickable />
- * <Logo size="lg" variant="primary" showIcon={false} />
- * ```
  */
 const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
   ({ 
     className, 
-    size,
-    variant,
+    size = 'md',
+    variant = 'primary',
     clickable = true,
     href = '/',
     showIcon = true,
@@ -84,19 +74,16 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
     const content = (
       <div
         ref={ref}
-        className={cn(logoVariants({ size, variant, className }))}
+        className={cn(
+          'flex items-center gap-2 font-bold transition-colors',
+          getSizeClasses(size),
+          getVariantClasses(variant),
+          className
+        )}
         {...props}
       >
         {showIcon && (
-          <div className={cn(
-            'flex-shrink-0',
-            {
-              'w-6 h-6': size === 'sm',
-              'w-8 h-8': size === 'md',
-              'w-10 h-10': size === 'lg',
-              'w-12 h-12': size === 'xl',
-            }
-          )}>
+          <div className={cn('flex-shrink-0', getIconSize(size))}>
             {icon || <DefaultLogoIcon className="w-full h-full" />}
           </div>
         )}
@@ -118,4 +105,4 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
 
 Logo.displayName = 'Logo';
 
-export { Logo, logoVariants };
+export { Logo };

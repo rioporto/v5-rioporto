@@ -276,7 +276,7 @@ export function TakeProfitManager({ positions = [] }: TakeProfitManagerProps) {
                   <label className="text-sm font-medium">Strategy</label>
                   <Select
                     value={strategy}
-                    onChange={(e) => setStrategy(e.target.value)}
+                    onChange={(value) => setStrategy(value)}
                     options={takeProfitStrategies}
                   />
                 </div>
