@@ -1,7 +1,0 @@
-Deploy test - 04/08/2025 02:36
-This file confirms the deployment is working.
-Routes should be available at:
-- /login
-- /register  
-- /dashboard
-- /academy

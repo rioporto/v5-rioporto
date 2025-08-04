@@ -1,4 +1,0 @@
-Version: 1.0.1
-Date: 03/08/2025 20:30
-Branch: production
-Status: Sistema completo com login e 5 modelos
