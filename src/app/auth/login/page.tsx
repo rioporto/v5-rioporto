@@ -87,7 +87,7 @@ function LoginContent() {
       
       if (success) {
         // Get redirect URL from query params or default to dashboard
-        const redirectTo = searchParams.get('redirect') || '/dashboard';
+        const redirectTo = searchParams?.get('redirect') || '/dashboard';
         router.push(redirectTo);
       }
     } catch (error) {
